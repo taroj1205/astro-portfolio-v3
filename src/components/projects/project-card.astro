@@ -54,20 +54,3 @@ const { project, index } = Astro.props
     </div>
   </div>
 </div>
-
-<script>
-  import { animate, inView } from 'motion'
-
-  const projectCards = document.querySelectorAll('.project-card')
-
-  projectCards.forEach((card) => {
-    inView(card, () => {
-      const index = card.getAttribute('data-index')
-      animate(
-        card,
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: Number(index) * 0.1 }
-      )
-    })
-  })
-</script>
