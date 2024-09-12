@@ -5,6 +5,7 @@ import playformCompress from "@playform/compress"
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://taroj.netlify.app/',
   image: {
     service: {
        entrypoint: 'astro/assets/services/sharp',
