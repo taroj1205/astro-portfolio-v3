@@ -4,10 +4,10 @@ import pfpImage from '@/assets/carousel/pfp.webp'
 import { generateSizesAndWidths } from '@/utils/image'
 
 const navItems = [
-  { href: '#hobbies', label: 'Hobbies' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#journey', label: 'Journey' },
-  { href: '#projects', label: 'Projects' },
+  { href: '/#hobbies', label: 'Hobbies' },
+  { href: '/#skills', label: 'Skills' },
+  { href: '/journey', label: 'Journey' },
+  { href: '/#projects', label: 'Projects' },
 ]
 ---
 
@@ -38,7 +38,11 @@ const navItems = [
           <a
             href={item.href}
             class="group relative px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-primary data-[active=true]:font-semibold data-[active=true]:text-primary"
-            data-section={item.href.slice(1)}
+            data-section={
+              item.href === '/journey'
+                ? 'journey'
+                : item.href.replace(/^\/?#/, '')
+            }
           >
             {item.label}
             <span class="absolute inset-x-0 -bottom-0.5 h-0.5 origin-right scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:origin-left group-hover:scale-x-100" />
@@ -72,13 +76,13 @@ const navItems = [
   function updateActiveSection() {
     const scrollPosition = window.scrollY
     const sections = Array.from(navItems).map((item) =>
-      item.getAttribute('data-section'),
+      item.getAttribute('data-section')
     )
 
     if (heroSection && scrollPosition < heroSection.offsetHeight) {
       hideActiveIndicator()
       const currentDataActive = Array.from(navItems).find(
-        (item) => item.getAttribute('data-active') === 'true',
+        (item) => item.getAttribute('data-active') === 'true'
       )
 
       if (currentDataActive) {
@@ -115,7 +119,7 @@ const navItems = [
             width: `${itemRect.width}px`,
             opacity: 1,
           },
-          { duration: 0.3, easing: spring() },
+          { duration: 0.3, easing: spring() }
         )
       }
     })
@@ -126,7 +130,7 @@ const navItems = [
       animate(
         activeIndicator,
         { opacity: 0 },
-        { duration: 0.3, easing: spring() },
+        { duration: 0.3, easing: spring() }
       )
     }
   }
