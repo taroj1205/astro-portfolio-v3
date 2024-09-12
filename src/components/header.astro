@@ -72,13 +72,13 @@ const navItems = [
   function updateActiveSection() {
     const scrollPosition = window.scrollY
     const sections = Array.from(navItems).map((item) =>
-      item.getAttribute('data-section')
+      item.getAttribute('data-section'),
     )
 
-    if (heroSection && scrollPosition < heroSection.offsetHeight - 100) {
+    if (heroSection && scrollPosition < heroSection.offsetHeight) {
       hideActiveIndicator()
       const currentDataActive = Array.from(navItems).find(
-        (item) => item.getAttribute('data-active') === 'true'
+        (item) => item.getAttribute('data-active') === 'true',
       )
 
       if (currentDataActive) {
@@ -115,7 +115,7 @@ const navItems = [
             width: `${itemRect.width}px`,
             opacity: 1,
           },
-          { duration: 0.3, easing: spring() }
+          { duration: 0.3, easing: spring() },
         )
       }
     })
@@ -126,7 +126,7 @@ const navItems = [
       animate(
         activeIndicator,
         { opacity: 0 },
-        { duration: 0.3, easing: spring() }
+        { duration: 0.3, easing: spring() },
       )
     }
   }

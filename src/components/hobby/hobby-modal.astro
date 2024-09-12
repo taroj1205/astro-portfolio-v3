@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets'
+
 const { label, description, mediaUrl } = Astro.props
 
 const isVideo = (url: string) => {
@@ -63,7 +65,14 @@ const getYouTubeEmbedUrl = (url: string) => {
           playsinline
         />
       ) : (
-        <img src={mediaUrl} alt={label} class="h-64 w-full object-cover" />
+        <Image
+          src={mediaUrl}
+          alt={label}
+          height={400}
+          width={600}
+          class="h-64 w-full object-cover"
+          loading="lazy"
+        />
       )
     }
     <div class="p-6">
