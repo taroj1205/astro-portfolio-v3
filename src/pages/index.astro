@@ -1,44 +1,16 @@
 ---
-import '@/styles/globals.css'
-import Header from '@/components/header.astro'
-import Footer from '@/components/footer.astro'
+import Layout from '@/components/layouts/default.astro'
 import Hero from '@/components/hero/index.astro'
 import Hobby from '@/components/hobby/index.astro'
 import Skills from '@/components/skills/index.astro'
 import Journey from '@/components/journey/index.astro'
 import Projects from '@/components/projects/index.astro'
-import ScrollUp from '@/components/scroll-up.astro'
-
-import { metadata } from '@/utils/metadata'
 ---
 
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{metadata.title}</title>
-    <meta name="description" content={metadata.description} />
-    <link rel="icon" href="/favicon.ico" />
-    <meta property="og:title" content={metadata.title} />
-    <meta property="og:description" content={metadata.description} />
-    <meta property="og:image" content={metadata.openGraph.image} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={metadata.title} />
-    <meta name="twitter:description" content={metadata.description} />
-    <meta name="twitter:image" content={metadata.openGraph.image} />
-  </head><body class="bg-background font-sans antialiased">
-    <div class="relative flex min-h-[100dvh] flex-col gap-4">
-      <Header />
-      <main class="z-10 flex-1">
-        <Hero id="hero" class:list="pb-14 pt-32 md:pb-32 md:pt-48" />
-        <Hobby id="hobbies" class:list="pt-28 md:py-24 lg:py-32" />
-        <Skills id="skills" class:list="pt-28 md:py-24 lg:py-32" />
-        <Journey id="journey" class:list="pt-28 md:py-24 lg:py-32" />
-        <Projects id="projects" class:list="pt-28 md:pt-24 lg:pt-32" />
-      </main>
-      <ScrollUp />
-      <Footer />
-    </div>
-  </body>
-</html>
+<Layout>
+  <Hero id="hero" class:list="pb-14 pt-32 md:pb-32 md:pt-48" />
+  <Hobby id="hobbies" class:list="pt-28 md:py-24 lg:py-32" />
+  <Skills id="skills" class:list="pt-28 md:py-24 lg:py-32" />
+  <Journey id="journey" class:list="pt-28 md:py-24 lg:py-32" />
+  <Projects id="projects" class:list="pt-28 md:pt-24 lg:pt-32" />
+</Layout>
