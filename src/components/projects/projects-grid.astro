@@ -33,7 +33,7 @@ const projects = useProjectsArray()
       animate(
         Array.from(projectCards),
         { opacity: [0, 1], y: [20, 0] },
-        { duration: individualDuration, delay: stagger(delayBetweenElements) }
+        { duration: individualDuration, delay: stagger(delayBetweenElements) },
       )
     })
   }

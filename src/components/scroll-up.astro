@@ -28,7 +28,7 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
         animate(
           scrollTopButton,
           { opacity: [0, 1], scale: [0.8, 1] },
-          { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) }
+          { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
         )
       }
       if (atBottom && isMobile) {
@@ -42,7 +42,7 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
           animate(
             scrollTopButton,
             { opacity: [1, 0], scale: [1, 0.8] },
-            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) }
+            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
           ).finished.then(() => {
             scrollTopButton?.classList.add('hidden')
           })

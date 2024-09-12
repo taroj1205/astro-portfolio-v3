@@ -10,7 +10,7 @@ const { class: className, ...props } = Astro.props
 const { journey } = getUI('en')
 
 const htmlDescriptions = journey.events.map((event) =>
-  marked(event.description)
+  marked(event.description),
 )
 ---
 
@@ -70,7 +70,7 @@ const htmlDescriptions = journey.events.map((event) =>
                             loading="lazy"
                             {...generateSizesAndWidths(
                               image.width,
-                              image.height
+                              image.height,
                             )}
                           />
                         )
@@ -83,7 +83,7 @@ const htmlDescriptions = journey.events.map((event) =>
                 <div
                   class={cn(
                     'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background md:translate-x-0',
-                    index % 2 === 0 && 'md:translate-x-1'
+                    index % 2 === 0 && 'md:translate-x-1',
                   )}
                 />
               </div>
@@ -110,13 +110,13 @@ const htmlDescriptions = journey.events.map((event) =>
       animate(
         journeyTitle,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.2 }
+        { duration: 0.5, delay: 0.2 },
       )
 
       animate(
         journeyDescription,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.3 }
+        { duration: 0.5, delay: 0.3 },
       )
 
       const totalDuration = 2
@@ -128,7 +128,7 @@ const htmlDescriptions = journey.events.map((event) =>
       animate(
         Array.from(journeyGrid.children),
         { opacity: [0, 1], y: [20, 0] },
-        { duration: individualDuration, delay: stagger(delayBetweenElements) }
+        { duration: individualDuration, delay: stagger(delayBetweenElements) },
       )
     })
   }

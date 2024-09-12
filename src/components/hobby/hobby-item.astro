@@ -33,7 +33,7 @@ const { icon: Icon, label, description, mediaUrl } = Astro.props
       animate(
         item,
         { scale: 1.05 },
-        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) }
+        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) },
       )
 
       const icon = item.querySelector('.relative')
@@ -41,7 +41,7 @@ const { icon: Icon, label, description, mediaUrl } = Astro.props
         animate(
           icon,
           { rotate: [0, -10, 10, -10, 0] },
-          { duration: 0.5, easing: spring({ stiffness: 300, damping: 10 }) }
+          { duration: 0.5, easing: spring({ stiffness: 300, damping: 10 }) },
         )
       }
     })
@@ -50,7 +50,7 @@ const { icon: Icon, label, description, mediaUrl } = Astro.props
       animate(
         item,
         { scale: 1 },
-        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) }
+        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) },
       )
     })
 

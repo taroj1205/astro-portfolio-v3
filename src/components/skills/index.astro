@@ -9,7 +9,7 @@ const { class: className, ...props } = Astro.props
 <section
   class={cn(
     'w-full bg-gradient-to-b from-background to-secondary/20 py-16',
-    className
+    className,
   )}
   {...props}
 >
@@ -59,19 +59,19 @@ const { class: className, ...props } = Astro.props
       animate(
         skillsTitle,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.2 }
+        { duration: 0.5, delay: 0.2 },
       )
 
       animate(
         skillsDescription,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.3 }
+        { duration: 0.5, delay: 0.3 },
       )
 
       animate(
         Array.from(skillsGrid.children),
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: stagger(0.3) }
+        { duration: 0.5, delay: stagger(0.3) },
       )
     })
   }
