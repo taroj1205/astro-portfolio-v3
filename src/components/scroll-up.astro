@@ -4,7 +4,7 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
 
 <button
   id="scroll-up"
-  class="fixed bottom-4 right-4 z-50 hidden rounded-full bg-primary p-3 text-primary-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:bottom-8 sm:right-8"
+  class="fixed bottom-4 right-4 z-50 hidden rounded-full bg-primary p-3 text-primary-foreground shadow-lg transition-[bottom] duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 data-[bottom=true]:bottom-16 sm:bottom-8 sm:right-8"
   aria-label="Scroll to top"
 >
   <ArrowUpIcon class="h-6 w-6" />
@@ -17,16 +17,24 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
 
   const handleScroll = () => {
     const scrollY = window.scrollY
+    const scrollHeight = document.documentElement.scrollHeight
+    const clientHeight = document.documentElement.clientHeight
+    const atBottom = scrollY + clientHeight >= scrollHeight - 1
+    const isMobile = window.innerWidth <= 500
 
-    if (scrollY > 300) {
+    if (scrollY > 300 && scrollTopButton) {
       if (scrollTopButton?.classList.contains('hidden')) {
         scrollTopButton?.classList.remove('hidden')
-        if (scrollTopButton)
-          animate(
-            scrollTopButton,
-            { opacity: [0, 1], scale: [0.8, 1] },
-            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
-          )
+        animate(
+          scrollTopButton,
+          { opacity: [0, 1], scale: [0.8, 1] },
+          { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) }
+        )
+      }
+      if (atBottom && isMobile) {
+        scrollTopButton.setAttribute('data-bottom', 'true')
+      } else {
+        scrollTopButton.setAttribute('data-bottom', 'false')
       }
     } else {
       if (!scrollTopButton?.classList.contains('hidden')) {
@@ -34,7 +42,7 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
           animate(
             scrollTopButton,
             { opacity: [1, 0], scale: [1, 0.8] },
-            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
+            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) }
           ).finished.then(() => {
             scrollTopButton?.classList.add('hidden')
           })
@@ -44,6 +52,7 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
 
   if (scrollTopButton) {
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
 
     scrollTopButton.addEventListener('click', () => {
       window.scrollTo({

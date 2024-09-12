@@ -7,7 +7,7 @@ const { class: className, ...props } = Astro.props
 ---
 
 <section class={cn('w-full py-16', className)} {...props}>
-  <div class="container px-4 md:px-6">
+  <div id="hobbies-section" class="container px-4 md:px-6">
     <div
       class="flex flex-col items-center justify-center space-y-8 text-center"
     >
@@ -19,6 +19,7 @@ const { class: className, ...props } = Astro.props
           My Hobbies
         </h2>
         <p
+          id="hobbies-description"
           class="max-w-[900px] text-xl text-muted-foreground md:text-2xl/relaxed"
         >
           Discover the diverse range of interests that fuel my passion and
@@ -49,14 +50,20 @@ const { class: className, ...props } = Astro.props
 
   const hobbiesSection = document.getElementById('hobbies-section')
   const hobbiesTitle = document.getElementById('hobbies-title')
+  const hobbiesDescription = document.getElementById('hobbies-description')
   const hobbiesGrid = document.getElementById('hobbies-grid')
 
-  if (hobbiesSection && hobbiesTitle && hobbiesGrid) {
+  if (hobbiesSection && hobbiesTitle && hobbiesDescription && hobbiesGrid) {
     inView(hobbiesSection, () => {
       animate(
         hobbiesTitle,
         { opacity: [0, 1], y: [20, 0] },
         { duration: 0.5, delay: 0.2 }
+      )
+      animate(
+        hobbiesDescription,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: 0.3 }
       )
 
       animate(

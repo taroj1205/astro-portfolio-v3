@@ -15,14 +15,18 @@ const htmlDescriptions = journey.events.map((event) =>
 ---
 
 <section class={cn('w-full py-12 md:py-24 lg:py-32', className)} {...props}>
-  <div class="container px-4 md:px-6">
+  <div id="journey-section" class="container px-4 md:px-6">
     <div
       class="flex flex-col items-center justify-center space-y-4 text-center"
     >
-      <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+      <h2
+        id="journey-title"
+        class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+      >
         A Global Odyssey
       </h2>
       <p
+        id="journey-description"
         class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
       >
         From the bustling streets of Tokyo to the serene landscapes of New
@@ -33,7 +37,7 @@ const htmlDescriptions = journey.events.map((event) =>
         that have shaped my life, guiding me toward a future filled with
         potential.
       </p>
-      <div class="relative mt-12 w-full max-w-4xl">
+      <div id="journey-grid" class="relative mt-12 w-full max-w-4xl">
         <div
           class="absolute bottom-0 left-4 top-0 hidden w-1 -translate-x-1/2 transform bg-gradient-to-b from-primary to-primary-foreground md:left-1/2 md:block md:translate-x-0"
         >
@@ -42,7 +46,7 @@ const htmlDescriptions = journey.events.map((event) =>
         {
           journey.events.map((event, index) => (
             <div class="mb-8 flex flex-col items-center md:mb-16 md:flex-row md:even:flex-row-reverse">
-              <div class="group mb-4 w-full bg-card text-left shadow-md md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
+              <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
                 <div class="rounded-lg p-4">
                   <span class="inline-block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
                     {event.timestamp}
@@ -97,60 +101,35 @@ const htmlDescriptions = journey.events.map((event) =>
   import { animate, stagger, inView } from 'motion'
 
   const journeySection = document.getElementById('journey-section')
+  const journeyTitle = document.getElementById('journey-title')
+  const journeyDescription = document.getElementById('journey-description')
+  const journeyGrid = document.getElementById('journey-grid')
 
-  if (journeySection) {
-    const title = journeySection.querySelector('h2')
-    const description = journeySection.querySelector('p')
-    const events = journeySection.querySelectorAll('.group')
-
+  if (journeySection && journeyTitle && journeyDescription && journeyGrid) {
     inView(journeySection, () => {
-      if (title) {
-        animate(
-          title,
-          { opacity: [0, 1], y: [20, 0] },
-          { duration: 0.5, delay: 0.2 }
-        )
-      }
-
-      if (description) {
-        animate(
-          description,
-          { opacity: [0, 1], y: [20, 0] },
-          { duration: 0.5, delay: 0.3 }
-        )
-      }
+      animate(
+        journeyTitle,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: 0.2 }
+      )
 
       animate(
-        events,
+        journeyDescription,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: stagger(0.1) }
+        { duration: 0.5, delay: 0.3 }
       )
-    })
 
-    events.forEach((event) => {
-      event.addEventListener('mouseenter', () => {
-        animate(
-          event,
-          {
-            y: -5,
-            boxShadow:
-              '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-          },
-          { duration: 0.3 }
-        )
-      })
+      const totalDuration = 2
+      const elementCount = journeyGrid.children.length
+      const individualDuration = 0.5
+      const delayBetweenElements =
+        (totalDuration - individualDuration) / elementCount
 
-      event.addEventListener('mouseleave', () => {
-        animate(
-          event,
-          {
-            y: 0,
-            boxShadow:
-              '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-          },
-          { duration: 0.3 }
-        )
-      })
+      animate(
+        Array.from(journeyGrid.children),
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: individualDuration, delay: stagger(delayBetweenElements) }
+      )
     })
   }
 </script>

@@ -7,7 +7,7 @@ const { class: className, ...props } = Astro.props
 ---
 
 <section class={cn('w-full', className)} {...props}>
-  <div class="container space-y-12 px-4 md:px-6">
+  <div id="projects-section" class="container space-y-12 px-4 md:px-6">
     <ProjectsHeader />
     <ProjectsGrid />
   </div>
@@ -17,13 +17,28 @@ const { class: className, ...props } = Astro.props
   import { animate, inView } from 'motion'
 
   const projectsSection = document.getElementById('projects-section')
+  const projectsTitle = document.getElementById('projects-title')
+  const projectsDescription = document.getElementById('projects-description')
+  const projectsTag = document.getElementById('projects-tag')
 
-  if (projectsSection) {
+  if (projectsSection && projectsTitle && projectsDescription && projectsTag) {
     inView(projectsSection, () => {
       animate(
-        projectsSection,
-        { opacity: [0, 1], y: [50, 0] },
-        { duration: 0.8 },
+        projectsTitle,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: 0.2 }
+      )
+
+      animate(
+        projectsDescription,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: 0.3 }
+      )
+
+      animate(
+        projectsTag,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: 0.3 }
       )
     })
   }

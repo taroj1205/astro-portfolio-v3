@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start": "astro preview",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -27,7 +27,6 @@
     "@astrojs/sitemap": "^3.1.6",
     "@playform/compress": "^0.1.1",
     "@tailwindcss/typography": "^0.5.15",
-    "astro-purgecss": "^4.6.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.6",
