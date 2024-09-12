@@ -1,0 +1,18 @@
+---
+import HeroDisplay from './hero-display.astro'
+import { cn } from '@/lib/utils'
+
+const { class: className, ...props } = Astro.props
+---
+
+<section
+  class={cn(
+    'flex w-full flex-col items-center overflow-hidden md:flex-row',
+    className,
+  )}
+  {...props}
+>
+  <div class="container relative">
+    <HeroDisplay />
+  </div>
+</section>

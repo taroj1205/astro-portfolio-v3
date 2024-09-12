@@ -1,0 +1,30 @@
+---
+import { cn } from '@/lib/utils'
+import ProjectsHeader from './projects-header.astro'
+import ProjectsGrid from './projects-grid.astro'
+
+const { class: className, ...props } = Astro.props
+---
+
+<section class={cn('w-full', className)} {...props}>
+  <div class="container space-y-12 px-4 md:px-6">
+    <ProjectsHeader />
+    <ProjectsGrid />
+  </div>
+</section>
+
+<script>
+  import { animate, inView } from 'motion'
+
+  const projectsSection = document.getElementById('projects-section')
+
+  if (projectsSection) {
+    inView(projectsSection, () => {
+      animate(
+        projectsSection,
+        { opacity: [0, 1], y: [50, 0] },
+        { duration: 0.8 },
+      )
+    })
+  }
+</script>

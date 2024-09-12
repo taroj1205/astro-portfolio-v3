@@ -1,0 +1,28 @@
+---
+import ProjectCard from './project-card.astro'
+import { useProjectsArray } from './projects.astro'
+const projects = useProjectsArray()
+---
+
+<div
+  id="projects-grid"
+  class="columns-1 gap-6 space-y-6 sm:columns-2 lg:columns-3"
+>
+  {
+    projects.map((project, index) => (
+      <ProjectCard project={project} index={index} />
+    ))
+  }
+</div>
+
+<script>
+  import { animate, inView } from 'motion'
+
+  const projectsGrid = document.getElementById('projects-grid')
+
+  if (projectsGrid) {
+    inView(projectsGrid, () => {
+      animate(projectsGrid, { opacity: [0, 1] }, { delay: 0.3, duration: 0.6 })
+    })
+  }
+</script>

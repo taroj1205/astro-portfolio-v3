@@ -1,0 +1,71 @@
+---
+import ArrowUpIcon from './icons/arrow-up-icon.astro'
+---
+
+<button
+  id="scroll-up"
+  class="fixed bottom-4 right-4 z-50 hidden rounded-full bg-primary p-3 text-primary-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:bottom-8 sm:right-8"
+  aria-label="Scroll to top"
+>
+  <ArrowUpIcon class="h-6 w-6" />
+</button>
+
+<script>
+  import { animate, spring } from 'motion'
+
+  const scrollTopButton = document.getElementById('scroll-up')
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY
+
+    if (scrollY > 300) {
+      if (scrollTopButton?.classList.contains('hidden')) {
+        scrollTopButton?.classList.remove('hidden')
+        if (scrollTopButton)
+          animate(
+            scrollTopButton,
+            { opacity: [0, 1], scale: [0.8, 1] },
+            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
+          )
+      }
+    } else {
+      if (!scrollTopButton?.classList.contains('hidden')) {
+        if (scrollTopButton)
+          animate(
+            scrollTopButton,
+            { opacity: [1, 0], scale: [1, 0.8] },
+            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
+          ).finished.then(() => {
+            scrollTopButton?.classList.add('hidden')
+          })
+      }
+    }
+  }
+
+  if (scrollTopButton) {
+    window.addEventListener('scroll', handleScroll)
+
+    scrollTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    })
+
+    scrollTopButton.addEventListener('mouseenter', () => {
+      animate(scrollTopButton, { scale: 1.1 }, { duration: 0.2 })
+    })
+
+    scrollTopButton.addEventListener('mouseleave', () => {
+      animate(scrollTopButton, { scale: 1 }, { duration: 0.2 })
+    })
+
+    scrollTopButton.addEventListener('mousedown', () => {
+      animate(scrollTopButton, { scale: 0.9 }, { duration: 0.1 })
+    })
+
+    scrollTopButton.addEventListener('mouseup', () => {
+      animate(scrollTopButton, { scale: 1.1 }, { duration: 0.1 })
+    })
+  }
+</script>

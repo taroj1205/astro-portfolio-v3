@@ -1,0 +1,46 @@
+---
+import { cn } from '@/lib/utils'
+import AnimatedLinks from './animated-links.astro'
+
+const { class: className, animation = true, ...props } = Astro.props
+---
+
+<div
+  id="hero-display"
+  class={cn('flex flex-col items-center space-y-4 text-center', className)}
+  {...props}
+>
+  <div id="hero-content" class="space-y-2">
+    <h1
+      class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none"
+    >
+      Shintaro Jokagi
+    </h1>
+    <p class="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+      Passionate university student, aspiring software engineer, and open-source
+      contributor.
+    </p>
+  </div>
+  <AnimatedLinks />
+</div>
+
+<script>
+  import { animate, spring } from 'motion'
+
+  const heroDisplay = document.getElementById('hero-display')
+  const heroContent = document.getElementById('hero-content')
+
+  if (heroDisplay && heroContent) {
+    animate(
+      heroDisplay,
+      { opacity: [0, 1] },
+      { duration: 0.8, easing: spring() },
+    )
+
+    animate(
+      heroContent,
+      { opacity: [0, 1], y: [50, 0] },
+      { duration: 0.8, easing: spring() },
+    )
+  }
+</script>

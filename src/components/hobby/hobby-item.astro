@@ -1,0 +1,65 @@
+---
+import HobbyModal from './hobby-modal.astro'
+
+const { icon: Icon, label, description, mediaUrl } = Astro.props
+---
+
+<div class="hobby-item group flex cursor-pointer flex-col items-center gap-3">
+  <div
+    class="relative rounded-2xl bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
+  >
+    <Icon class="h-8 w-8" />
+    <div
+      class="absolute inset-0 scale-0 rounded-2xl bg-primary/5 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+    >
+    </div>
+  </div>
+  <p
+    class="text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary"
+  >
+    {label}
+  </p>
+</div>
+
+<HobbyModal label={label} description={description} mediaUrl={mediaUrl} />
+
+<script>
+  import { animate, spring } from 'motion'
+
+  const hobbyItems = document.querySelectorAll('.hobby-item')
+
+  hobbyItems.forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+      animate(
+        item,
+        { scale: 1.05 },
+        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) }
+      )
+
+      const icon = item.querySelector('.relative')
+      if (icon) {
+        animate(
+          icon,
+          { rotate: [0, -10, 10, -10, 0] },
+          { duration: 0.5, easing: spring({ stiffness: 300, damping: 10 }) }
+        )
+      }
+    })
+
+    item.addEventListener('mouseleave', () => {
+      animate(
+        item,
+        { scale: 1 },
+        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) }
+      )
+    })
+
+    item.addEventListener('click', () => {
+      const modal = item.nextElementSibling
+      if (modal && modal.classList.contains('hobby-modal')) {
+        modal.setAttribute('data-show', 'true')
+        animate(modal, { opacity: [0, 1] }, { duration: 0.3 })
+      }
+    })
+  })
+</script>

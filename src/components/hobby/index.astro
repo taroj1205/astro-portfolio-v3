@@ -1,0 +1,69 @@
+---
+import { cn } from '@/lib/utils'
+import HobbyItem from './hobby-item.astro'
+import { hobbies } from './hobbies.astro'
+
+const { class: className, ...props } = Astro.props
+---
+
+<section class={cn('w-full py-16', className)} {...props}>
+  <div class="container px-4 md:px-6">
+    <div
+      class="flex flex-col items-center justify-center space-y-8 text-center"
+    >
+      <div class="space-y-4">
+        <h2
+          id="hobbies-title"
+          class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+        >
+          My Hobbies
+        </h2>
+        <p
+          class="max-w-[900px] text-xl text-muted-foreground md:text-2xl/relaxed"
+        >
+          Discover the diverse range of interests that fuel my passion and
+          creativity.
+        </p>
+      </div>
+      <div
+        id="hobbies-grid"
+        class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+      >
+        {
+          hobbies.map((hobby) => (
+            <HobbyItem
+              icon={hobby.icon}
+              label={hobby.label}
+              description={hobby.description}
+              mediaUrl={hobby.mediaUrl}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger, inView } from 'motion'
+
+  const hobbiesSection = document.getElementById('hobbies-section')
+  const hobbiesTitle = document.getElementById('hobbies-title')
+  const hobbiesGrid = document.getElementById('hobbies-grid')
+
+  if (hobbiesSection && hobbiesTitle && hobbiesGrid) {
+    inView(hobbiesSection, () => {
+      animate(
+        hobbiesTitle,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: 0.2 }
+      )
+
+      animate(
+        Array.from(hobbiesGrid.children),
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: stagger(0.1) }
+      )
+    })
+  }
+</script>

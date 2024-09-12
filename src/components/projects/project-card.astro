@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets'
+import { generateSizesAndWidths } from '@/utils/image'
+import GithubIcon from '../icons/github-icon.astro'
+import type { Locale } from '@/utils/i18n'
+
+const { project, index } = Astro.props
+---
+
+<div
+  class="project-card h-fit break-inside-avoid overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg"
+  data-index={index}
+>
+  <Image
+    src={project.thumbnail}
+    alt={project.title}
+    class="h-48 w-full object-cover"
+    loading="lazy"
+    {...generateSizesAndWidths(
+      project.thumbnail.width,
+      project.thumbnail.height
+    )}
+  />
+  <div class="p-6">
+    <h3 class="mb-2 text-xl font-semibold">{project.title}</h3>
+    <p class="mb-4 text-gray-600">{project.description}</p>
+    <div class="mb-4 flex flex-wrap gap-2">
+      {
+        project.lang.map((lang: Locale) => (
+          <span class="rounded bg-blue-100 px-2 py-1 text-sm text-blue-800">
+            {lang}
+          </span>
+        ))
+      }
+    </div>
+    <div class="flex justify-between">
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+      >
+        View Project
+      </a>
+      <a
+        href={project.githubLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary p-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+        aria-label="GitHub"
+      >
+        <GithubIcon />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { animate, inView } from 'motion'
+
+  const projectCards = document.querySelectorAll('.project-card')
+
+  projectCards.forEach((card) => {
+    inView(card, () => {
+      const index = card.getAttribute('data-index')
+      animate(
+        card,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: Number(index) * 0.1 }
+      )
+    })
+  })
+</script>

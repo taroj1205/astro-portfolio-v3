@@ -1,0 +1,149 @@
+---
+import { Image } from 'astro:assets'
+import pfpImage from '@/assets/carousel/pfp.webp'
+import { generateSizesAndWidths } from '@/utils/image'
+
+const navItems = [
+  { href: '#hobbies', label: 'Hobbies' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#journey', label: 'Journey' },
+  { href: '#projects', label: 'Projects' },
+]
+---
+
+<header
+  id="header"
+  class="sticky top-0 z-20 flex h-fit w-full items-center justify-center bg-white/80 px-4 py-3 shadow-md backdrop-blur-md sm:h-16 md:px-6 lg:px-8"
+>
+  <div
+    class="flex w-full max-w-5xl flex-col items-center justify-between gap-3 sm:flex-row sm:gap-0"
+  >
+    <a
+      href="/"
+      class="z-0 hidden items-center justify-center transition-transform hover:scale-110 sm:flex"
+    >
+      <Image
+        src={pfpImage}
+        alt="Shintaro Jokagi"
+        class="h-10 w-10 rounded-full object-cover ring-2 ring-primary ring-offset-2 ring-offset-white"
+        {...generateSizesAndWidths(pfpImage.width, pfpImage.height)}
+      />
+    </a>
+    <nav
+      id="main-nav"
+      class="relative flex flex-wrap justify-center gap-4 sm:flex-nowrap sm:gap-6"
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="group relative px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-primary data-[active=true]:font-semibold data-[active=true]:text-primary"
+            data-section={item.href.slice(1)}
+          >
+            {item.label}
+            <span class="absolute inset-x-0 -bottom-0.5 h-0.5 origin-right scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:origin-left group-hover:scale-x-100" />
+          </a>
+        ))
+      }
+      <span
+        id="active-indicator"
+        class="absolute -bottom-0.5 h-0.5 bg-primary transition-all duration-300 ease-in-out"
+      ></span>
+    </nav>
+    <div class="hidden h-10 w-10 sm:inline"></div>
+  </div>
+</header>
+
+<script>
+  import { animate, spring } from 'motion'
+
+  const header = document.getElementById('header')
+  const navItems = document.querySelectorAll('#main-nav a')
+  const activeIndicator = document.getElementById('active-indicator')
+  const mainNav = document.getElementById('main-nav')
+  const heroSection = document.getElementById('hero')
+
+  if (header) {
+    animate(header, { y: ['-100%', '0%'] }, { duration: 0.5, easing: spring() })
+  }
+
+  let activeSection = ''
+
+  function updateActiveSection() {
+    const scrollPosition = window.scrollY
+    const sections = Array.from(navItems).map((item) =>
+      item.getAttribute('data-section')
+    )
+
+    if (heroSection && scrollPosition < heroSection.offsetHeight - 100) {
+      hideActiveIndicator()
+      const currentDataActive = Array.from(navItems).find(
+        (item) => item.getAttribute('data-active') === 'true'
+      )
+
+      if (currentDataActive) {
+        currentDataActive.setAttribute('data-active', 'false')
+      }
+      return
+    }
+
+    for (const section of sections.reverse()) {
+      const element = section ? document.getElementById(section) : null
+      if (element && scrollPosition >= element.offsetTop - 100) {
+        setActiveSection(section)
+        break
+      }
+    }
+  }
+
+  function setActiveSection(section: string | null) {
+    if (activeSection === section) return
+
+    activeSection = section || ''
+    navItems.forEach((item) => {
+      const isActive = item.getAttribute('data-section') === section
+      item.setAttribute('data-active', isActive ? 'true' : 'false')
+
+      const itemRect = item.getBoundingClientRect()
+      const navRect = mainNav?.getBoundingClientRect()
+
+      if (isActive && activeIndicator && navRect) {
+        animate(
+          activeIndicator,
+          {
+            left: `${itemRect.left - navRect.left}px`,
+            width: `${itemRect.width}px`,
+            opacity: 1,
+          },
+          { duration: 0.3, easing: spring() }
+        )
+      }
+    })
+  }
+
+  function hideActiveIndicator() {
+    if (activeIndicator) {
+      animate(
+        activeIndicator,
+        { opacity: 0 },
+        { duration: 0.3, easing: spring() }
+      )
+    }
+  }
+
+  function initializeActiveIndicator() {
+    const firstItem = navItems[0]
+    if (firstItem && mainNav && activeIndicator) {
+      const itemRect = firstItem.getBoundingClientRect()
+      const navRect = mainNav.getBoundingClientRect()
+      activeIndicator.style.left = `${itemRect.left - navRect.left}px`
+      activeIndicator.style.width = `${itemRect.width}px`
+      activeIndicator.style.opacity = '1'
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveSection)
+  window.addEventListener('resize', initializeActiveIndicator)
+  updateActiveSection()
+  initializeActiveIndicator()
+</script>

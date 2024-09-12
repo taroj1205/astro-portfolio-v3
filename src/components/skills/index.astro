@@ -1,0 +1,68 @@
+---
+import { cn } from '@/lib/utils'
+import SkillCategory from './skill-category.astro'
+import { categories } from './skills.astro'
+
+const { class: className, ...props } = Astro.props
+---
+
+<section
+  class={cn(
+    'w-full bg-gradient-to-b from-background to-secondary/20 py-16',
+    className
+  )}
+  {...props}
+>
+  <div class="container px-4 md:px-6">
+    <div
+      id="skills-content"
+      class="flex flex-col items-center justify-center space-y-8 text-center"
+    >
+      <div class="space-y-4">
+        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+          Technical Expertise
+        </h2>
+        <p
+          class="max-w-[800px] text-xl text-muted-foreground md:text-2xl/relaxed"
+        >
+          Discover the diverse range of skills I've mastered to bring innovative
+          ideas to life.
+        </p>
+      </div>
+      <div
+        id="skills-grid"
+        class="grid w-full max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {
+          categories.map((category) => (
+            <SkillCategory title={category.title} skills={category.skills} />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger, inView } from 'motion'
+
+  const skillsSection = document.getElementById('skills-section')
+  const skillsContent = document.getElementById('skills-content')
+  const skillsGrid = document.getElementById('skills-grid')
+
+  if (skillsSection && skillsContent && skillsGrid) {
+    inView(skillsSection, () => {
+      animate(
+        skillsContent,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: stagger(0.1) }
+      )
+
+      animate(
+        Array.from(skillsGrid.children),
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: stagger(0.1) }
+      )
+    })
+  }
+</script>

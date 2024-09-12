@@ -1,0 +1,129 @@
+---
+import BadmintonIcon from '@/icons/badminton-icon.astro'
+import BaseballIcon from '@/icons/baseball-icon.astro'
+import BasketballIcon from '@/icons/basketball-icon.astro'
+import JugglingIcon from '@/icons/juggling-icon.astro'
+import KendamaIcon from '@/icons/kendama-icon.astro'
+import PickleballIcon from '@/icons/pickleball-icon.astro'
+import RunningIcon from '@/icons/running-icon.astro'
+import ShorinjiKempoIcon from '@/icons/shorinji-kempo-icon.astro'
+import SoccerIcon from '@/icons/soccer-icon.astro'
+import SoftballIcon from '@/icons/softball-icon.astro'
+import TableTennisIcon from '@/icons/table-tennis-icon.astro'
+import TerminalIcon from '@/icons/terminal-icon.astro'
+import TennisIcon from '@/icons/tennis-icon.astro'
+import VolleyballIcon from '@/icons/volleyball-icon.astro'
+import YoYoIcon from '@/icons/yoyo-icon.astro'
+
+export const hobbies = [
+  {
+    icon: SoccerIcon,
+    label: 'Football (Soccer)',
+    description: 'The beautiful game that unites the world.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+    order: 1,
+  },
+  {
+    icon: TerminalIcon,
+    label: 'Programming',
+    description: 'Crafting digital solutions and bringing ideas to life.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+    order: 2,
+  },
+  {
+    icon: KendamaIcon,
+    label: 'Kendama (けん玉)',
+    description:
+      'A traditional Japanese skill toy that challenges hand-eye coordination.',
+    mediaUrl: 'https://www.youtube.com/embed/9Y-NWFB--f8',
+    drawer: true,
+    order: 3,
+  },
+  {
+    icon: JugglingIcon,
+    label: 'Juggling',
+    description: 'The art of keeping multiple objects in constant motion.',
+    mediaUrl: 'https://www.youtube.com/embed/TaWXgxbzoOI',
+    drawer: true,
+    order: 4,
+  },
+  {
+    icon: TableTennisIcon,
+    label: 'Table Tennis',
+    description: 'A fast-paced game of skill, strategy, and quick reflexes.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+    order: 5,
+  },
+  {
+    icon: ShorinjiKempoIcon,
+    label: 'Shorinji Kempo',
+    description:
+      'A Japanese martial art focusing on self-defense and personal development.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+    order: 6,
+  },
+  {
+    icon: TennisIcon,
+    label: 'Tennis',
+    description:
+      'A classic sport combining athleticism, strategy, and finesse.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: BasketballIcon,
+    label: 'Basketball',
+    description:
+      'A dynamic team sport that requires agility, coordination, and teamwork.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: VolleyballIcon,
+    label: 'Volleyball',
+    description:
+      'A high-energy sport that emphasizes teamwork and quick reactions.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: BaseballIcon,
+    label: 'Baseball',
+    description: "America's pastime, combining strategy, skill, and tradition.",
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: SoftballIcon,
+    label: 'Softball',
+    description: 'A variant of baseball with a larger ball and smaller field.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: RunningIcon,
+    label: 'Running',
+    description:
+      'A fundamental form of exercise that promotes health and well-being.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: BadmintonIcon,
+    label: 'Badminton',
+    description: 'A fast and graceful racquet sport played with a shuttlecock.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: YoYoIcon,
+    label: 'Yo-Yo',
+    description: 'A skill toy that has been entertaining people for centuries.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+  {
+    icon: PickleballIcon,
+    label: 'Pickleball',
+    description:
+      'A paddle sport that combines elements of tennis, badminton, and table tennis.',
+    mediaUrl: '/placeholder.svg?height=400&width=600',
+  },
+]
+
+export type HobbiesProps = typeof hobbies
+
+export type HobbyProps = (typeof hobbies)[number]
+---

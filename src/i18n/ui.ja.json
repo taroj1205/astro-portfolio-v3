@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "title": "taroj1205 - Portfolio",
+    "siteName": "taroj1205's Portfolio Website",
+    "description": "taroj1205's Portfolio website."
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "journey": "Journey",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Shintaro Jokagi",
+    "subtitle": "University of Auckland student | Computer Science & IT Management"
+  },
+  "about": {
+    "title": "Brief Introduction",
+    "born": "Born in Japan (Tokyo) in 2005.",
+    "age": "18 years old.",
+    "highSchool": "Graduated Westlake Boys High School in 2023 (New Zealand).",
+    "university": "University of Auckland starting January 2024.",
+    "bachelor": "Bachelor of Science (Computer Science + Information and Technology Management)",
+    "livedIn": {
+      "title": "Lived in",
+      "japan": "Japan (Approx 10 years), Tokyo/Ehime",
+      "philippines": "The Philippines (A year and 3 months), Cebu",
+      "newzealand": "New Zealand (A year in 2017 and also since 2018), Auckland"
+    },
+    "schools": {
+      "title": "Been to 3 countries in 11 schools in 2023.",
+      "description": "Japan, Philippines and New Zealand"
+    },
+    "hobbies": {
+      "title": "Hobbies",
+      "soccer": {
+        "title": "Football (Soccer)",
+        "description": "The beautiful game that unites the world."
+      },
+      "programming": {
+        "title": "Programming",
+        "description": "Crafting digital solutions and bringing ideas to life."
+      },
+      "kendama": {
+        "title": "Kendama (けん玉)",
+        "description": "A traditional Japanese skill toy that challenges hand-eye coordination.",
+        "video": "https://www.youtube.com/embed/9Y-NWFB--f8"
+      },
+      "juggling": {
+        "title": "Juggling",
+        "description": "The art of keeping multiple objects in constant motion.",
+        "video": "https://www.youtube.com/embed/TaWXgxbzoOI"
+      },
+      "tableTennis": {
+        "title": "Table Tennis",
+        "description": "A fast-paced game of skill, strategy, and quick reflexes."
+      },
+      "shorinjiKempo": {
+        "title": "Shorinji Kempo",
+        "description": "A Japanese martial art focusing on self-defense and personal development."
+      },
+      "tennis": {
+        "title": "Tennis",
+        "description": "A classic sport combining athleticism, strategy, and finesse."
+      },
+      "basketball": {
+        "title": "Basketball",
+        "description": "A dynamic team sport that requires agility, coordination, and teamwork."
+      },
+      "volleyball": {
+        "title": "Volleyball",
+        "description": "A high-energy sport that emphasizes teamwork and quick reactions."
+      },
+      "baseball": {
+        "title": "Baseball",
+        "description": "America's pastime, combining strategy, skill, and tradition."
+      },
+      "softball": {
+        "title": "Softball",
+        "description": "A variant of baseball with a larger ball and smaller field."
+      },
+      "running": {
+        "title": "Running",
+        "description": "A fundamental form of exercise that promotes health and well-being."
+      },
+      "penSpinning": {
+        "title": "Pen Spinning",
+        "description": "The art of spinning a pen with your fingers, combining dexterity and creativity."
+      },
+      "badminton": {
+        "title": "Badminton",
+        "description": "A fast and graceful racquet sport played with a shuttlecock."
+      },
+      "yoyo": {
+        "title": "Yo-Yo",
+        "description": "A skill toy that has been entertaining people for centuries."
+      },
+      "pickleball": {
+        "title": "Pickleball",
+        "description": "A paddle sport that combines elements of tennis, badminton, and table tennis."
+      }
+    },
+    "partTimeJob": {
+      "title": "Part-time Job",
+      "westlake": "Student aid for International Students at Westlake Boys High School (25th of January 2024 - 28th of February 2024)"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "viewProject": "View Project",
+    "github": "GitHub",
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "This is my portfolio site."
+    },
+    "saveTwitterLinks": {
+      "title": "Save Twitter Links",
+      "description": "This is a chrome extension for saving twitter links you've viewed."
+    },
+    "noteRss": {
+      "title": "Note Article List",
+      "description": "This is a RSS article list from Note for my younger brother."
+    },
+    "hideTwitterBots": {
+      "title": "Hide Twitter Bots",
+      "description": "This is a chrome extension for hiding twitter bots."
+    },
+    "typingGame": {
+      "title": "Typing Game",
+      "description": "Learn English with this typing game."
+    },
+    "connect4": {
+      "title": "Connect 4",
+      "description": "This is a Connect 4 game made with Next.js."
+    },
+    "typingGameUnity": {
+      "title": "Typing Game (Unity)",
+      "description": "A 2D typing game built with Unity."
+    },
+    "typingGameFlask": {
+      "title": "Typing Game (Flask)",
+      "description": "Learn English with this typing game."
+    },
+    "reversi": {
+      "title": "Reversi",
+      "description": "Reversi game made with Next.js"
+    },
+    "chatApp": {
+      "title": "Chat App",
+      "description": "This is a feature-rich chat app made with Next.js and Supabase."
+    }
+  },
+  "journey": {
+    "title": "My Journey",
+    "viewMore": "View More",
+    "events": [
+      {
+        "timestamp": "2005, Dec",
+        "date": "2005-12-05",
+        "title": "Birthday",
+        "description": "I was born in Tokyo."
+      },
+      {
+        "timestamp": "2011, March",
+        "date": "2011-03-01",
+        "title": "Great East Japan Earthquake",
+        "description": "Experienced the earthquake in Tokyo."
+      },
+      {
+        "timestamp": "2011, March",
+        "date": "2011-05-01",
+        "title": "Moved to Ehime",
+        "description": "After the earthquake, I moved to my mother's hometown in Ehime."
+      },
+      {
+        "timestamp": "2017, Jan",
+        "date": "2017-01-01",
+        "title": "Went to New Zealand",
+        "description": "I went to New Zealand and went to local junior high school in Auckland.",
+        "image": "nzFlight"
+      },
+      {
+        "timestamp": "2018, April",
+        "date": "2018-04-01",
+        "title": "Went to The Philippines",
+        "description": "I went to The Philippines and went to English School for 3 months, then went to local junior high school for a year in Cebu.",
+        "image": "cebuVisit"
+      },
+      {
+        "timestamp": "2019, July",
+        "date": "2018-08-01",
+        "title": "Went back to New Zealand",
+        "description": "I went to high school in Auckland. I went to this high school for 5 years."
+      },
+      {
+        "timestamp": "2019, October",
+        "date": "2019-10-01",
+        "title": "Injury from playing soccer",
+        "description": "Anterior cruciate ligament tear (ACL)\nStarted going to Physio.",
+        "image": "injury"
+      },
+      {
+        "timestamp": "2020, June",
+        "date": "2020-06-01",
+        "title": "ACL 2nd time",
+        "description": "After going to physio for half a year, I've almost recovered and started doing some light sports.\nThis resulted in a 2nd ACL."
+      },
+      {
+        "timestamp": "2020, July",
+        "date": "2020-07-30",
+        "title": "ACL surgery",
+        "description": "I did an ACL surgery."
+      },
+      {
+        "timestamp": "2023, Dec",
+        "date": "2023-12-01",
+        "title": "Back to Japan for the first time in 5 years!",
+        "description": "I went back to Japan for the first time in 5 years! I have visited 4 companies:\n- Microsoft\n- HENNGE\n- Cybozu\n- Soulware",
+        "image": "microsoftVisit"
+      },
+      {
+        "timestamp": "2024, January",
+        "date": "2024-01-01",
+        "title": "Got into University of Auckland",
+        "description": "I graduated from high school and got into University of Auckland.\nI'm majoring in Computer Science and IT Management."
+      },
+      {
+        "timestamp": "2024, September",
+        "date": "2024-09-07",
+        "title": "Knee injury the 3rd time",
+        "description": "I injured my knee again playing futsal.",
+        "image": "injury2"
+      }
+    ]
+  },
+  "footer": {
+    "about": "About",
+    "allRightsReserved": "All rights reserved",
+    "apps": "Apps",
+    "chat": "Chat",
+    "contactInfo": "Contact information",
+    "editOnCrowdin": "Edit translation",
+    "editOnGithub": "Edit on GitHub",
+    "home": "Home",
+    "name": "Shintaro Jokagi",
+    "settings": "Settings",
+    "sitemap": "Sitemap",
+    "blog": "Blog",
+    "scrollToTop": "Scroll to Top"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "goBack": "Go back to Home"
+  },
+  "languageSwitcher": {
+    "language": "Language",
+    "english": "English",
+    "japanese": "日本語"
+  }
+}

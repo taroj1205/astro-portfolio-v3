@@ -1,0 +1,57 @@
+---
+import { cn } from '@/lib/utils'
+import GithubIcon from '../icons/github-icon.astro'
+import LinkedinIcon from '../icons/linkedin-icon.astro'
+
+const links = [
+  {
+    href: 'https://github.com/taroj1205',
+    icon: GithubIcon,
+    label: 'GitHub',
+    class: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+  },
+  {
+    href: 'https://www.linkedin.com/in/taroj/',
+    icon: LinkedinIcon,
+    label: 'LinkedIn',
+    class:
+      'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+  },
+]
+---
+
+<div class="flex gap-4">
+  {
+    links.map(({ href, icon: Icon, label, class: className }) => (
+      <div class="animated-link inline-flex">
+        <a
+          href={href}
+          class={cn(
+            'inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+            className,
+          )}
+          target="_blank"
+        >
+          <Icon class="mr-2 h-4 w-4" />
+          {label}
+        </a>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  import { animate, spring, inView } from 'motion'
+
+  const animatedLinks = document.querySelectorAll('.animated-link')
+
+  animatedLinks.forEach((animatedLink, index) => {
+    inView(animatedLink, () => {
+      animate(
+        animatedLink,
+        { opacity: [0, 1], y: [50, 0] },
+        { duration: 0.4, easing: spring(), delay: 0.2 * index },
+      )
+    })
+  })
+</script>

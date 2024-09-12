@@ -1,0 +1,156 @@
+---
+import { cn } from '@/lib/utils'
+import { Image } from 'astro:assets'
+import { generateSizesAndWidths } from '@/utils/image'
+import { getUI } from '@/utils/i18n'
+import { marked } from 'marked'
+import { JOURNEYIMAGES } from './journey.astro'
+
+const { class: className, ...props } = Astro.props
+const { journey } = getUI('en')
+
+const htmlDescriptions = journey.events.map((event) =>
+  marked(event.description)
+)
+---
+
+<section class={cn('w-full py-12 md:py-24 lg:py-32', className)} {...props}>
+  <div class="container px-4 md:px-6">
+    <div
+      class="flex flex-col items-center justify-center space-y-4 text-center"
+    >
+      <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+        A Global Odyssey
+      </h2>
+      <p
+        class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+      >
+        From the bustling streets of Tokyo to the serene landscapes of New
+        Zealand, my journey has been one of resilience, exploration, and growth.
+        Each chapter, marked by both triumphs and challenges, reflects my
+        dedication to learning, adapting, and making an impact across diverse
+        cultures and communities. This timeline showcases the pivotal moments
+        that have shaped my life, guiding me toward a future filled with
+        potential.
+      </p>
+      <div class="relative mt-12 w-full max-w-4xl">
+        <div
+          class="absolute bottom-0 left-4 top-0 hidden w-1 -translate-x-1/2 transform bg-gradient-to-b from-primary to-primary-foreground md:left-1/2 md:block md:translate-x-0"
+        >
+        </div>
+
+        {
+          journey.events.map((event, index) => (
+            <div class="mb-8 flex flex-col items-center md:mb-16 md:flex-row md:even:flex-row-reverse">
+              <div class="group mb-4 w-full bg-card text-left shadow-md md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
+                <div class="rounded-lg p-4">
+                  <span class="inline-block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+                    {event.timestamp}
+                  </span>
+                  <h3 class="mt-3 text-xl font-bold">{event.title}</h3>
+                  <div
+                    class="prose mt-1 text-muted-foreground"
+                    set:html={htmlDescriptions[index]}
+                  />
+                  {event.image
+                    ? (() => {
+                        const image =
+                          JOURNEYIMAGES[
+                            event.image as keyof typeof JOURNEYIMAGES
+                          ]
+                        return (
+                          <Image
+                            src={image}
+                            alt={event.title}
+                            class="mt-4 max-h-[300px] w-fit rounded-lg object-contain shadow-md"
+                            loading="lazy"
+                            {...generateSizesAndWidths(
+                              image.width,
+                              image.height
+                            )}
+                          />
+                        )
+                      })()
+                    : null}
+                </div>
+              </div>
+
+              <div class="relative hidden h-8 w-8 place-items-center md:mx-4 md:grid">
+                <div
+                  class={cn(
+                    'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background md:translate-x-0',
+                    index % 2 === 0 && 'md:translate-x-1'
+                  )}
+                />
+              </div>
+
+              <div class="flex w-full items-center pl-8 md:w-1/2 md:pl-0" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger, inView } from 'motion'
+
+  const journeySection = document.getElementById('journey-section')
+
+  if (journeySection) {
+    const title = journeySection.querySelector('h2')
+    const description = journeySection.querySelector('p')
+    const events = journeySection.querySelectorAll('.group')
+
+    inView(journeySection, () => {
+      if (title) {
+        animate(
+          title,
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.5, delay: 0.2 }
+        )
+      }
+
+      if (description) {
+        animate(
+          description,
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.5, delay: 0.3 }
+        )
+      }
+
+      animate(
+        events,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.5, delay: stagger(0.1) }
+      )
+    })
+
+    events.forEach((event) => {
+      event.addEventListener('mouseenter', () => {
+        animate(
+          event,
+          {
+            y: -5,
+            boxShadow:
+              '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          },
+          { duration: 0.3 }
+        )
+      })
+
+      event.addEventListener('mouseleave', () => {
+        animate(
+          event,
+          {
+            y: 0,
+            boxShadow:
+              '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+          },
+          { duration: 0.3 }
+        )
+      })
+    })
+  }
+</script>
