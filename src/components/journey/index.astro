@@ -10,7 +10,7 @@ const { class: className, ...props } = Astro.props
 const { journey } = getUI('en')
 
 const htmlDescriptions = journey.events.map((event) =>
-  marked(event.description),
+  marked(event.description)
 )
 ---
 
@@ -70,7 +70,7 @@ const htmlDescriptions = journey.events.map((event) =>
                             loading="lazy"
                             {...generateSizesAndWidths(
                               image.width,
-                              image.height,
+                              image.height
                             )}
                           />
                         )
@@ -83,7 +83,7 @@ const htmlDescriptions = journey.events.map((event) =>
                 <div
                   class={cn(
                     'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background md:translate-x-0',
-                    index % 2 === 0 && 'md:translate-x-1',
+                    index % 2 === 0 && 'md:translate-x-1'
                   )}
                 />
               </div>
@@ -93,6 +93,14 @@ const htmlDescriptions = journey.events.map((event) =>
           ))
         }
       </div>
+      <a
+        href="/"
+        id="go-home"
+        class:list={[
+          'inline-flex h-9 w-96 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+        ]}>Go Back</a
+      >
     </div>
   </div>
 </section>
@@ -104,19 +112,26 @@ const htmlDescriptions = journey.events.map((event) =>
   const journeyTitle = document.getElementById('journey-title')
   const journeyDescription = document.getElementById('journey-description')
   const journeyGrid = document.getElementById('journey-grid')
+  const goHome = document.getElementById('go-home')
 
-  if (journeySection && journeyTitle && journeyDescription && journeyGrid) {
+  if (
+    journeySection &&
+    journeyTitle &&
+    journeyDescription &&
+    journeyGrid &&
+    goHome
+  ) {
     inView(journeySection, () => {
       animate(
         journeyTitle,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.2 },
+        { duration: 0.5, delay: 0.2 }
       )
 
       animate(
         journeyDescription,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.3 },
+        { duration: 0.5, delay: 0.3 }
       )
 
       const totalDuration = 2
@@ -128,8 +143,10 @@ const htmlDescriptions = journey.events.map((event) =>
       animate(
         Array.from(journeyGrid.children),
         { opacity: [0, 1], y: [20, 0] },
-        { duration: individualDuration, delay: stagger(delayBetweenElements) },
+        { duration: individualDuration, delay: stagger(delayBetweenElements) }
       )
+
+      animate(goHome, { opacity: [0, 1] }, { duration: 0.5, delay: 0.6 })
     })
   }
 </script>

@@ -41,6 +41,15 @@ const { class: className, ...props } = Astro.props
           ))
         }
       </div>
+
+      <a
+        href="/journey"
+        id="go-journey"
+        class:list={[
+          'inline-flex h-9 w-96 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+        ]}>See My Journey</a
+      >
     </div>
   </div>
 </section>
@@ -52,25 +61,34 @@ const { class: className, ...props } = Astro.props
   const hobbiesTitle = document.getElementById('hobbies-title')
   const hobbiesDescription = document.getElementById('hobbies-description')
   const hobbiesGrid = document.getElementById('hobbies-grid')
+  const goJourney = document.getElementById('go-journey')
 
-  if (hobbiesSection && hobbiesTitle && hobbiesDescription && hobbiesGrid) {
+  if (
+    hobbiesSection &&
+    hobbiesTitle &&
+    hobbiesDescription &&
+    hobbiesGrid &&
+    goJourney
+  ) {
     inView(hobbiesSection, () => {
       animate(
         hobbiesTitle,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.2 },
+        { duration: 0.5, delay: 0.2 }
       )
       animate(
         hobbiesDescription,
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.3 },
+        { duration: 0.5, delay: 0.3 }
       )
 
       animate(
         Array.from(hobbiesGrid.children),
         { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: stagger(0.1) },
+        { duration: 0.5, delay: stagger(0.1) }
       )
+
+      animate(goJourney, { opacity: [0, 1] }, { duration: 0.5, delay: 0.6 })
     })
   }
 </script>
