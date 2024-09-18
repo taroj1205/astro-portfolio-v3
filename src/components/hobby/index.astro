@@ -62,15 +62,17 @@ const { class: className, ...props } = Astro.props
   const hobbiesDescription = document.getElementById('hobbies-description')
   const hobbiesGrid = document.getElementById('hobbies-grid')
   const goJourney = document.getElementById('go-journey')
+  const main = document.querySelector('main')
 
   if (
     hobbiesSection &&
     hobbiesTitle &&
     hobbiesDescription &&
     hobbiesGrid &&
-    goJourney
+    goJourney &&
+    main
   ) {
-    inView(hobbiesSection, () => {
+    inView(main, () => {
       animate(
         hobbiesTitle,
         { opacity: [0, 1], y: [20, 0] },

@@ -113,15 +113,21 @@ const htmlDescriptions = journey.events.map((event) =>
   const journeyDescription = document.getElementById('journey-description')
   const journeyGrid = document.getElementById('journey-grid')
   const goHome = document.getElementById('go-home')
+  const main = document.querySelector('main')
 
-  if (
-    journeySection &&
-    journeyTitle &&
-    journeyDescription &&
-    journeyGrid &&
-    goHome
-  ) {
-    inView(journeySection, () => {
+  let animationTriggered = false
+
+  function runAnimations() {
+    if (animationTriggered) return
+    animationTriggered = true
+
+    if (
+      journeySection &&
+      journeyTitle &&
+      journeyDescription &&
+      journeyGrid &&
+      goHome
+    ) {
       animate(
         journeyTitle,
         { opacity: [0, 1], y: [20, 0] },
@@ -147,6 +153,18 @@ const htmlDescriptions = journey.events.map((event) =>
       )
 
       animate(goHome, { opacity: [0, 1] }, { duration: 0.5, delay: 0.6 })
+    }
+  }
+
+  if (main) {
+    if (document.readyState === 'complete') {
+      runAnimations()
+    } else {
+      window.addEventListener('load', runAnimations)
+    }
+
+    inView(main, () => {
+      runAnimations()
     })
   }
 </script>

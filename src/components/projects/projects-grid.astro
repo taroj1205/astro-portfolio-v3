@@ -20,20 +20,21 @@ const projects = useProjectsArray()
 
   const projectsGrid = document.getElementById('projects-grid')
   const projectCards = document.querySelectorAll('.project-card')
+  const main = document.querySelector('main')
 
-  if (projectsGrid) {
+  if (projectsGrid && projectCards && main) {
     const totalDuration = 1.5
     const individualDuration = 0.5
     const delayBetweenElements =
       (totalDuration - individualDuration) / projectCards.length
 
-    inView(projectsGrid, () => {
+    inView(main, () => {
       animate(projectsGrid, { opacity: [0, 1] }, { delay: 0.3, duration: 0.6 })
 
       animate(
         Array.from(projectCards),
         { opacity: [0, 1], y: [20, 0] },
-        { duration: individualDuration, delay: stagger(delayBetweenElements) },
+        { duration: individualDuration, delay: stagger(delayBetweenElements) }
       )
     })
   }
