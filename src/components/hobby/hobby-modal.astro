@@ -18,9 +18,8 @@ const getYouTubeEmbedUrl = (url: string) => {
 }
 ---
 
-<div
-  class="hobby-modal fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 data-[show=true]:flex"
-  data-show="false"
+<dialog
+  class="hobby-modal fixed inset-0 z-50 flex translate-y-full items-center justify-center bg-black bg-opacity-50 transition-all duration-300 ease-out open:translate-y-0"
 >
   <div
     class="relative w-full max-w-lg overflow-hidden rounded-lg bg-background shadow-xl"
@@ -80,36 +79,17 @@ const getYouTubeEmbedUrl = (url: string) => {
       <p class="text-muted-foreground">{description}</p>
     </div>
   </div>
-</div>
-
+</dialog>
+<!-- 
 <script>
-  import { animate } from 'motion'
-
   const modals = document.querySelectorAll('.hobby-modal')
   const closeButtons = document.querySelectorAll('.close-modal')
 
   closeButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
-      e.stopPropagation()
-      const modal = button.closest('.hobby-modal')
-      if (modal) {
-        animate(modal, { opacity: [1, 0] }, { duration: 0.3 }).finished.then(
-          () => {
-            modal.setAttribute('data-show', 'false')
-          }
-        )
-      }
-    })
-  })
-
-  modals.forEach((modal) => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        animate(modal, { opacity: [1, 0] }, { duration: 0.3 }).finished.then(
-          () => {
-            modal.setAttribute('data-show', 'false')
-          }
-        )
+      const dialog = button.closest('dialog')
+      if (dialog) {
+        ;(dialog as HTMLDialogElement).close()
       }
     })
   })
@@ -117,14 +97,8 @@ const getYouTubeEmbedUrl = (url: string) => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       modals.forEach((modal) => {
-        if (modal.getAttribute('data-show') === 'true') {
-          animate(modal, { opacity: [1, 0] }, { duration: 0.3 }).finished.then(
-            () => {
-              modal.setAttribute('data-show', 'false')
-            }
-          )
-        }
+        ;(modal as HTMLDialogElement).close()
       })
     }
   })
-</script>
+</script> -->

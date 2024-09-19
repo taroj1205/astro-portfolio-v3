@@ -1,10 +1,19 @@
 ---
-import HobbyModal from './hobby-modal.astro'
+import { cn } from '@/lib/utils'
 
-const { icon: Icon, label, description, mediaUrl } = Astro.props
+const { icon: Icon, label, description, mediaUrl, index } = Astro.props
 ---
 
-<div class="hobby-item group flex cursor-pointer flex-col items-center gap-3">
+<div
+  class={cn(
+    'hobby-item group flex cursor-pointer flex-col items-center gap-3',
+    'animate-fade-up',
+    `delay-[${index * 100}ms]`
+  )}
+  data-label={label}
+  data-description={description}
+  data-media-url={mediaUrl}
+>
   <div
     class="relative rounded-2xl bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
   >
@@ -21,45 +30,110 @@ const { icon: Icon, label, description, mediaUrl } = Astro.props
   </p>
 </div>
 
-<HobbyModal label={label} description={description} mediaUrl={mediaUrl} />
-
 <script>
-  import { animate, spring } from 'motion'
-
   const hobbyItems = document.querySelectorAll('.hobby-item')
 
   hobbyItems.forEach((item) => {
-    item.addEventListener('mouseenter', () => {
-      animate(
-        item,
-        { scale: 1.05 },
-        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) },
-      )
-
-      const icon = item.querySelector('.relative')
-      if (icon) {
-        animate(
-          icon,
-          { rotate: [0, -10, 10, -10, 0] },
-          { duration: 0.5, easing: spring({ stiffness: 300, damping: 10 }) },
-        )
-      }
-    })
-
-    item.addEventListener('mouseleave', () => {
-      animate(
-        item,
-        { scale: 1 },
-        { duration: 0.3, easing: spring({ stiffness: 300, damping: 10 }) },
-      )
-    })
-
     item.addEventListener('click', () => {
-      const modal = item.nextElementSibling
-      if (modal && modal.classList.contains('hobby-modal')) {
-        modal.setAttribute('data-show', 'true')
-        animate(modal, { opacity: [0, 1] }, { duration: 0.3 })
-      }
+      const { label, description, mediaUrl } = (item as HTMLElement).dataset
+      showModal(label, description, mediaUrl)
     })
   })
+
+  function showModal(
+    label: string | undefined,
+    description: string | undefined,
+    mediaUrl: string | undefined
+  ) {
+    const existingModal = document.querySelector('.hobby-modal')
+    if (existingModal) return // Prevent multiple modals
+
+    // Create the modal element
+    const modal = document.createElement('dialog')
+    modal.classList.add(
+      'hobby-modal',
+      'fixed',
+      'inset-0',
+      'z-50',
+      'flex',
+      'items-center',
+      'justify-center',
+      'bg-transparent',
+      'transition-opacity',
+      'duration-300',
+      'ease-out',
+      'opacity-0',
+      'open:opacity-100'
+    )
+
+    modal.innerHTML = `
+      <div class="relative w-full max-w-lg overflow-hidden rounded-lg bg-background shadow-xl">
+        <button
+          class="close-modal absolute right-2 top-2 z-10 text-gray-500 hover:text-gray-700"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        ${getMediaContent(mediaUrl, label)}
+        <div class="p-6">
+          <h3 class="mb-2 text-2xl font-bold">${label}</h3>
+          <p class="text-muted-foreground">${description}</p>
+        </div>
+      </div>
+    `
+
+    document.body.appendChild(modal)
+
+    const closeButton = modal.querySelector('.close-modal')
+    if (closeButton) {
+      closeButton.addEventListener('click', () => closeModal(modal))
+    }
+
+    // Close modal when clicking outside of it
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal(modal)
+      }
+    })
+
+    // Close modal when pressing ESC key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal(modal)
+      }
+    })
+
+    modal.showModal()
+  }
+
+  function closeModal(modal: HTMLDialogElement) {
+    modal.close()
+    document.body.removeChild(modal)
+  }
+
+  function getMediaContent(
+    mediaUrl: string | undefined,
+    label: string | undefined
+  ) {
+    if (mediaUrl && isYouTubeEmbed(mediaUrl)) {
+      return `<iframe src="${getYouTubeEmbedUrl(mediaUrl)}" class="h-64 w-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="${label}" loading="lazy"></iframe>`
+    } else if (mediaUrl && isVideo(mediaUrl)) {
+      return `<video src="${mediaUrl}" class="h-64 w-full object-cover" autoplay loop muted playsinline></video>`
+    } else {
+      return `<img src="${mediaUrl}" alt="${label}" class="h-64 w-full object-cover" loading="lazy" />`
+    }
+  }
+
+  function isYouTubeEmbed(url: string | string[]) {
+    return url.includes('youtube.com/embed/')
+  }
+
+  function getYouTubeEmbedUrl(url: string) {
+    const videoId = url.split('/embed/')[1].split('?')[0]
+    return `https://www.youtube.com/embed/${videoId}?loop=1&playlist=${videoId}&controls=0&showinfo=0&modestbranding=1`
+  }
+
+  function isVideo(url: string) {
+    const videoExtensions = ['.mp4', '.webm', '.ogg']
+    return videoExtensions.some((ext) => url.toLowerCase().endsWith(ext))
+  }
 </script>
