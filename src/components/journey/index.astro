@@ -21,13 +21,13 @@ const htmlDescriptions = journey.events.map((event) =>
     >
       <h2
         id="journey-title"
-        class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+        class="translate-y-10 text-3xl font-bold tracking-tighter opacity-0 sm:text-4xl md:text-5xl"
       >
         A Global Odyssey
       </h2>
       <p
         id="journey-description"
-        class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+        class="max-w-[900px] translate-y-10 text-muted-foreground opacity-0 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
       >
         From the bustling streets of Tokyo to the serene landscapes of New
         Zealand, my journey has been one of resilience, exploration, and growth.
@@ -39,13 +39,13 @@ const htmlDescriptions = journey.events.map((event) =>
       </p>
       <div id="journey-grid" class="relative mt-12 w-full max-w-4xl">
         <div
-          class="absolute bottom-0 left-4 top-0 hidden w-1 -translate-x-1/2 transform bg-gradient-to-b from-primary to-primary-foreground md:left-1/2 md:block md:translate-x-0"
+          class="absolute bottom-0 left-4 top-0 hidden w-1 -translate-x-1/2 translate-y-10 transform bg-gradient-to-b from-primary to-primary-foreground opacity-0 md:left-1/2 md:block md:translate-x-0"
         >
         </div>
 
         {
           journey.events.map((event, index) => (
-            <div class="mb-8 flex flex-col items-center md:mb-16 md:flex-row md:even:flex-row-reverse">
+            <div class="mb-8 flex translate-y-10 flex-col items-center opacity-0 md:mb-16 md:flex-row md:even:flex-row-reverse">
               <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
                 <div class="rounded-lg p-4">
                   <span class="inline-block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
@@ -115,12 +115,7 @@ const htmlDescriptions = journey.events.map((event) =>
   const goHome = document.getElementById('go-home')
   const main = document.querySelector('main')
 
-  let animationTriggered = false
-
   function runAnimations() {
-    if (animationTriggered) return
-    animationTriggered = true
-
     if (
       journeySection &&
       journeyTitle &&
@@ -130,13 +125,12 @@ const htmlDescriptions = journey.events.map((event) =>
     ) {
       animate(
         journeyTitle,
-        { opacity: [0, 1], y: [20, 0] },
+        { opacity: [0, 1], y: [10, 0] },
         { duration: 0.5, delay: 0.2 }
       )
-
       animate(
         journeyDescription,
-        { opacity: [0, 1], y: [20, 0] },
+        { opacity: [0, 1], y: [10, 0] },
         { duration: 0.5, delay: 0.3 }
       )
 
@@ -148,21 +142,19 @@ const htmlDescriptions = journey.events.map((event) =>
 
       animate(
         Array.from(journeyGrid.children),
-        { opacity: [0, 1], y: [20, 0] },
+        { opacity: [0, 1], y: [10, 0] },
         { duration: individualDuration, delay: stagger(delayBetweenElements) }
       )
 
-      animate(goHome, { opacity: [0, 1] }, { duration: 0.5, delay: 0.6 })
+      animate(
+        goHome,
+        { opacity: [0, 1], y: [10, 0] },
+        { duration: 0.5, delay: 0.6 }
+      )
     }
   }
 
   if (main) {
-    if (document.readyState === 'complete') {
-      runAnimations()
-    } else {
-      window.addEventListener('load', runAnimations)
-    }
-
     inView(main, () => {
       runAnimations()
     })
