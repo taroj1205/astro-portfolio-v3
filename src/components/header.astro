@@ -46,50 +46,38 @@ const navItems = [
                   ? 'journey'
                   : item.href.replace(/^\/?#/, '')
             }
-            data-journey="false"
+            data-active="false"
           >
             {item.label}
-            <span class="absolute inset-x-0 -bottom-0.5 h-0.5 origin-right scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:origin-left group-hover:scale-x-100 group-data-[journey=true]:origin-left group-data-[journey=true]:scale-x-100" />
+            <span class="absolute inset-x-0 -bottom-0.5 h-0.5 origin-right scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:origin-left group-hover:scale-x-100 group-data-[journey=true]:origin-left group-data-[active=true]:scale-x-100" />
           </a>
         ))
       }
-      <span
-        id="active-indicator"
-        class="absolute -bottom-0.5 h-0.5 bg-primary opacity-0 transition-all duration-300 ease-in-out"
-      ></span>
     </nav>
     <div class="hidden h-10 w-10 sm:inline"></div>
   </div>
 </header>
 
 <script>
-  function updateActiveIndicator(activeItem: Element | null) {
-    const activeIndicator = document.getElementById('active-indicator')
-    const navItems = document.querySelectorAll('#main-nav a')
-
-    if (activeItem && activeIndicator) {
-      const { offsetLeft, offsetWidth } = activeItem as HTMLElement
-      activeIndicator.style.left = `${offsetLeft}px`
-      activeIndicator.style.width = `${offsetWidth}px`
-      activeIndicator.classList.remove('opacity-0')
-      activeIndicator.classList.add('opacity-100')
-
-      navItems.forEach((item) => item.setAttribute('data-active', 'false'))
-      activeItem.setAttribute('data-active', 'true')
-    }
+  function updateActiveIndicator(
+    activeItem: Element,
+    navItems: NodeListOf<Element>
+  ) {
+    navItems.forEach((item) => item.setAttribute('data-active', 'false'))
+    activeItem.setAttribute('data-active', 'true')
   }
 
   function checkActiveSection() {
     const scrollPosition = window.scrollY
     const windowHeight = window.innerHeight
-    let activeSection = null
+    let activeSection: string | null = null
 
     if (window.location.pathname === '/journey') {
       activeSection = null
       document.querySelectorAll('#main-nav a').forEach((item) => {
         if ((item as HTMLAnchorElement).href.includes('/journey')) {
           console.log(item)
-          item.setAttribute('data-journey', 'true')
+          item.setAttribute('data-active', 'true')
         }
       })
       return
@@ -110,10 +98,12 @@ const navItems = [
       })
     }
 
-    const activeItem = document.querySelector(
-      `#main-nav a[data-section="${activeSection}"]`
-    )
-    updateActiveIndicator(activeItem)
+    const navItems = document.querySelectorAll('#main-nav a')
+    const activeItem = Array.from(navItems).find((item) => {
+      const section = item.getAttribute('data-section')
+      return section === activeSection
+    })
+    if (activeItem) updateActiveIndicator(activeItem, navItems)
   }
 
   function handleResize() {
@@ -126,7 +116,7 @@ const navItems = [
 
   window.addEventListener('scroll', checkActiveSection)
   window.addEventListener('resize', handleResize)
-  document.addEventListener('astro:page-load', initializeActiveIndicator)
+  window.addEventListener('DOMContentLoaded', initializeActiveIndicator)
 
   initializeActiveIndicator()
 </script>
