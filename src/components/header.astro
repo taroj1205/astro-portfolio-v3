@@ -39,9 +39,11 @@ const navItems = [
             href={item.href}
             class="group relative px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-primary data-[active=true]:font-semibold data-[active=true]:text-primary"
             data-section={
-              item.href === '/journey'
-                ? 'journey'
-                : item.href.replace(/^\/?#/, '')
+              item.href === '/'
+                ? 'home'
+                : item.href === '/journey'
+                  ? 'journey'
+                  : item.href.replace(/^\/?#/, '')
             }
           >
             {item.label}
@@ -59,19 +61,31 @@ const navItems = [
 </header>
 
 <script>
-  import { animate } from 'motion'
+  import { animate, stagger } from 'motion'
 
   const navItems = document.querySelectorAll('#main-nav a')
   const activeIndicator = document.getElementById('active-indicator')
 
-  function updateActiveIndicator(activeItem: HTMLAnchorElement | null) {
-    if (activeItem && activeIndicator) {
-      const { offsetLeft, offsetWidth } = activeItem
+  function updateActiveIndicator(
+    activeItem: Element | null,
+    activeSection: string | null
+  ) {
+    if (activeSection === 'home') {
+      if (activeIndicator) {
+        animate(
+          activeIndicator,
+          { opacity: 0 },
+          { duration: 0.3, easing: [0.25, 0.1, 0.25, 1] }
+        )
+      }
+    } else if (activeItem && activeIndicator) {
+      const { offsetLeft, offsetWidth } = activeItem as HTMLElement
       animate(
         activeIndicator,
-        { left: `${offsetLeft}px`, width: `${offsetWidth}px` },
+        { left: `${offsetLeft}px`, width: `${offsetWidth}px`, opacity: 1 },
         { duration: 0.3, easing: [0.25, 0.1, 0.25, 1] }
       )
+      activeIndicator.style.display = 'block'
       navItems.forEach((item) => item.setAttribute('data-active', 'false'))
       activeItem.setAttribute('data-active', 'true')
     }
@@ -89,7 +103,7 @@ const navItems = [
         scrollPosition >= sectionTop - windowHeight / 2 &&
         scrollPosition < sectionTop + sectionHeight - windowHeight / 2
       ) {
-        activeSection = section.id
+        activeSection = section.id === 'hero' ? 'home' : section.id
       }
     })
 
@@ -100,13 +114,12 @@ const navItems = [
     const activeItem = document.querySelector(
       `#main-nav a[data-section="${activeSection}"]`
     )
-    updateActiveIndicator(activeItem as HTMLAnchorElement | null)
+    updateActiveIndicator(activeItem, activeSection)
   }
 
   window.addEventListener('scroll', checkActiveSection)
   window.addEventListener('resize', checkActiveSection)
   document.addEventListener('astro:page-load', checkActiveSection)
 
-  // Initial check
   checkActiveSection()
 </script>
