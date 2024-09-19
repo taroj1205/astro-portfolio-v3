@@ -22,8 +22,13 @@ const links = [
 
 <div class="flex gap-4">
   {
-    links.map(({ href, icon: Icon, label, class: className }) => (
-      <div class="animated-link inline-flex">
+    links.map(({ href, icon: Icon, label, class: className }, index) => (
+      <div
+        class={cn(
+          'inline-flex animate-fade-up',
+          index === 1 ? 'duration-1000' : 'duration-700'
+        )}
+      >
         <a
           href={href}
           class={cn(
@@ -39,22 +44,3 @@ const links = [
     ))
   }
 </div>
-
-<script>
-  import { animate, spring, inView } from 'motion'
-
-  const main = document.querySelector('main')
-  const animatedLinks = document.querySelectorAll('.animated-link')
-
-  animatedLinks.forEach((animatedLink, index) => {
-    if (main) {
-      inView(main, () => {
-        animate(
-          animatedLink,
-          { opacity: [0, 1], y: [50, 0] },
-          { duration: 0.4, easing: spring(), delay: 0.2 * index }
-        )
-      })
-    }
-  })
-</script>

@@ -14,20 +14,18 @@ const htmlDescriptions = journey.events.map((event) =>
 )
 ---
 
-<section class={cn('w-full py-12 md:py-24 lg:py-32', className)} {...props}>
+<section class={cn('w-full', className)} {...props}>
   <div id="journey-section" class="container px-4 md:px-6">
-    <div
-      class="flex flex-col items-center justify-center space-y-4 text-center"
-    >
+    <div class="flex flex-col items-center justify-center gap-4 text-center">
       <h2
         id="journey-title"
-        class="translate-y-10 text-3xl font-bold tracking-tighter opacity-0 sm:text-4xl md:text-5xl"
+        class="text-3xl font-bold tracking-tighter transition-transform sm:text-4xl md:text-5xl"
       >
         A Global Odyssey
       </h2>
       <p
         id="journey-description"
-        class="max-w-[900px] translate-y-10 text-muted-foreground opacity-0 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+        class="max-w-[900px] text-muted-foreground transition-transform md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
       >
         From the bustling streets of Tokyo to the serene landscapes of New
         Zealand, my journey has been one of resilience, exploration, and growth.
@@ -39,14 +37,18 @@ const htmlDescriptions = journey.events.map((event) =>
       </p>
       <div id="journey-grid" class="relative mt-12 w-full max-w-4xl">
         <div
-          class="absolute bottom-0 left-4 top-0 hidden w-1 -translate-x-1/2 translate-y-10 transform bg-gradient-to-b from-primary to-primary-foreground opacity-0 md:left-1/2 md:block md:translate-x-0"
+          class="absolute bottom-0 left-4 top-0 hidden w-1 -translate-x-1/2 transform animate-fade-up bg-gradient-to-b from-primary to-primary-foreground transition-opacity duration-500 md:left-1/2 md:block md:translate-x-0"
         >
         </div>
 
         {
           journey.events.map((event, index) => (
-            <div class="mb-8 flex translate-y-10 flex-col items-center opacity-0 md:mb-16 md:flex-row md:even:flex-row-reverse">
-              <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
+            <div
+              class={cn(
+                `duration-[${index} * 200ms] mb-8 flex animate-fade-up flex-col items-center transition-opacity duration-500 md:mb-16 md:flex-row md:even:flex-row-reverse`
+              )}
+            >
+              <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
                 <div class="rounded-lg p-4">
                   <span class="inline-block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
                     {event.timestamp}
@@ -82,7 +84,7 @@ const htmlDescriptions = journey.events.map((event) =>
               <div class="relative hidden h-8 w-8 place-items-center md:mx-4 md:grid">
                 <div
                   class={cn(
-                    'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background md:translate-x-0',
+                    'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background transition-transform duration-500 md:translate-x-0',
                     index % 2 === 0 && 'md:translate-x-1'
                   )}
                 />
@@ -96,67 +98,10 @@ const htmlDescriptions = journey.events.map((event) =>
       <a
         href="/"
         id="go-home"
-        class:list={[
-          'inline-flex h-9 w-96 max-w-[90%] items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
-        ]}>Go Back</a
+        class="inline-flex h-9 w-96 max-w-[90%] items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
       >
+        Go Back
+      </a>
     </div>
   </div>
 </section>
-
-<script>
-  import { animate, stagger, inView } from 'motion'
-
-  const journeySection = document.getElementById('journey-section')
-  const journeyTitle = document.getElementById('journey-title')
-  const journeyDescription = document.getElementById('journey-description')
-  const journeyGrid = document.getElementById('journey-grid')
-  const goHome = document.getElementById('go-home')
-  const main = document.querySelector('main')
-
-  function runAnimations() {
-    if (
-      journeySection &&
-      journeyTitle &&
-      journeyDescription &&
-      journeyGrid &&
-      goHome
-    ) {
-      animate(
-        journeyTitle,
-        { opacity: [0, 1], y: [10, 0] },
-        { duration: 0.5, delay: 0.2 }
-      )
-      animate(
-        journeyDescription,
-        { opacity: [0, 1], y: [10, 0] },
-        { duration: 0.5, delay: 0.3 }
-      )
-
-      const totalDuration = 2
-      const elementCount = journeyGrid.children.length
-      const individualDuration = 0.5
-      const delayBetweenElements =
-        (totalDuration - individualDuration) / elementCount
-
-      animate(
-        Array.from(journeyGrid.children),
-        { opacity: [0, 1], y: [10, 0] },
-        { duration: individualDuration, delay: stagger(delayBetweenElements) }
-      )
-
-      animate(
-        goHome,
-        { opacity: [0, 1], y: [10, 0] },
-        { duration: 0.5, delay: 0.6 }
-      )
-    }
-  }
-
-  if (main) {
-    inView(main, () => {
-      runAnimations()
-    })
-  }
-</script>

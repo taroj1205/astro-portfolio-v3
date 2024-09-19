@@ -13,14 +13,12 @@ const { class: className, ...props } = Astro.props
     >
       <div class="space-y-4">
         <h2
-          id="hobbies-title"
-          class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+          class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
         >
           My Hobbies
         </h2>
         <p
-          id="hobbies-description"
-          class="max-w-[900px] text-xl text-muted-foreground md:text-2xl/relaxed"
+          class="max-w-[900px] animate-fade-up text-xl text-muted-foreground md:text-2xl/relaxed"
         >
           Discover the diverse range of interests that fuel my passion and
           creativity.
@@ -28,15 +26,16 @@ const { class: className, ...props } = Astro.props
       </div>
       <div
         id="hobbies-grid"
-        class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+        class="fade-up-2 grid animate-fade-up grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
       >
         {
-          hobbies.map((hobby) => (
+          hobbies.map((hobby, index) => (
             <HobbyItem
               icon={hobby.icon}
               label={hobby.label}
               description={hobby.description}
               mediaUrl={hobby.mediaUrl}
+              index={index}
             />
           ))
         }
@@ -48,49 +47,11 @@ const { class: className, ...props } = Astro.props
         class:list={[
           'inline-flex h-9 w-96 max-w-[90%] items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
           'bg-primary text-primary-foreground shadow hover:bg-primary/90',
-        ]}>See My Journey</a
+          'animate-fade-in duration-700',
+        ]}
       >
+        See My Journey
+      </a>
     </div>
   </div>
 </section>
-
-<script>
-  import { animate, stagger, inView } from 'motion'
-
-  const hobbiesSection = document.getElementById('hobbies-section')
-  const hobbiesTitle = document.getElementById('hobbies-title')
-  const hobbiesDescription = document.getElementById('hobbies-description')
-  const hobbiesGrid = document.getElementById('hobbies-grid')
-  const goJourney = document.getElementById('go-journey')
-  const main = document.querySelector('main')
-
-  if (
-    hobbiesSection &&
-    hobbiesTitle &&
-    hobbiesDescription &&
-    hobbiesGrid &&
-    goJourney &&
-    main
-  ) {
-    inView(main, () => {
-      animate(
-        hobbiesTitle,
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.2 }
-      )
-      animate(
-        hobbiesDescription,
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.3 }
-      )
-
-      animate(
-        Array.from(hobbiesGrid.children),
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: stagger(0.1) }
-      )
-
-      animate(goJourney, { opacity: [0, 1] }, { duration: 0.5, delay: 0.6 })
-    })
-  }
-</script>

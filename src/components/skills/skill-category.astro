@@ -5,10 +5,10 @@ const { title, skills } = Astro.props
 ---
 
 <div
-  class="skill-category space-y-6 rounded-xl border border-primary/10 bg-card p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+  class="animate-fade-up space-y-6 rounded-xl border border-primary/10 bg-card p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
 >
   <h3 class="text-2xl font-bold text-primary">{title}</h3>
-  <div class="skill-items grid gap-4">
+  <div class="grid gap-4">
     {
       skills.map((skill: { icon: any; label: any }) => (
         <SkillItem icon={skill.icon} label={skill.label} />
@@ -16,33 +16,3 @@ const { title, skills } = Astro.props
     }
   </div>
 </div>
-
-<script>
-  import { animate, spring } from 'motion'
-
-  const skillCategories = document.querySelectorAll('.skill-category')
-
-  skillCategories.forEach((category) => {
-    category.addEventListener('mouseenter', () => {
-      animate(
-        category,
-        {
-          boxShadow:
-            '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        },
-        { duration: 0.3, easing: spring({ stiffness: 200, damping: 20 }) },
-      )
-    })
-
-    category.addEventListener('mouseleave', () => {
-      animate(
-        category,
-        {
-          boxShadow:
-            '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        },
-        { duration: 0.3, easing: spring({ stiffness: 200, damping: 20 }) },
-      )
-    })
-  })
-</script>

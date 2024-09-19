@@ -12,35 +12,3 @@ const { class: className, ...props } = Astro.props
     <ProjectsGrid />
   </div>
 </section>
-
-<script>
-  import { animate, inView } from 'motion'
-
-  const projectsSection = document.getElementById('projects-section')
-  const projectsTitle = document.getElementById('projects-title')
-  const projectsDescription = document.getElementById('projects-description')
-  const projectsTag = document.getElementById('projects-tag')
-  const main = document.querySelector('main')
-
-  if (projectsSection && projectsTitle && projectsDescription && projectsTag && main) {
-    inView(main, () => {
-      animate(
-        projectsTitle,
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.2 },
-      )
-
-      animate(
-        projectsDescription,
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.3 },
-      )
-
-      animate(
-        projectsTag,
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.5, delay: 0.3 },
-      )
-    })
-  }
-</script>

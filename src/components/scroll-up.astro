@@ -4,15 +4,13 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
 
 <button
   id="scroll-up"
-  class="fixed bottom-4 right-4 z-50 hidden rounded-full bg-primary p-3 text-primary-foreground shadow-lg transition-[bottom] duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 data-[bottom=true]:bottom-16 sm:bottom-8 sm:right-8"
+  class="fixed bottom-4 right-4 z-50 hidden scale-75 rounded-full bg-primary p-3 text-primary-foreground opacity-0 shadow-lg transition-all duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95 data-[bottom=true]:bottom-16 sm:bottom-8 sm:right-8"
   aria-label="Scroll to top"
 >
   <ArrowUpIcon class="h-6 w-6" />
 </button>
 
 <script>
-  import { animate, spring } from 'motion'
-
   const scrollTopButton = document.getElementById('scroll-up')
 
   const handleScroll = () => {
@@ -23,13 +21,12 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
     const isMobile = window.innerWidth <= 500
 
     if (scrollY > 300 && scrollTopButton) {
-      if (scrollTopButton?.classList.contains('hidden')) {
-        scrollTopButton?.classList.remove('hidden')
-        animate(
-          scrollTopButton,
-          { opacity: [0, 1], scale: [0.8, 1] },
-          { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
-        )
+      if (scrollTopButton.classList.contains('hidden')) {
+        scrollTopButton.classList.remove('hidden')
+        setTimeout(() => {
+          scrollTopButton.classList.remove('opacity-0', 'scale-75')
+          scrollTopButton.classList.add('opacity-100', 'scale-100')
+        }, 50)
       }
       if (atBottom && isMobile) {
         scrollTopButton.setAttribute('data-bottom', 'true')
@@ -37,15 +34,12 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
         scrollTopButton.setAttribute('data-bottom', 'false')
       }
     } else {
-      if (!scrollTopButton?.classList.contains('hidden')) {
-        if (scrollTopButton)
-          animate(
-            scrollTopButton,
-            { opacity: [1, 0], scale: [1, 0.8] },
-            { duration: 0.3, easing: spring({ stiffness: 300, damping: 20 }) },
-          ).finished.then(() => {
-            scrollTopButton?.classList.add('hidden')
-          })
+      if (scrollTopButton && !scrollTopButton.classList.contains('hidden')) {
+        scrollTopButton.classList.remove('opacity-100', 'scale-100')
+        scrollTopButton.classList.add('opacity-0', 'scale-75')
+        setTimeout(() => {
+          scrollTopButton.classList.add('hidden')
+        }, 300)
       }
     }
   }
@@ -59,22 +53,6 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
         top: 0,
         behavior: 'smooth',
       })
-    })
-
-    scrollTopButton.addEventListener('mouseenter', () => {
-      animate(scrollTopButton, { scale: 1.1 }, { duration: 0.2 })
-    })
-
-    scrollTopButton.addEventListener('mouseleave', () => {
-      animate(scrollTopButton, { scale: 1 }, { duration: 0.2 })
-    })
-
-    scrollTopButton.addEventListener('mousedown', () => {
-      animate(scrollTopButton, { scale: 0.9 }, { duration: 0.1 })
-    })
-
-    scrollTopButton.addEventListener('mouseup', () => {
-      animate(scrollTopButton, { scale: 1.1 }, { duration: 0.1 })
     })
   }
 </script>

@@ -11,16 +11,14 @@ const { class: className, animation = true, ...props } = Astro.props
     class={cn('flex flex-col items-center gap-8 text-center', className)}
     {...props}
   >
-    <div id="not-found-content" class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4">
       <h1
-        id="not-found-title"
-        class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none"
+        class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none"
       >
         404 - Page Not Found
       </h1>
       <p
-        id="not-found-description"
-        class="mx-auto max-w-[700px] text-muted-foreground md:text-xl"
+        class="mx-auto max-w-[700px] animate-fade-up text-muted-foreground duration-700 md:text-xl"
       >
         Oops! The page you are looking for does not exist. It might have been
         moved or deleted.
@@ -32,35 +30,8 @@ const { class: className, animation = true, ...props } = Astro.props
       class:list={[
         'inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
         'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+        'animate-fade-up duration-700',
       ]}>Go Home</a
     >
   </div>
-
-  <script>
-    import { animate, spring } from 'motion'
-
-    const notFoundTitle = document.getElementById('not-found-title')
-    const notFoundDescription = document.getElementById('not-found-description')
-    const notFoundLink = document.getElementById('go-home')
-
-    if (notFoundTitle && notFoundDescription && notFoundLink) {
-      animate(
-        notFoundTitle,
-        { opacity: [0, 1], y: [50, 0] },
-        { duration: 0.8, easing: spring(), delay: 0.2 },
-      )
-
-      animate(
-        notFoundDescription,
-        { opacity: [0, 1], y: [50, 0] },
-        { duration: 0.8, easing: spring(), delay: 0.3 },
-      )
-
-      animate(
-        notFoundLink,
-        { opacity: [0, 1], y: [50, 0] },
-        { duration: 0.8, easing: spring(), delay: 0.4 },
-      )
-    }
-  </script>
 </Layout>
