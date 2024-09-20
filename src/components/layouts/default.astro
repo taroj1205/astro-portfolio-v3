@@ -25,7 +25,7 @@ const { link } = Astro.props
     <meta name="twitter:description" content={metadata.description} />
     <meta name="twitter:image" content={metadata.openGraph.image} />
   </head>
-  <body class="bg-background font-sans antialiased">
+  <body class="bg-background antialiased">
     <div class="relative flex min-h-[100dvh] flex-col gap-4">
       {link !== '404' && <Header />}
       <main class="z-10 flex flex-1 flex-col justify-center">
