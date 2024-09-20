@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss'
-import { fontFamily } from 'tailwindcss/defaultTheme'
 import typography from '@tailwindcss/typography'
 
 const config = {
@@ -50,29 +49,10 @@ const config = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
-      fontFamily: {
-        sans: ['Inter', ...fontFamily.sans],
-      },
       keyframes: {
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(0deg)' },
-          '25%': { transform: 'rotate(-10deg)' },
-          '50%': { transform: 'rotate(10deg)' },
-          '75%': { transform: 'rotate(-10deg)' },
-        },
-        rotateIcon: {
-          '0%, 100%': { transform: 'rotate(0deg)' },
-          '25%': { transform: 'rotate(-10deg)' },
-          '50%': { transform: 'rotate(10deg)' },
-          '75%': { transform: 'rotate(-10deg)' },
-        },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
-        },
-        fadeOut: {
-          '0%': { opacity: '1' },
-          '100%': { opacity: '0' },
         },
         fadeUp: {
           '0%': { opacity: '0', transform: 'translateY(50px)' },
@@ -80,11 +60,8 @@ const config = {
         },
       },
       animation: {
-        wiggle: 'wiggle var(--animation-duration, 0.5s) ease-in-out forwards',
         'fade-in':
           'fadeIn var(--animation-duration, 0.3s) ease-in-out forwards',
-        'fade-out':
-          'fadeOut var(--animation-duration, 0.3s) ease-in-out forwards',
         'fade-up': 'fadeUp var(--animation-duration, 0.5s) ease-out forwards',
       },
     },
