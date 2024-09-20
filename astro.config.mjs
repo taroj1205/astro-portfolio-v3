@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config'
 import tailwind from "@astrojs/tailwind"
 import sitemap from "@astrojs/sitemap"
-import playformCompress from "@playform/compress"
+
+import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,11 +15,7 @@ export default defineConfig({
       },
     }
   },
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    sitemap(),
-    playformCompress(),
-  ],
+  integrations: [tailwind({
+    applyBaseStyles: false,
+  }), sitemap(), compress()],
 })
