@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets'
 import pfpImage from '@/assets/carousel/pfp.webp'
-import { generateSizesAndWidths } from '@/utils/image'
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -28,7 +27,8 @@ const navItems = [
         alt="Shintaro Jokagi"
         class="h-10 w-10 rounded-full object-cover ring-2 ring-primary ring-offset-2 ring-offset-white"
         loading="eager"
-        {...generateSizesAndWidths(pfpImage.width, pfpImage.height)}
+        width={40}
+        height={40}
       />
     </a>
     <nav
@@ -60,64 +60,39 @@ const navItems = [
 </header>
 
 <script>
-  function updateActiveIndicator(
-    activeItem: Element,
-    navItems: NodeListOf<Element>
-  ) {
-    navItems.forEach((item) => item.setAttribute('data-active', 'false'))
-    activeItem.setAttribute('data-active', 'true')
-  }
+  const navItems = document.querySelectorAll('#main-nav a')
+  const sectionEls = document.querySelectorAll('section[id]')
 
-  function checkActiveSection() {
+  function getActiveSection() {
     const scrollPosition = window.scrollY
     const windowHeight = window.innerHeight
-    let activeSection: string | null = null
-
-    if (window.location.pathname === '/journey') {
-      activeSection = null
-      document.querySelectorAll('#main-nav a').forEach((item) => {
-        if ((item as HTMLAnchorElement).href.includes('/journey')) {
-          console.log(item)
-          item.setAttribute('data-active', 'true')
-        }
-      })
-      return
-    } else {
-      document.querySelectorAll('#main-nav a').forEach((item) => {
-        if ((item as HTMLAnchorElement).href === '/journey')
-          item.setAttribute('data-journey', 'false')
-      })
-      document.querySelectorAll('section[id]').forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop
-        const sectionHeight = (section as HTMLElement).offsetHeight
-        if (
-          scrollPosition >= sectionTop - windowHeight / 2 &&
-          scrollPosition < sectionTop + sectionHeight - windowHeight / 2
-        ) {
-          activeSection = section.id === 'hero' ? 'home' : section.id
-        }
-      })
+    for (const section of sectionEls) {
+      const sectionTop = (section as HTMLElement).offsetTop
+      const sectionHeight = (section as HTMLElement).offsetHeight
+      if (
+        scrollPosition >= sectionTop - windowHeight / 2 &&
+        scrollPosition < sectionTop + sectionHeight - windowHeight / 2
+      ) {
+        return section.id === 'hero' ? 'home' : section.id
+      }
     }
-
-    const navItems = document.querySelectorAll('#main-nav a')
-    const activeItem = Array.from(navItems).find((item) => {
-      const section = item.getAttribute('data-section')
-      return section === activeSection
-    })
-    if (activeItem) updateActiveIndicator(activeItem, navItems)
+    return null
   }
 
-  function handleResize() {
-    checkActiveSection()
+  function updateActiveIndicator(activeSection: string | null) {
+    navItems.forEach((item) =>
+      item.setAttribute(
+        'data-active',
+        item.getAttribute('data-section') === activeSection ? 'true' : 'false'
+      )
+    )
   }
 
-  function initializeActiveIndicator() {
-    checkActiveSection()
+  function handleActive() {
+    updateActiveIndicator(getActiveSection())
   }
 
-  window.addEventListener('scroll', checkActiveSection)
-  window.addEventListener('resize', handleResize)
-  window.addEventListener('DOMContentLoaded', initializeActiveIndicator)
-
-  initializeActiveIndicator()
+  window.addEventListener('scroll', handleActive)
+  window.addEventListener('resize', handleActive)
+  handleActive()
 </script>
