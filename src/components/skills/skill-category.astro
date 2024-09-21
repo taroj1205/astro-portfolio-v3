@@ -1,5 +1,5 @@
 ---
-import type { ImageMetadata } from 'astro';
+import type { ImageMetadata } from 'astro'
 import SkillItem from './skill-item.astro'
 
 const { title, skills } = Astro.props
@@ -11,7 +11,7 @@ const { title, skills } = Astro.props
   <h3 class="text-2xl font-bold text-primary">{title}</h3>
   <div class="grid gap-4">
     {
-      skills.map((skill: { icon: any; label: any, image: ImageMetadata }) => (
+      skills.map((skill: { icon: any; label: any; image: ImageMetadata }) => (
         <SkillItem icon={skill.icon} image={skill.image} label={skill.label} />
       ))
     }
