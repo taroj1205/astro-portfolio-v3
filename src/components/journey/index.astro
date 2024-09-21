@@ -10,7 +10,7 @@ const { class: className, ...props } = Astro.props
 const { journey } = getUI('en')
 
 const htmlDescriptions = journey.events.map((event) =>
-  marked(event.description)
+  marked(event.description),
 )
 ---
 
@@ -43,7 +43,7 @@ const htmlDescriptions = journey.events.map((event) =>
           journey.events.map((event, index) => (
             <div
               class={cn(
-                `duration-[${index} * 200ms] mb-8 flex animate-fade-up flex-col items-center transition-opacity duration-500 md:mb-16 md:flex-row md:even:flex-row-reverse`
+                `duration-[${index} * 200ms] mb-8 flex animate-fade-up flex-col items-center transition-opacity duration-500 md:mb-16 md:flex-row md:even:flex-row-reverse`,
               )}
             >
               <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
@@ -70,7 +70,7 @@ const htmlDescriptions = journey.events.map((event) =>
                             loading="lazy"
                             {...generateSizesAndWidths(
                               image.width,
-                              image.height
+                              image.height,
                             )}
                           />
                         )
@@ -83,7 +83,7 @@ const htmlDescriptions = journey.events.map((event) =>
                 <div
                   class={cn(
                     'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background transition-transform duration-500 md:translate-x-0',
-                    index % 2 === 0 && 'md:translate-x-1'
+                    index % 2 === 0 && 'md:translate-x-1',
                   )}
                 />
               </div>

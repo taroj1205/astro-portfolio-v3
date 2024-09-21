@@ -26,14 +26,14 @@ const links = [
       <div
         class={cn(
           'inline-flex animate-fade-up',
-          index === 1 ? 'duration-1000' : 'duration-700'
+          index === 1 ? 'duration-1000' : 'duration-700',
         )}
       >
         <a
           href={href}
           class={cn(
             'inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
-            className
+            className,
           )}
           target="_blank"
         >
