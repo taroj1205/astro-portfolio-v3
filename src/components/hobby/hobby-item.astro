@@ -1,7 +1,8 @@
 ---
 import { cn } from '@/lib/utils'
+import { Image } from 'astro:assets'
 
-const { icon: Icon, label, description, mediaUrl, index } = Astro.props
+const { icon, label, description, mediaUrl, index } = Astro.props
 ---
 
 <div
@@ -17,7 +18,13 @@ const { icon: Icon, label, description, mediaUrl, index } = Astro.props
   <div
     class="relative rounded-2xl bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
   >
-    <Icon class="w-6 h-6" />
+    <Image
+      src={icon}
+      alt={label}
+      width={24}
+      height={24}
+      class="h-6 w-6 transition-colors duration-300 group-hover:[filter:brightness(0)_invert(1)]"
+    />
     <div
       class="absolute inset-0 scale-0 rounded-2xl bg-primary/5 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
     >
