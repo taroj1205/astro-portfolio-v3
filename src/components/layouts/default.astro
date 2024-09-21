@@ -5,6 +5,7 @@ import Footer from '@/components/footer.astro'
 import ScrollUp from '@/components/scroll-up.astro'
 
 import { metadata } from '@/utils/metadata'
+import Share from '../share.astro'
 
 const { link } = Astro.props
 ---
@@ -31,6 +32,7 @@ const { link } = Astro.props
       <main class="z-10 flex flex-1 flex-col justify-center">
         <slot />
       </main>
+      <Share />
       <ScrollUp />
       <Footer />
     </div>
