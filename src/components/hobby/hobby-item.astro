@@ -8,7 +8,7 @@ const { icon: Icon, label, description, mediaUrl, index } = Astro.props
   class={cn(
     'hobby-item group flex cursor-pointer flex-col items-center gap-3',
     'animate-fade-up',
-    `delay-[${index * 100}ms]`,
+    `delay-[${index * 100}ms]`
   )}
   data-label={label}
   data-description={description}
@@ -44,7 +44,7 @@ const { icon: Icon, label, description, mediaUrl, index } = Astro.props
   function showModal(
     label: string | undefined,
     description: string | undefined,
-    mediaUrl: string | undefined,
+    mediaUrl: string | undefined
   ) {
     const existingModal = document.querySelector('.hobby-modal')
     if (existingModal) return
@@ -59,15 +59,15 @@ const { icon: Icon, label, description, mediaUrl, index } = Astro.props
       'items-center',
       'justify-center',
       'bg-transparent',
-      'transition-opacity',
+      'transition-all',
       'duration-300',
       'ease-in-out',
       'opacity-0',
-      'open:opacity-100',
+      'scale-95'
     )
 
     modal.innerHTML = `
-      <div class="relative w-full max-w-lg overflow-hidden rounded-lg bg-background shadow-xl">
+      <div class="relative w-full max-w-lg overflow-hidden rounded-lg bg-background shadow-xl transition-all duration-300 ease-in-out opacity-0 scale-95">
         <button
           class="close-modal absolute right-2 top-2 z-10 text-gray-500 hover:text-gray-700"
         >
@@ -101,16 +101,39 @@ const { icon: Icon, label, description, mediaUrl, index } = Astro.props
     })
 
     modal.showModal()
+
+    // Trigger open animation
+    setTimeout(() => {
+      modal.classList.remove('opacity-0', 'scale-95')
+      modal.classList.add('opacity-100', 'scale-100')
+      const modalContent = modal.querySelector('div')
+      if (modalContent) {
+        modalContent.classList.remove('opacity-0', 'scale-95')
+        modalContent.classList.add('opacity-100', 'scale-100')
+      }
+    }, 10)
   }
 
   function closeModal(modal: HTMLDialogElement) {
-    modal.close()
-    document.body.removeChild(modal)
+    // Trigger close animation
+    modal.classList.remove('opacity-100', 'scale-100')
+    modal.classList.add('opacity-0', 'scale-95')
+    const modalContent = modal.querySelector('div')
+    if (modalContent) {
+      modalContent.classList.remove('opacity-100', 'scale-100')
+      modalContent.classList.add('opacity-0', 'scale-95')
+    }
+
+    // Remove modal after animation
+    setTimeout(() => {
+      modal.close()
+      document.body.removeChild(modal)
+    }, 300)
   }
 
   function getMediaContent(
     mediaUrl: string | undefined,
-    label: string | undefined,
+    label: string | undefined
   ) {
     if (mediaUrl && isYouTubeEmbed(mediaUrl)) {
       return `<iframe src="${getYouTubeEmbedUrl(mediaUrl)}" class="h-64 w-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="${label}" loading="lazy"></iframe>`
