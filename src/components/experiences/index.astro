@@ -1,0 +1,95 @@
+---
+import { Briefcase, Code, GraduationCap } from 'lucide-astro'
+
+const experiences = [
+  {
+    title: 'Teacher',
+    company: 'YAGO',
+    type: 'Contract',
+    date: 'Jul 2024 - Present',
+    duration: '3 mos',
+    location: 'Remote',
+    description:
+      'Teaching programming remotely on Zoom using Minecraft Education for classmall Kids.',
+    icon: Briefcase,
+  },
+  {
+    title: 'Open Source Contributor',
+    company: 'Yamada UI',
+    type: 'Volunteer',
+    date: 'Feb 2024 - Present',
+    duration: 'Ongoing',
+    location: 'Remote',
+    description:
+      'Contributing to Yamada UI, a React component library with hooks and utils.',
+    icon: Code,
+  },
+  {
+    title: 'Teacher Aid for International Students',
+    company: 'Westlake Boys High School',
+    type: 'Part-time',
+    date: 'Jan 2024 - Feb 2024',
+    duration: '2 mos',
+    location: 'North Shore, Auckland, New Zealand',
+    description: 'Worked as a teacher aid for international students.',
+    icon: GraduationCap,
+  },
+]
+
+const { class: className, ...props } = Astro.props
+---
+
+<section class={className} {...props}>
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-4 px-4"
+  >
+    <div class="space-y-4 text-center">
+      <h2
+        class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+      >
+        Experiences
+      </h2>
+      <p
+        class="max-w-[800px] animate-fade-up text-xl text-muted-foreground duration-700 md:text-2xl/relaxed"
+      >
+        Highlight my professional experiences, including teaching, open source
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        experiences.map(
+          ({
+            title,
+            company,
+            type,
+            date,
+            duration,
+            location,
+            description,
+            icon: Icon,
+          }) => (
+            <div class="overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg">
+              <div class="p-6">
+                <div class="mb-2 flex items-center justify-between">
+                  <h3 class="text-xl font-semibold">{title}</h3>
+                  {Icon && <Icon class="h-5 w-5" />}
+                </div>
+                <p class="mb-2 text-gray-600">{company}</p>
+                <div class="mb-2 flex flex-wrap gap-2">
+                  <span class="inline-flex w-fit items-center whitespace-nowrap rounded-full border border-transparent bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground transition-colors hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    {type}
+                  </span>
+                  <span class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    {date}
+                  </span>
+                </div>
+                <p class="mb-2 text-sm text-gray-500">{location}</p>
+                <p class="text-sm">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
+    </div>
+  </div>
+</section>
