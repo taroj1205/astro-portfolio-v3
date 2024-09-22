@@ -2,15 +2,17 @@
 import { cn } from '@/lib/utils'
 import { Image } from 'astro:assets'
 import { generateSizesAndWidths } from '@/utils/image'
-import { getUI } from '@/utils/i18n'
+import { getUI } from '@/utils/i18n.astro'
 import { marked } from 'marked'
 import { JOURNEYIMAGES } from './journey.astro'
 
+const { lang } = Astro.params
+
 const { class: className, ...props } = Astro.props
-const { journey } = getUI('en')
+const { journey } = getUI(lang ?? 'en')
 
 const htmlDescriptions = journey.events.map((event) =>
-  marked(event.description),
+  marked(event.description)
 )
 ---
 
@@ -40,57 +42,60 @@ const htmlDescriptions = journey.events.map((event) =>
         </div>
 
         {
-          journey.events.map((event, index) => (
-            <div
-              class={cn(
-                `duration-[${index} * 200ms] mb-8 flex animate-fade-up flex-col items-center transition-opacity duration-500 md:mb-16 md:flex-row md:even:flex-row-reverse`,
-              )}
-            >
-              <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
-                <div class="rounded-lg p-4">
-                  <span class="inline-block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-                    {event.timestamp}
-                  </span>
-                  <h3 class="mt-3 text-xl font-bold">{event.title}</h3>
-                  <div
-                    class="prose mt-1 text-muted-foreground"
-                    set:html={htmlDescriptions[index]}
-                  />
-                  {event.image
-                    ? (() => {
-                        const image =
-                          JOURNEYIMAGES[
-                            event.image as keyof typeof JOURNEYIMAGES
-                          ]
-                        return (
-                          <Image
-                            src={image}
-                            alt={event.title}
-                            class="mt-4 max-h-[300px] w-fit rounded-lg object-contain shadow-md"
-                            loading="lazy"
-                            {...generateSizesAndWidths(
-                              image.width,
-                              image.height,
-                            )}
-                          />
-                        )
-                      })()
-                    : null}
+          journey.events
+            .slice()
+            .sort((a, b) => b.timestamp.localeCompare(a.timestamp))
+            .map((event, index) => (
+              <div
+                class={cn(
+                  `duration-[${index} * 200ms] mb-8 flex animate-fade-up flex-col items-center transition-opacity duration-500 md:mb-16 md:flex-row md:even:flex-row-reverse`
+                )}
+              >
+                <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
+                  <div class="rounded-lg p-4">
+                    <span class="inline-block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+                      {event.timestamp}
+                    </span>
+                    <h3 class="mt-3 text-xl font-bold">{event.title}</h3>
+                    <div
+                      class="prose mt-1 text-muted-foreground"
+                      set:html={htmlDescriptions[index]}
+                    />
+                    {event.image
+                      ? (() => {
+                          const image =
+                            JOURNEYIMAGES[
+                              event.image as keyof typeof JOURNEYIMAGES
+                            ]
+                          return (
+                            <Image
+                              src={image}
+                              alt={event.title}
+                              class="mt-4 max-h-[300px] w-fit rounded-lg object-contain shadow-md"
+                              loading="lazy"
+                              {...generateSizesAndWidths(
+                                image.width,
+                                image.height
+                              )}
+                            />
+                          )
+                        })()
+                      : null}
+                  </div>
                 </div>
-              </div>
 
-              <div class="relative hidden h-8 w-8 place-items-center md:mx-4 md:grid">
-                <div
-                  class={cn(
-                    'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background transition-transform duration-500 md:translate-x-0',
-                    index % 2 === 0 && 'md:translate-x-1',
-                  )}
-                />
-              </div>
+                <div class="relative hidden h-8 w-8 place-items-center md:mx-4 md:grid">
+                  <div
+                    class={cn(
+                      'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background transition-transform duration-500 md:translate-x-0',
+                      index % 2 === 0 && 'md:translate-x-1'
+                    )}
+                  />
+                </div>
 
-              <div class="flex w-full items-center pl-8 md:w-1/2 md:pl-0" />
-            </div>
-          ))
+                <div class="flex w-full items-center pl-8 md:w-1/2 md:pl-0" />
+              </div>
+            ))
         }
       </div>
       <a

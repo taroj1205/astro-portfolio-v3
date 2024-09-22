@@ -8,10 +8,10 @@ import reversiImage from '@/assets/projects/reversi.webp'
 import saveTwitterLinksImage from '@/assets/projects/save-twitter-links.webp'
 import typingGameImage from '@/assets/projects/typing-game.webp'
 import unityTypingGameImage from '@/assets/projects/unity-typing.webp'
-import { getUI } from '@/utils/i18n'
+import { getUI } from '@/utils/i18n.astro'
 
 export const useProjectsArray = () => {
-  const { projects } = getUI('en')
+  const { projects } = getUI()
   return [
     {
       title: projects.noteRss.title,

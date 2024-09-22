@@ -5,12 +5,11 @@
     "description": "taroj1205's Portfolio website."
   },
   "header": {
-    "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "journey": "Journey",
-    "blog": "Blog",
-    "contact": "Contact"
+    "home": "ホーム",
+    "projects": "プロジェクト",
+    "hobbies": "趣味",
+    "skills": "スキル",
+    "journey": "ジャーナル"
   },
   "hero": {
     "title": "Shintaro Jokagi",

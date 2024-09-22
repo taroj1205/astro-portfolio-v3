@@ -1,111 +1,83 @@
 {
-  "metadata": {
-    "title": "taroj1205 - Portfolio",
-    "siteName": "taroj1205's Portfolio Website",
-    "description": "taroj1205's Portfolio website."
-  },
   "header": {
     "home": "Home",
-    "about": "About",
     "projects": "Projects",
-    "journey": "Journey",
-    "blog": "Blog",
-    "contact": "Contact"
+    "hobbies": "Hobbies",
+    "skills": "Skills",
+    "journey": "Journey"
   },
-  "hero": {
-    "title": "Shintaro Jokagi",
-    "subtitle": "University of Auckland student | Computer Science & IT Management"
-  },
-  "about": {
-    "title": "Brief Introduction",
-    "born": "Born in Japan (Tokyo) in 2005.",
-    "age": "18 years old.",
-    "highSchool": "Graduated Westlake Boys High School in 2023 (New Zealand).",
-    "university": "University of Auckland starting January 2024.",
-    "bachelor": "Bachelor of Science (Computer Science + Information and Technology Management)",
-    "livedIn": {
-      "title": "Lived in",
-      "japan": "Japan (Approx 10 years), Tokyo/Ehime",
-      "philippines": "The Philippines (A year and 3 months), Cebu",
-      "newzealand": "New Zealand (A year in 2017 and also since 2018), Auckland"
+  "hobbies": {
+    "title": "Hobbies",
+    "soccer": {
+      "title": "Football (Soccer)",
+      "description": "The beautiful game that unites the world."
     },
-    "schools": {
-      "title": "Been to 3 countries in 11 schools in 2023.",
-      "description": "Japan, Philippines and New Zealand"
+    "programming": {
+      "title": "Programming",
+      "description": "Crafting digital solutions and bringing ideas to life."
     },
-    "hobbies": {
-      "title": "Hobbies",
-      "soccer": {
-        "title": "Football (Soccer)",
-        "description": "The beautiful game that unites the world."
-      },
-      "programming": {
-        "title": "Programming",
-        "description": "Crafting digital solutions and bringing ideas to life."
-      },
-      "kendama": {
-        "title": "Kendama (けん玉)",
-        "description": "A traditional Japanese skill toy that challenges hand-eye coordination.",
-        "video": "https://www.youtube.com/embed/9Y-NWFB--f8"
-      },
-      "juggling": {
-        "title": "Juggling",
-        "description": "The art of keeping multiple objects in constant motion.",
-        "video": "https://www.youtube.com/embed/TaWXgxbzoOI"
-      },
-      "tableTennis": {
-        "title": "Table Tennis",
-        "description": "A fast-paced game of skill, strategy, and quick reflexes."
-      },
-      "shorinjiKempo": {
-        "title": "Shorinji Kempo",
-        "description": "A Japanese martial art focusing on self-defense and personal development."
-      },
-      "tennis": {
-        "title": "Tennis",
-        "description": "A classic sport combining athleticism, strategy, and finesse."
-      },
-      "basketball": {
-        "title": "Basketball",
-        "description": "A dynamic team sport that requires agility, coordination, and teamwork."
-      },
-      "volleyball": {
-        "title": "Volleyball",
-        "description": "A high-energy sport that emphasizes teamwork and quick reactions."
-      },
-      "baseball": {
-        "title": "Baseball",
-        "description": "America's pastime, combining strategy, skill, and tradition."
-      },
-      "softball": {
-        "title": "Softball",
-        "description": "A variant of baseball with a larger ball and smaller field."
-      },
-      "running": {
-        "title": "Running",
-        "description": "A fundamental form of exercise that promotes health and well-being."
-      },
-      "penSpinning": {
-        "title": "Pen Spinning",
-        "description": "The art of spinning a pen with your fingers, combining dexterity and creativity."
-      },
-      "badminton": {
-        "title": "Badminton",
-        "description": "A fast and graceful racquet sport played with a shuttlecock."
-      },
-      "yoyo": {
-        "title": "Yo-Yo",
-        "description": "A skill toy that has been entertaining people for centuries."
-      },
-      "pickleball": {
-        "title": "Pickleball",
-        "description": "A paddle sport that combines elements of tennis, badminton, and table tennis."
-      }
+    "kendama": {
+      "title": "Kendama (けん玉)",
+      "description": "A traditional Japanese skill toy that challenges hand-eye coordination.",
+      "video": "https://www.youtube.com/embed/9Y-NWFB--f8"
     },
-    "partTimeJob": {
-      "title": "Part-time Job",
-      "westlake": "Student aid for International Students at Westlake Boys High School (25th of January 2024 - 28th of February 2024)"
+    "juggling": {
+      "title": "Juggling",
+      "description": "The art of keeping multiple objects in constant motion.",
+      "video": "https://www.youtube.com/embed/TaWXgxbzoOI"
+    },
+    "tableTennis": {
+      "title": "Table Tennis",
+      "description": "A fast-paced game of skill, strategy, and quick reflexes."
+    },
+    "shorinjiKempo": {
+      "title": "Shorinji Kempo",
+      "description": "A Japanese martial art focusing on self-defense and personal development."
+    },
+    "tennis": {
+      "title": "Tennis",
+      "description": "A classic sport combining athleticism, strategy, and finesse."
+    },
+    "basketball": {
+      "title": "Basketball",
+      "description": "A dynamic team sport that requires agility, coordination, and teamwork."
+    },
+    "volleyball": {
+      "title": "Volleyball",
+      "description": "A high-energy sport that emphasizes teamwork and quick reactions."
+    },
+    "baseball": {
+      "title": "Baseball",
+      "description": "America's pastime, combining strategy, skill, and tradition."
+    },
+    "softball": {
+      "title": "Softball",
+      "description": "A variant of baseball with a larger ball and smaller field."
+    },
+    "running": {
+      "title": "Running",
+      "description": "A fundamental form of exercise that promotes health and well-being."
+    },
+    "penSpinning": {
+      "title": "Pen Spinning",
+      "description": "The art of spinning a pen with your fingers, combining dexterity and creativity."
+    },
+    "badminton": {
+      "title": "Badminton",
+      "description": "A fast and graceful racquet sport played with a shuttlecock."
+    },
+    "yoyo": {
+      "title": "Yo-Yo",
+      "description": "A skill toy that has been entertaining people for centuries."
+    },
+    "pickleball": {
+      "title": "Pickleball",
+      "description": "A paddle sport that combines elements of tennis, badminton, and table tennis."
     }
+  },
+  "partTimeJob": {
+    "title": "Part-time Job",
+    "westlake": "Student aid for International Students at Westlake Boys High School (25th of January 2024 - 28th of February 2024)"
   },
   "projects": {
     "title": "Projects",
@@ -234,29 +206,5 @@
         "image": "injury2"
       }
     ]
-  },
-  "footer": {
-    "about": "About",
-    "allRightsReserved": "All rights reserved",
-    "apps": "Apps",
-    "chat": "Chat",
-    "contactInfo": "Contact information",
-    "editOnCrowdin": "Edit translation",
-    "editOnGithub": "Edit on GitHub",
-    "home": "Home",
-    "name": "Shintaro Jokagi",
-    "settings": "Settings",
-    "sitemap": "Sitemap",
-    "blog": "Blog",
-    "scrollToTop": "Scroll to Top"
-  },
-  "notFound": {
-    "title": "Page not found",
-    "goBack": "Go back to Home"
-  },
-  "languageSwitcher": {
-    "language": "Language",
-    "english": "English",
-    "japanese": "日本語"
   }
 }

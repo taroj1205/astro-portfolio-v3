@@ -1,13 +1,18 @@
 ---
 import { Image } from 'astro:assets'
 import pfpImage from '@/assets/carousel/pfp.webp'
+import { getUI } from '@/utils/i18n.astro'
+
+const { lang } = Astro.params
+
+const { header } = getUI(lang ?? 'en')
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/#hobbies', label: 'Hobbies' },
-  { href: '/#skills', label: 'Skills' },
-  { href: '/#projects', label: 'Projects' },
-  { href: '/journey', label: 'Journey' },
+  { href: '/', label: header.home },
+  { href: '/#hobbies', label: header.hobbies },
+  { href: '/#skills', label: header.skills },
+  { href: '/#projects', label: header.projects },
+  { href: '/journey', label: header.journey },
 ]
 ---
 
@@ -83,8 +88,8 @@ const navItems = [
     navItems.forEach((item) =>
       item.setAttribute(
         'data-active',
-        item.getAttribute('data-section') === activeSection ? 'true' : 'false',
-      ),
+        item.getAttribute('data-section') === activeSection ? 'true' : 'false'
+      )
     )
   }
 

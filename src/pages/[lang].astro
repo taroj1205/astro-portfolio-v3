@@ -1,0 +1,19 @@
+---
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ja' } }]
+}
+
+const { lang } = Astro.params
+import Layout from '@/components/layouts/default.astro'
+import Hero from '@/components/hero/index.astro'
+import Hobby from '@/components/hobby/index.astro'
+import Skills from '@/components/skills/index.astro'
+import Projects from '@/components/projects/index.astro'
+---
+
+<Layout>
+  <Hero id="hero" class:list="pb-14 pt-32 md:pb-32 md:pt-48" />
+  <Hobby id="hobbies" class:list="pt-28 md:py-24 lg:py-32" />
+  <Skills id="skills" class:list="pt-28 md:py-24 lg:py-32" />
+  <Projects id="projects" class:list="pt-28 md:pt-24 lg:pt-32" />
+</Layout>
