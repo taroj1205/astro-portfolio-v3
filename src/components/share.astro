@@ -2,13 +2,18 @@
 import GoogleWalletIcon from '@/assets/wallet/google-wallet.svg'
 import AppleWalletIcon from '@/assets/wallet/apple-wallet.svg'
 import { Image } from 'astro:assets'
+import { getUI } from '@/utils/i18n.astro'
+
+const { lang } = Astro.params
+
+const { popup } = getUI(lang)
 ---
 
 <div>
   <button
     id="share-button"
     class="fixed bottom-4 left-4 z-50 rounded-full bg-primary p-3 text-primary-foreground shadow-lg transition-all duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95 sm:bottom-8 sm:left-8"
-    aria-label="Share"
+    aria-label={popup.share}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -81,13 +86,19 @@ import { Image } from 'astro:assets'
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
           ></path>
         </svg>
-        <span>Copy Link</span>
+        <span>{popup.copy}</span>
       </button>
     </div>
   </dialog>
 </div>
 
 <script>
+  import { getUI } from '@/utils/i18n.astro'
+
+  const lang = document.documentElement.lang
+
+  const { popup } = getUI(lang)
+
   const shareButton = document.getElementById(
     'share-button'
   ) as HTMLButtonElement
@@ -167,7 +178,7 @@ import { Image } from 'astro:assets'
         <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
         <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
       </svg>
-      <span>Share</span>
+      <span>${popup.share}</span>
     `
     nativeShareButton.addEventListener('click', () => {
       navigator

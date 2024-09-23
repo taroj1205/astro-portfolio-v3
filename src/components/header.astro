@@ -5,14 +5,22 @@ import { getUI } from '@/utils/i18n.astro'
 
 const { lang } = Astro.params
 
+const getPath = (path: string) =>
+  `${Astro.url.origin}${lang === 'ja' ? '/ja' : ''}${path}`
+
 const { header } = getUI(lang ?? 'en')
 
 const navItems = [
-  { href: '/', label: header.home },
-  { href: '/#hobbies', label: header.hobbies },
-  { href: '/#skills', label: header.skills },
-  { href: '/#projects', label: header.projects },
-  { href: '/journey', label: header.journey },
+  { href: getPath('/'), label: header.home, section: 'home' },
+  { href: getPath('/#hobbies'), label: header.hobbies, section: 'hobbies' },
+  {
+    href: getPath('/#experiences'),
+    label: header.experiences,
+    section: 'experiences',
+  },
+  { href: getPath('/#skills'), label: header.skills, section: 'skills' },
+  { href: getPath('/#projects'), label: header.projects, section: 'projects' },
+  { href: getPath('/journey'), label: header.journey, section: 'journey' },
 ]
 ---
 
@@ -21,11 +29,11 @@ const navItems = [
   class="sticky top-0 z-20 flex h-fit w-full items-center justify-center bg-white/80 px-2 py-3 shadow-md backdrop-blur-md sm:h-16 md:px-6 lg:px-8"
 >
   <div
-    class="flex w-full max-w-5xl flex-col items-center justify-between gap-3 sm:flex-row sm:gap-0"
+    class="grid w-full max-w-5xl grid-cols-1 place-items-center md:grid-cols-[1fr_auto_1fr]"
   >
     <a
       href="/"
-      class="z-0 hidden items-center justify-center transition-transform hover:scale-110 sm:flex"
+      class="z-0 hidden items-center justify-center transition-transform hover:scale-110 md:flex"
     >
       <Image
         src={pfpImage}
@@ -38,20 +46,14 @@ const navItems = [
     </a>
     <nav
       id="main-nav"
-      class="relative flex flex-wrap justify-center gap-2 sm:flex-nowrap sm:gap-6"
+      class="relative flex flex-wrap items-center justify-center gap-2 sm:flex-nowrap sm:gap-6"
     >
       {
         navItems.map((item) => (
           <a
             href={item.href}
             class="group relative px-2 py-1 text-sm font-medium text-gray-700 hover:text-primary data-[active=true]:font-semibold data-[active=true]:text-primary"
-            data-section={
-              item.href === '/'
-                ? 'home'
-                : item.href === '/journey'
-                  ? 'journey'
-                  : item.href.replace(/^\/?#/, '')
-            }
+            data-section={item.section}
             data-active="false"
           >
             {item.label}
@@ -60,7 +62,6 @@ const navItems = [
         ))
       }
     </nav>
-    <div class="hidden h-10 w-10 sm:inline"></div>
   </div>
 </header>
 

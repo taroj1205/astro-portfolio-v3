@@ -10,8 +10,8 @@ import typingGameImage from '@/assets/projects/typing-game.webp'
 import unityTypingGameImage from '@/assets/projects/unity-typing.webp'
 import { getUI } from '@/utils/i18n.astro'
 
-export const useProjectsArray = () => {
-  const { projects } = getUI()
+export const useProjectsArray = (lang?: string) => {
+  const { projects } = getUI(lang)
   return [
     {
       title: projects.noteRss.title,

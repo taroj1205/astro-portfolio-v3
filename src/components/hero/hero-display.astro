@@ -1,6 +1,13 @@
 ---
 import { cn } from '@/lib/utils'
 import AnimatedLinks from './animated-links.astro'
+import { getUI } from '@/utils/i18n.astro'
+
+const { lang } = Astro.params
+
+const {
+  sections: { hero },
+} = getUI(lang)
 
 const { class: className, animation = true, ...props } = Astro.props
 ---
@@ -9,17 +16,16 @@ const { class: className, animation = true, ...props } = Astro.props
   class={cn('flex flex-col items-center gap-6 text-center', className)}
   {...props}
 >
-  <div class="space-y-2">
+  <div class="flex flex-col gap-4">
     <h1
       class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none"
     >
-      Shintaro Jokagi
+      {hero.title}
     </h1>
     <p
-      class="mx-auto max-w-[700px] animate-fade-up text-muted-foreground duration-700 md:text-xl"
+      class="mx-auto animate-fade-up text-muted-foreground duration-700 md:text-xl"
     >
-      Passionate university student, aspiring software engineer, and open-source
-      contributor.
+      {hero.description}
     </p>
   </div>
   <AnimatedLinks />

@@ -1,261 +1,291 @@
 {
-  "metadata": {
-    "title": "taroj1205 - Portfolio",
-    "siteName": "taroj1205's Portfolio Website",
-    "description": "taroj1205's Portfolio website."
+  "sections": {
+    "hobbies": {
+      "title": "趣味",
+      "description": "私の情熱と創造性を支える多彩な趣味を紹介します。"
+    },
+    "skills": {
+      "title": "技術的専門知識",
+      "description": "革新的なアイデアを実現するために習得した多様なスキルを紹介します。"
+    },
+    "experiences": {
+      "title": "経験",
+      "description": "指導、オープンソースへの貢献、インターンシップなど、私のプロフェッショナルな経験を紹介します。"
+    },
+    "journey": {
+      "title": "世界を巡る旅",
+      "description": "私の人生の中で訪れたさまざまな国と重要な瞬間を探索してください。",
+      "viewMore": "世界を巡る旅を見る"
+    },
+    "hero": {
+      "title": "上鍵心太朗",
+      "description": "情熱的な大学生、将来有望なソフトウェアエンジニア、オープンソースの貢献者。"
+    },
+    "projects": {
+      "title": "私の作品",
+      "description": "大学で取り組んできたプロジェクトの一部をご覧ください。",
+      "featured": "注目のプロジェクト",
+      "viewProject": "プロジェクトを見る"
+    },
+    "footer": {
+      "copyright": "Copyright © {year} Shintaro Jokagi. All rights reserved."
+    },
+    "error": {
+      "404": {
+        "title": "404 - ページが見つかりません",
+        "description": "お探しのページは存在しません。移動または削除された可能性があります。",
+        "goHome": "ホームへ戻る"
+      }
+    }
   },
   "header": {
     "home": "ホーム",
     "projects": "プロジェクト",
     "hobbies": "趣味",
     "skills": "スキル",
-    "journey": "ジャーナル"
+    "journey": "旅",
+    "experiences": "経験"
   },
-  "hero": {
-    "title": "Shintaro Jokagi",
-    "subtitle": "University of Auckland student | Computer Science & IT Management"
+  "hobbies": {
+    "soccer": {
+      "title": "サッカー",
+      "description": "世界を一つにする美しいスポーツ。"
+    },
+    "programming": {
+      "title": "プログラミング",
+      "description": "デジタルソリューションを作り、アイデアを形にする技術。"
+    },
+    "kendama": {
+      "title": "けん玉",
+      "description": "手と目の協調性を試す日本の伝統的なスキルトイ。",
+      "mediaUrl": "https://www.youtube.com/embed/9Y-NWFB--f8"
+    },
+    "juggling": {
+      "title": "ジャグリング",
+      "description": "複数の物体を常に動かし続けるアート。",
+      "mediaUrl": "https://www.youtube.com/embed/TaWXgxbzoOI"
+    },
+    "tableTennis": {
+      "title": "卓球",
+      "description": "スピード、戦略、反射神経が求められるスポーツ。"
+    },
+    "shorinjiKempo": {
+      "title": "少林寺拳法",
+      "description": "自己防衛と人格形成に重点を置いた日本の武道。"
+    },
+    "tennis": {
+      "title": "テニス",
+      "description": "運動能力、戦略、繊細さが求められるクラシックなスポーツ。"
+    },
+    "basketball": {
+      "title": "バスケットボール",
+      "description": "機敏さ、協調性、チームワークが必要なダイナミックなスポーツ。"
+    },
+    "volleyball": {
+      "title": "バレーボール",
+      "description": "チームワークと迅速な反応が重要なエネルギッシュなスポーツ。"
+    },
+    "baseball": {
+      "title": "野球",
+      "description": "戦略、技術、伝統が組み合わさったアメリカの国技。"
+    },
+    "softball": {
+      "title": "ソフトボール",
+      "description": "野球のバリアントで、大きなボールと小さなフィールドで行われます。"
+    },
+    "running": {
+      "title": "ランニング",
+      "description": "健康とウェルビーイングを促進する基本的な運動形態。"
+    },
+    "penSpinning": {
+      "title": "ペン回し",
+      "description": "指の器用さと創造性を組み合わせたペン回しのアート。"
+    },
+    "badminton": {
+      "title": "バドミントン",
+      "description": "シャトルを使った優雅で速いペースのラケットスポーツ。"
+    },
+    "yoyo": {
+      "title": "ヨーヨー",
+      "description": "何世紀にもわたって人々を楽しませてきたスキルトイ。"
+    },
+    "pickleball": {
+      "title": "ピックルボール",
+      "description": "テニス、バドミントン、卓球の要素を組み合わせたパドルスポーツ。"
+    }
   },
-  "about": {
-    "title": "Brief Introduction",
-    "born": "Born in Japan (Tokyo) in 2005.",
-    "age": "18 years old.",
-    "highSchool": "Graduated Westlake Boys High School in 2023 (New Zealand).",
-    "university": "University of Auckland starting January 2024.",
-    "bachelor": "Bachelor of Science (Computer Science + Information and Technology Management)",
-    "livedIn": {
-      "title": "Lived in",
-      "japan": "Japan (Approx 10 years), Tokyo/Ehime",
-      "philippines": "The Philippines (A year and 3 months), Cebu",
-      "newzealand": "New Zealand (A year in 2017 and also since 2018), Auckland"
+  "skills": {
+    "languages": {
+      "title": "プログラミング言語など",
+      "items": ["JavaScript", "TypeScript", "Markdown", "Python", "HTML", "CSS"]
     },
-    "schools": {
-      "title": "Been to 3 countries in 11 schools in 2023.",
-      "description": "Japan, Philippines and New Zealand"
+    "frameworks": {
+      "title": "フレームワーク",
+      "items": [
+        "Next.js",
+        "Express",
+        "React.js",
+        "Node.js",
+        "Flask",
+        "Tailwind CSS"
+      ]
     },
-    "hobbies": {
-      "title": "Hobbies",
-      "soccer": {
-        "title": "Football (Soccer)",
-        "description": "The beautiful game that unites the world."
-      },
-      "programming": {
-        "title": "Programming",
-        "description": "Crafting digital solutions and bringing ideas to life."
-      },
-      "kendama": {
-        "title": "Kendama (けん玉)",
-        "description": "A traditional Japanese skill toy that challenges hand-eye coordination.",
-        "video": "https://www.youtube.com/embed/9Y-NWFB--f8"
-      },
-      "juggling": {
-        "title": "Juggling",
-        "description": "The art of keeping multiple objects in constant motion.",
-        "video": "https://www.youtube.com/embed/TaWXgxbzoOI"
-      },
-      "tableTennis": {
-        "title": "Table Tennis",
-        "description": "A fast-paced game of skill, strategy, and quick reflexes."
-      },
-      "shorinjiKempo": {
-        "title": "Shorinji Kempo",
-        "description": "A Japanese martial art focusing on self-defense and personal development."
-      },
-      "tennis": {
-        "title": "Tennis",
-        "description": "A classic sport combining athleticism, strategy, and finesse."
-      },
-      "basketball": {
-        "title": "Basketball",
-        "description": "A dynamic team sport that requires agility, coordination, and teamwork."
-      },
-      "volleyball": {
-        "title": "Volleyball",
-        "description": "A high-energy sport that emphasizes teamwork and quick reactions."
-      },
-      "baseball": {
-        "title": "Baseball",
-        "description": "America's pastime, combining strategy, skill, and tradition."
-      },
-      "softball": {
-        "title": "Softball",
-        "description": "A variant of baseball with a larger ball and smaller field."
-      },
-      "running": {
-        "title": "Running",
-        "description": "A fundamental form of exercise that promotes health and well-being."
-      },
-      "penSpinning": {
-        "title": "Pen Spinning",
-        "description": "The art of spinning a pen with your fingers, combining dexterity and creativity."
-      },
-      "badminton": {
-        "title": "Badminton",
-        "description": "A fast and graceful racquet sport played with a shuttlecock."
-      },
-      "yoyo": {
-        "title": "Yo-Yo",
-        "description": "A skill toy that has been entertaining people for centuries."
-      },
-      "pickleball": {
-        "title": "Pickleball",
-        "description": "A paddle sport that combines elements of tennis, badminton, and table tennis."
-      }
+    "databases": {
+      "title": "データベース",
+      "items": ["MySQL", "SQLite", "PostgreSQL"]
     },
-    "partTimeJob": {
-      "title": "Part-time Job",
-      "westlake": "Student aid for International Students at Westlake Boys High School (25th of January 2024 - 28th of February 2024)"
+    "saas": {
+      "title": "SaaS プラットフォーム",
+      "items": ["Supabase", "Vercel", "Netlify", "GitHub", "Auth0"]
     }
   },
   "projects": {
-    "title": "Projects",
-    "viewProject": "View Project",
-    "github": "GitHub",
-    "portfolio": {
-      "title": "Portfolio",
-      "description": "This is my portfolio site."
+    "noteRss": {
+      "title": "Note 記事リスト",
+      "description": "これは弟のために作ったNoteからのRSS記事リストです。"
     },
     "saveTwitterLinks": {
-      "title": "Save Twitter Links",
-      "description": "This is a chrome extension for saving twitter links you've viewed."
-    },
-    "noteRss": {
-      "title": "Note Article List",
-      "description": "This is a RSS article list from Note for my younger brother."
+      "title": "Twitter リンク保存",
+      "description": "閲覧したTwitterリンクを保存するためのChrome拡張機能です。"
     },
     "hideTwitterBots": {
-      "title": "Hide Twitter Bots",
-      "description": "This is a chrome extension for hiding twitter bots."
+      "title": "Twitter ボットを隠す",
+      "description": "Twitterのボットを非表示にするためのChrome拡張機能です。"
     },
     "typingGame": {
-      "title": "Typing Game",
-      "description": "Learn English with this typing game."
+      "title": "タイピングゲーム",
+      "description": "このタイピングゲームで英語を学びましょう。"
     },
     "connect4": {
       "title": "Connect 4",
-      "description": "This is a Connect 4 game made with Next.js."
+      "description": "Next.jsで作成されたConnect 4ゲームです。"
     },
     "typingGameUnity": {
-      "title": "Typing Game (Unity)",
-      "description": "A 2D typing game built with Unity."
+      "title": "タイピングゲーム (Unity)",
+      "description": "Unityで作成した2Dタイピングゲームです。"
     },
     "typingGameFlask": {
-      "title": "Typing Game (Flask)",
-      "description": "Learn English with this typing game."
+      "title": "タイピングゲーム (Flask)",
+      "description": "このタイピングゲームで英語を学びましょう。"
     },
     "reversi": {
-      "title": "Reversi",
-      "description": "Reversi game made with Next.js"
+      "title": "リバーシ",
+      "description": "Next.jsで作成されたリバーシゲームです。"
     },
     "chatApp": {
-      "title": "Chat App",
-      "description": "This is a feature-rich chat app made with Next.js and Supabase."
+      "title": "チャットアプリ",
+      "description": "Next.jsとSupabaseで作成された多機能チャットアプリです。"
+    }
+  },
+  "experiences": {
+    "teacherYago": {
+      "title": "講師",
+      "organization": "YAGO",
+      "contract": "契約",
+      "dates": "2024年7月 - 現在",
+      "location": "リモート",
+      "description": "クラスモールキッズ向けにMinecraft Educationを使ったプログラミング教育をZoomでリモート指導。"
+    },
+    "openSourceContributor": {
+      "title": "オープンソース貢献者",
+      "organization": "Yamada UI",
+      "volunteer": "ボランティア",
+      "dates": "2024年2月 - 現在",
+      "location": "リモート",
+      "description": "ReactコンポーネントライブラリであるYamada UIへの貢献。"
+    },
+    "teacherAid": {
+      "title": "国際学生のためのティーチャーエイド",
+      "organization": "Westlake Boys High School",
+      "partTime": "パートタイム",
+      "dates": "2024年1月 - 2024年2月",
+      "location": "ニュージーランド、オークランド、ノースショア",
+      "description": "国際学生のためのティーチャーエイドとして勤務。"
     }
   },
   "journey": {
-    "title": "My Journey",
-    "viewMore": "View More",
     "events": [
       {
-        "timestamp": "2005, Dec",
+        "timestamp": "2005年12月",
         "date": "2005-12-05",
-        "title": "Birthday",
-        "description": "I was born in Tokyo."
+        "title": "誕生日",
+        "description": "東京で生まれました。"
       },
       {
-        "timestamp": "2011, March",
+        "timestamp": "2011年3月",
         "date": "2011-03-01",
-        "title": "Great East Japan Earthquake",
-        "description": "Experienced the earthquake in Tokyo."
+        "title": "東日本大震災",
+        "description": "東京で地震を体験しました。"
       },
       {
-        "timestamp": "2011, March",
+        "timestamp": "2011年5月",
         "date": "2011-05-01",
-        "title": "Moved to Ehime",
-        "description": "After the earthquake, I moved to my mother's hometown in Ehime."
+        "title": "愛媛への引っ越し",
+        "description": "地震の後、母の故郷である愛媛に引っ越しました。"
       },
       {
-        "timestamp": "2017, Jan",
+        "timestamp": "2017年1月",
         "date": "2017-01-01",
-        "title": "Went to New Zealand",
-        "description": "I went to New Zealand and went to local junior high school in Auckland.",
+        "title": "ニュージーランドへ",
+        "description": "ニュージーランドへ行き、オークランドの現地の中学校に通いました。",
         "image": "nzFlight"
       },
       {
-        "timestamp": "2018, April",
+        "timestamp": "2018年4月",
         "date": "2018-04-01",
-        "title": "Went to The Philippines",
-        "description": "I went to The Philippines and went to English School for 3 months, then went to local junior high school for a year in Cebu.",
+        "title": "フィリピンへ",
+        "description": "フィリピンへ行き、3か月間英語学校に通った後、セブの現地の中学校に1年間通いました。",
         "image": "cebuVisit"
       },
       {
-        "timestamp": "2019, July",
+        "timestamp": "2019年7月",
         "date": "2018-08-01",
-        "title": "Went back to New Zealand",
-        "description": "I went to high school in Auckland. I went to this high school for 5 years."
+        "title": "再びニュージーランドへ",
+        "description": "オークランドの高校に通いました。5年間この高校に通いました。"
       },
       {
-        "timestamp": "2019, October",
+        "timestamp": "2019年10月",
         "date": "2019-10-01",
-        "title": "Injury from playing soccer",
-        "description": "Anterior cruciate ligament tear (ACL)\nStarted going to Physio.",
+        "title": "サッカーでの怪我",
+        "description": "前十字靱帯断裂 (ACL)\n理学療法に通い始めました。",
         "image": "injury"
       },
       {
-        "timestamp": "2020, June",
+        "timestamp": "2020年6月",
         "date": "2020-06-01",
-        "title": "ACL 2nd time",
-        "description": "After going to physio for half a year, I've almost recovered and started doing some light sports.\nThis resulted in a 2nd ACL."
+        "title": "2度目のACL",
+        "description": "半年間理学療法を受け、ほぼ回復して軽いスポーツを始めました。\nその結果、2度目のACLを負いました。"
       },
       {
-        "timestamp": "2020, July",
+        "timestamp": "2020年7月",
         "date": "2020-07-30",
-        "title": "ACL surgery",
-        "description": "I did an ACL surgery."
+        "title": "ACL手術",
+        "description": "ACL手術を受けました。"
       },
       {
-        "timestamp": "2023, Dec",
+        "timestamp": "2023年12月",
         "date": "2023-12-01",
-        "title": "Back to Japan for the first time in 5 years!",
-        "description": "I went back to Japan for the first time in 5 years! I have visited 4 companies:\n- Microsoft\n- HENNGE\n- Cybozu\n- Soulware",
+        "title": "5年ぶりの日本へ！",
+        "description": "5年ぶりに日本に帰りました！4つの会社を訪問しました：\n- Microsoft\n- HENNGE\n- Cybozu\n- Soulware",
         "image": "microsoftVisit"
       },
       {
-        "timestamp": "2024, January",
+        "timestamp": "2024年1月",
         "date": "2024-01-01",
-        "title": "Got into University of Auckland",
-        "description": "I graduated from high school and got into University of Auckland.\nI'm majoring in Computer Science and IT Management."
+        "title": "オークランド大学に入学",
+        "description": "高校を卒業し、オークランド大学に入学しました。\nコンピュータサイエンスとITマネジメントを専攻しています。"
       },
       {
-        "timestamp": "2024, September",
+        "timestamp": "2024年9月",
         "date": "2024-09-07",
-        "title": "Knee injury the 3rd time",
-        "description": "I injured my knee again playing futsal.",
+        "title": "3度目の膝の怪我",
+        "description": "フットサルをしているときに再び膝を怪我しました。",
         "image": "injury2"
       }
     ]
   },
-  "footer": {
-    "about": "About",
-    "allRightsReserved": "All rights reserved",
-    "apps": "Apps",
-    "chat": "Chat",
-    "contactInfo": "Contact information",
-    "editOnCrowdin": "Edit translation",
-    "editOnGithub": "Edit on GitHub",
-    "home": "Home",
-    "name": "Shintaro Jokagi",
-    "settings": "Settings",
-    "sitemap": "Sitemap",
-    "blog": "Blog",
-    "scrollToTop": "Scroll to Top"
-  },
-  "notFound": {
-    "title": "Page not found",
-    "goBack": "Go back to Home"
-  },
-  "languageSwitcher": {
-    "language": "Language",
-    "english": "English",
-    "japanese": "日本語"
+  "popup": {
+    "share": "シェア",
+    "copy": "コピーする"
   }
 }

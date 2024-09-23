@@ -20,106 +20,57 @@ import VercelImage from '@/assets/icons/vercel.svg'
 import NetlifyImage from '@/assets/icons/netlify.svg'
 import FlaskImage from '@/assets/icons/flask.svg'
 
-export const categories = [
-  {
-    title: 'Languages',
-    skills: [
-      {
-        image: JavaScriptImage,
-        label: 'JavaScript',
-      },
-      {
-        image: TypeScriptImage,
-        label: 'TypeScript',
-      },
-      {
-        image: MarkdownImage,
-        label: 'Markdown',
-      },
-      {
-        image: PythonImage,
-        label: 'Python',
-      },
-      {
-        image: HtmlImage,
-        label: 'HTML',
-      },
-      {
-        image: CssImage,
-        label: 'CSS',
-      },
-    ],
-  },
-  {
-    title: 'Frameworks',
-    skills: [
-      {
-        image: NextJSImage,
-        label: 'Next.js',
-      },
-      {
-        image: ExpressJSImage,
-        label: 'Express',
-      },
-      {
-        image: ReactImage,
-        label: 'React.js',
-      },
-      {
-        image: NodeJSImage,
-        label: 'Node.js',
-      },
-      {
-        image: FlaskImage,
-        label: 'Flask',
-      },
-      {
-        image: TailwindCSSImage,
-        label: 'Tailwind CSS',
-      },
-    ],
-  },
-  {
-    title: 'SQL',
-    skills: [
-      {
-        image: MySQLImage,
-        label: 'MySQL',
-      },
-      {
-        image: SQLiteImage,
-        label: 'SQLite',
-      },
-      {
-        image: PostgreSQLImage,
-        label: 'PostgreSQL',
-      },
-    ],
-  },
-  {
-    title: 'SaaS',
-    skills: [
-      {
-        image: SupabaseImage,
-        label: 'Supabase',
-      },
-      {
-        image: VercelImage,
-        label: 'Vercel',
-      },
-      {
-        image: NetlifyImage,
-        label: 'Netlify',
-      },
-      {
-        image: GitHubImage,
-        label: 'GitHub',
-      },
-      {
-        image: Auth0Image,
-        label: 'Auth0',
-      },
-    ],
-  },
-]
+export const skillImages = {
+  GitHub: GitHubImage,
+  Auth0: Auth0Image,
+  JavaScript: JavaScriptImage,
+  TypeScript: TypeScriptImage,
+  Markdown: MarkdownImage,
+  Python: PythonImage,
+  HTML: HtmlImage,
+  CSS: CssImage,
+  NextJS: NextJSImage,
+  ExpressJS: ExpressJSImage,
+  React: ReactImage,
+  NodeJS: NodeJSImage,
+  TailwindCSS: TailwindCSSImage,
+  MySQL: MySQLImage,
+  SQLite: SQLiteImage,
+  PostgreSQL: PostgreSQLImage,
+  Supabase: SupabaseImage,
+  Vercel: VercelImage,
+  Netlify: NetlifyImage,
+  Flask: FlaskImage,
+}
+
+export const getImage = (key: string) => {
+  const keyMap: { [key: string]: keyof typeof skillImages } = {
+    GitHub: 'GitHub',
+    Auth0: 'Auth0',
+    JavaScript: 'JavaScript',
+    TypeScript: 'TypeScript',
+    Markdown: 'Markdown',
+    Python: 'Python',
+    HTML: 'HTML',
+    CSS: 'CSS',
+    'Next.js': 'NextJS',
+    Express: 'ExpressJS',
+    'React.js': 'React',
+    'Node.js': 'NodeJS',
+    'Tailwind CSS': 'TailwindCSS',
+    MySQL: 'MySQL',
+    SQLite: 'SQLite',
+    PostgreSQL: 'PostgreSQL',
+    Supabase: 'Supabase',
+    Vercel: 'Vercel',
+    Netlify: 'Netlify',
+    Flask: 'Flask',
+  }
+
+  if (Object.keys(keyMap).includes(key) === false) {
+    return GitHubImage
+  }
+
+  return skillImages[keyMap[key]]
+}
 ---

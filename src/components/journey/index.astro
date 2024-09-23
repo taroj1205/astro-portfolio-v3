@@ -9,7 +9,7 @@ import { JOURNEYIMAGES } from './journey.astro'
 const { lang } = Astro.params
 
 const { class: className, ...props } = Astro.props
-const { journey } = getUI(lang ?? 'en')
+const { journey, sections } = getUI(lang)
 
 const htmlDescriptions = journey.events.map((event) =>
   marked(event.description)
@@ -22,18 +22,12 @@ const htmlDescriptions = journey.events.map((event) =>
       <h2
         class="animate-fade-up text-3xl font-bold tracking-tighter transition-transform sm:text-4xl md:text-5xl"
       >
-        A Global Odyssey
+        {sections.journey.title}
       </h2>
       <p
         class="max-w-[900px] animate-fade-up text-muted-foreground transition-transform duration-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
       >
-        From the bustling streets of Tokyo to the serene landscapes of New
-        Zealand, my journey has been one of resilience, exploration, and growth.
-        Each chapter, marked by both triumphs and challenges, reflects my
-        dedication to learning, adapting, and making an impact across diverse
-        cultures and communities. This timeline showcases the pivotal moments
-        that have shaped my life, guiding me toward a future filled with
-        potential.
+        {sections.journey.description}
       </p>
       <div id="journey-grid" class="relative mt-12 w-full max-w-4xl">
         <div
@@ -44,7 +38,7 @@ const htmlDescriptions = journey.events.map((event) =>
         {
           journey.events
             .slice()
-            .sort((a, b) => b.timestamp.localeCompare(a.timestamp))
+            .sort((a, b) => b.date.localeCompare(a.date))
             .map((event, index) => (
               <div
                 class={cn(

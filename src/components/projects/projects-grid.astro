@@ -1,7 +1,8 @@
 ---
 import ProjectCard from './project-card.astro'
 import { useProjectsArray } from './projects.astro'
-const projects = useProjectsArray()
+const { lang } = Astro.params
+const projects = useProjectsArray(lang)
 ---
 
 <div

@@ -1,9 +1,17 @@
 ---
+import { getUI } from '@/utils/i18n.astro'
+
 const currentYear = new Date().getFullYear()
+
+const { lang } = Astro.params
+
+const {
+  sections: { footer },
+} = getUI(lang)
 ---
 
 <footer class="px-4 py-6 text-center lg:px-6">
   <p class="text-muted-foreground">
-    &copy; {currentYear} Shintaro Jokagi. All rights reserved.
+    {footer.copyright.replace('{year}', currentYear.toString())}
   </p>
 </footer>
