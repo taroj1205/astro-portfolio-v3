@@ -1,37 +1,37 @@
 ---
+import { getUI } from '@/utils/i18n.astro'
 import { Briefcase, Code, GraduationCap } from 'lucide-astro'
 
-const experiences = [
+const { lang } = Astro.params
+
+const { sections, experiences } = getUI(lang)
+
+const experiencesArray = [
   {
-    title: 'Teacher',
-    company: 'YAGO',
-    type: 'Contract',
-    date: 'Jul 2024 - Present',
-    duration: '3 mos',
-    location: 'Remote',
-    description:
-      'Teaching programming remotely on Zoom using Minecraft Education for classmall Kids.',
+    title: experiences.teacherYago.title,
+    company: experiences.teacherYago.organization,
+    type: experiences.teacherYago.contract,
+    date: experiences.teacherYago.dates,
+    location: experiences.teacherYago.location,
+    description: experiences.teacherYago.description,
     icon: Briefcase,
   },
   {
-    title: 'Open Source Contributor',
-    company: 'Yamada UI',
-    type: 'Volunteer',
-    date: 'Feb 2024 - Present',
-    duration: 'Ongoing',
-    location: 'Remote',
-    description:
-      'Contributing to Yamada UI, a React component library with hooks and utils.',
+    title: experiences.openSourceContributor.title,
+    company: experiences.openSourceContributor.organization,
+    type: experiences.openSourceContributor.volunteer,
+    date: experiences.openSourceContributor.dates,
+    location: experiences.openSourceContributor.location,
+    description: experiences.openSourceContributor.description,
     icon: Code,
   },
   {
-    title: 'Teacher Aid for International Students',
-    company: 'Westlake Boys High School',
-    type: 'Part-time',
-    date: 'Jan 2024 - Feb 2024',
-    duration: '2 mos',
-    location: 'North Shore, Auckland, New Zealand',
-    description: 'Worked as a teacher aid for international students.',
+    title: experiences.teacherAid.title,
+    company: experiences.teacherAid.organization,
+    type: experiences.teacherAid.partTime,
+    date: experiences.teacherAid.dates,
+    location: experiences.teacherAid.location,
+    description: experiences.teacherAid.description,
     icon: GraduationCap,
   },
 ]
@@ -47,23 +47,22 @@ const { class: className, ...props } = Astro.props
       <h2
         class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
       >
-        Experiences
+        {sections.experiences.title}
       </h2>
       <p
         class="max-w-[800px] animate-fade-up text-xl text-muted-foreground duration-700 md:text-2xl/relaxed"
       >
-        Highlight my professional experiences, including teaching, open source
+        {sections.experiences.description}
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
-        experiences.map(
+        experiencesArray.map(
           ({
             title,
             company,
             type,
             date,
-            duration,
             location,
             description,
             icon: Icon,

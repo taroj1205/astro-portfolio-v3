@@ -1,0 +1,21 @@
+---
+import { getPath } from '@/utils/i18n.astro'
+import { Globe } from 'lucide-astro'
+
+const { lang } = Astro.params
+const currentPath = Astro.url.pathname
+
+const isJapanese = lang === 'ja'
+
+const targetPath = isJapanese
+  ? currentPath.replace('/ja', '')
+  : getPath(currentPath, 'ja')
+---
+
+<a
+  href={targetPath}
+  class="fixed bottom-4 left-[4.5rem] z-50 rounded-full bg-primary p-3 text-primary-foreground shadow-lg transition-all duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95 sm:bottom-8 sm:left-[5.5rem]"
+  aria-label={`Switch to ${isJapanese ? 'English' : 'Japanese'}`}
+>
+  <Globe />
+</a>

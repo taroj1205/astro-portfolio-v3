@@ -1,8 +1,17 @@
 ---
-import type { ImageMetadata } from 'astro'
+import { getUI } from '@/utils/i18n.astro'
 import SkillItem from './skill-item.astro'
+import { getImage } from './skills.astro'
 
-const { title, skills } = Astro.props
+const { lang } = Astro.params
+const { skills } = getUI(lang)
+
+interface Props {
+  title: string
+  key: string
+}
+
+const { title, key } = Astro.props
 ---
 
 <div
@@ -11,8 +20,8 @@ const { title, skills } = Astro.props
   <h3 class="text-2xl font-bold text-primary">{title}</h3>
   <div class="grid gap-4">
     {
-      skills.map((skill: { icon: any; label: any; image: ImageMetadata }) => (
-        <SkillItem icon={skill.icon} image={skill.image} label={skill.label} />
+      Object.values(skills[key as keyof typeof skills].items).map((skill) => (
+        <SkillItem image={getImage(skill)} label={skill} />
       ))
     }
   </div>

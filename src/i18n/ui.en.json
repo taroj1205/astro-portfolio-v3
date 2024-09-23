@@ -1,131 +1,156 @@
 {
-  "metadata": {
-    "title": "taroj1205 - Portfolio",
-    "siteName": "taroj1205's Portfolio Website",
-    "description": "taroj1205's Portfolio website."
+  "sections": {
+    "hobbies": {
+      "title": "My Hobbies",
+      "description": "Discover the diverse range of interests that fuel my passion and creativity."
+    },
+    "skills": {
+      "title": "Technical Expertise",
+      "description": "Discover the diverse range of skills I've mastered to bring innovative ideas to life."
+    },
+    "experiences": {
+      "title": "Experiences",
+      "description": "Highlight my professional experiences, including teaching, open source contributions, and internships."
+    },
+    "journey": {
+      "title": "A Global Odyssey",
+      "description": "From the bustling streets of Tokyo to the serene landscapes of New Zealand, my journey has been one of resilience, exploration, and growth. Each chapter, marked by both triumphs and challenges, reflects my dedication to learning, adapting, and making an impact across diverse cultures and communities. This timeline showcases the pivotal moments that have shaped my life, guiding me toward a future filled with potential.",
+      "viewMore": "See My Journey"
+    },
+    "hero": {
+      "title": "Shintaro Jokagi",
+      "description": "Passionate university student, aspiring software engineer, and open-source contributor."
+    },
+    "projects": {
+      "title": "My Work",
+      "description": "Check out some of the projects I've worked on during my time at the university.",
+      "featured": "Featured Projects",
+      "viewProject": "View Project"
+    },
+    "footer": {
+      "copyright": "Copyright © {year} Shintaro Jokagi. All rights reserved."
+    },
+    "error": {
+      "404": {
+        "title": "404 - Page Not Found",
+        "description": "Oops! The page you are looking for does not exist. It might have been moved or deleted.",
+        "goHome": "Go Home"
+      }
+    }
   },
   "header": {
     "home": "Home",
-    "about": "About",
     "projects": "Projects",
+    "hobbies": "Hobbies",
+    "skills": "Skills",
     "journey": "Journey",
-    "blog": "Blog",
-    "contact": "Contact"
+    "experiences": "Experiences"
   },
-  "hero": {
-    "title": "Shintaro Jokagi",
-    "subtitle": "University of Auckland student | Computer Science & IT Management"
+  "hobbies": {
+    "soccer": {
+      "title": "Football (Soccer)",
+      "description": "The beautiful game that unites the world."
+    },
+    "programming": {
+      "title": "Programming",
+      "description": "Crafting digital solutions and bringing ideas to life."
+    },
+    "kendama": {
+      "title": "Kendama (けん玉)",
+      "description": "A traditional Japanese skill toy that challenges hand-eye coordination.",
+      "mediaUrl": "https://www.youtube.com/embed/9Y-NWFB--f8"
+    },
+    "juggling": {
+      "title": "Juggling",
+      "description": "The art of keeping multiple objects in constant motion.",
+      "mediaUrl": "https://www.youtube.com/embed/TaWXgxbzoOI"
+    },
+    "tableTennis": {
+      "title": "Table Tennis",
+      "description": "A fast-paced game of skill, strategy, and quick reflexes."
+    },
+    "shorinjiKempo": {
+      "title": "Shorinji Kempo",
+      "description": "A Japanese martial art focusing on self-defense and personal development."
+    },
+    "tennis": {
+      "title": "Tennis",
+      "description": "A classic sport combining athleticism, strategy, and finesse."
+    },
+    "basketball": {
+      "title": "Basketball",
+      "description": "A dynamic team sport that requires agility, coordination, and teamwork."
+    },
+    "volleyball": {
+      "title": "Volleyball",
+      "description": "A high-energy sport that emphasizes teamwork and quick reactions."
+    },
+    "baseball": {
+      "title": "Baseball",
+      "description": "America's pastime, combining strategy, skill, and tradition."
+    },
+    "softball": {
+      "title": "Softball",
+      "description": "A variant of baseball with a larger ball and smaller field."
+    },
+    "running": {
+      "title": "Running",
+      "description": "A fundamental form of exercise that promotes health and well-being."
+    },
+    "penSpinning": {
+      "title": "Pen Spinning",
+      "description": "The art of spinning a pen with your fingers, combining dexterity and creativity."
+    },
+    "badminton": {
+      "title": "Badminton",
+      "description": "A fast and graceful racquet sport played with a shuttlecock."
+    },
+    "yoyo": {
+      "title": "Yo-Yo",
+      "description": "A skill toy that has been entertaining people for centuries."
+    },
+    "pickleball": {
+      "title": "Pickleball",
+      "description": "A paddle sport that combines elements of tennis, badminton, and table tennis."
+    }
   },
-  "about": {
-    "title": "Brief Introduction",
-    "born": "Born in Japan (Tokyo) in 2005.",
-    "age": "18 years old.",
-    "highSchool": "Graduated Westlake Boys High School in 2023 (New Zealand).",
-    "university": "University of Auckland starting January 2024.",
-    "bachelor": "Bachelor of Science (Computer Science + Information and Technology Management)",
-    "livedIn": {
-      "title": "Lived in",
-      "japan": "Japan (Approx 10 years), Tokyo/Ehime",
-      "philippines": "The Philippines (A year and 3 months), Cebu",
-      "newzealand": "New Zealand (A year in 2017 and also since 2018), Auckland"
+  "skills": {
+    "languages": {
+      "title": "Languages",
+      "items": ["JavaScript", "TypeScript", "Markdown", "Python", "HTML", "CSS"]
     },
-    "schools": {
-      "title": "Been to 3 countries in 11 schools in 2023.",
-      "description": "Japan, Philippines and New Zealand"
+    "frameworks": {
+      "title": "Frameworks",
+      "items": [
+        "Next.js",
+        "Express",
+        "React.js",
+        "Node.js",
+        "Flask",
+        "Tailwind CSS"
+      ]
     },
-    "hobbies": {
-      "title": "Hobbies",
-      "soccer": {
-        "title": "Football (Soccer)",
-        "description": "The beautiful game that unites the world."
-      },
-      "programming": {
-        "title": "Programming",
-        "description": "Crafting digital solutions and bringing ideas to life."
-      },
-      "kendama": {
-        "title": "Kendama (けん玉)",
-        "description": "A traditional Japanese skill toy that challenges hand-eye coordination.",
-        "video": "https://www.youtube.com/embed/9Y-NWFB--f8"
-      },
-      "juggling": {
-        "title": "Juggling",
-        "description": "The art of keeping multiple objects in constant motion.",
-        "video": "https://www.youtube.com/embed/TaWXgxbzoOI"
-      },
-      "tableTennis": {
-        "title": "Table Tennis",
-        "description": "A fast-paced game of skill, strategy, and quick reflexes."
-      },
-      "shorinjiKempo": {
-        "title": "Shorinji Kempo",
-        "description": "A Japanese martial art focusing on self-defense and personal development."
-      },
-      "tennis": {
-        "title": "Tennis",
-        "description": "A classic sport combining athleticism, strategy, and finesse."
-      },
-      "basketball": {
-        "title": "Basketball",
-        "description": "A dynamic team sport that requires agility, coordination, and teamwork."
-      },
-      "volleyball": {
-        "title": "Volleyball",
-        "description": "A high-energy sport that emphasizes teamwork and quick reactions."
-      },
-      "baseball": {
-        "title": "Baseball",
-        "description": "America's pastime, combining strategy, skill, and tradition."
-      },
-      "softball": {
-        "title": "Softball",
-        "description": "A variant of baseball with a larger ball and smaller field."
-      },
-      "running": {
-        "title": "Running",
-        "description": "A fundamental form of exercise that promotes health and well-being."
-      },
-      "penSpinning": {
-        "title": "Pen Spinning",
-        "description": "The art of spinning a pen with your fingers, combining dexterity and creativity."
-      },
-      "badminton": {
-        "title": "Badminton",
-        "description": "A fast and graceful racquet sport played with a shuttlecock."
-      },
-      "yoyo": {
-        "title": "Yo-Yo",
-        "description": "A skill toy that has been entertaining people for centuries."
-      },
-      "pickleball": {
-        "title": "Pickleball",
-        "description": "A paddle sport that combines elements of tennis, badminton, and table tennis."
-      }
+    "databases": {
+      "title": "Databases",
+      "items": ["MySQL", "SQLite", "PostgreSQL"]
     },
-    "partTimeJob": {
-      "title": "Part-time Job",
-      "westlake": "Student aid for International Students at Westlake Boys High School (25th of January 2024 - 28th of February 2024)"
+    "saas": {
+      "title": "SaaS Platforms",
+      "items": ["Supabase", "Vercel", "Netlify", "GitHub", "Auth0"]
     }
   },
   "projects": {
-    "title": "Projects",
-    "viewProject": "View Project",
-    "github": "GitHub",
-    "portfolio": {
-      "title": "Portfolio",
-      "description": "This is my portfolio site."
+    "noteRss": {
+      "title": "Note Article List",
+      "description": "This is an RSS article list from Note for my younger brother."
     },
     "saveTwitterLinks": {
       "title": "Save Twitter Links",
-      "description": "This is a chrome extension for saving twitter links you've viewed."
-    },
-    "noteRss": {
-      "title": "Note Article List",
-      "description": "This is a RSS article list from Note for my younger brother."
+      "description": "This is a Chrome extension for saving Twitter links you've viewed."
     },
     "hideTwitterBots": {
       "title": "Hide Twitter Bots",
-      "description": "This is a chrome extension for hiding twitter bots."
+      "description": "This is a Chrome extension for hiding Twitter bots."
     },
     "typingGame": {
       "title": "Typing Game",
@@ -145,16 +170,40 @@
     },
     "reversi": {
       "title": "Reversi",
-      "description": "Reversi game made with Next.js"
+      "description": "A Reversi game made with Next.js."
     },
     "chatApp": {
       "title": "Chat App",
-      "description": "This is a feature-rich chat app made with Next.js and Supabase."
+      "description": "A feature-rich chat app made with Next.js and Supabase."
+    }
+  },
+  "experiences": {
+    "teacherYago": {
+      "title": "Teacher",
+      "organization": "YAGO",
+      "contract": "Contract",
+      "dates": "Jul 2024 - Present",
+      "location": "Remote",
+      "description": "Teaching programming remotely on Zoom using Minecraft Education for classmall Kids."
+    },
+    "openSourceContributor": {
+      "title": "Open Source Contributor",
+      "organization": "Yamada UI",
+      "volunteer": "Volunteer",
+      "dates": "Feb 2024 - Present",
+      "location": "Remote",
+      "description": "Contributing to Yamada UI, a React component library with hooks and utils."
+    },
+    "teacherAid": {
+      "title": "Teacher Aid for International Students",
+      "organization": "Westlake Boys High School",
+      "partTime": "Part-time",
+      "dates": "Jan 2024 - Feb 2024",
+      "location": "North Shore, Auckland, New Zealand",
+      "description": "Worked as a teacher aid for international students."
     }
   },
   "journey": {
-    "title": "My Journey",
-    "viewMore": "View More",
     "events": [
       {
         "timestamp": "2005, Dec",
@@ -235,28 +284,8 @@
       }
     ]
   },
-  "footer": {
-    "about": "About",
-    "allRightsReserved": "All rights reserved",
-    "apps": "Apps",
-    "chat": "Chat",
-    "contactInfo": "Contact information",
-    "editOnCrowdin": "Edit translation",
-    "editOnGithub": "Edit on GitHub",
-    "home": "Home",
-    "name": "Shintaro Jokagi",
-    "settings": "Settings",
-    "sitemap": "Sitemap",
-    "blog": "Blog",
-    "scrollToTop": "Scroll to Top"
-  },
-  "notFound": {
-    "title": "Page not found",
-    "goBack": "Go back to Home"
-  },
-  "languageSwitcher": {
-    "language": "Language",
-    "english": "English",
-    "japanese": "日本語"
+  "popup": {
+    "share": "Share",
+    "copy": "Copy Link"
   }
 }

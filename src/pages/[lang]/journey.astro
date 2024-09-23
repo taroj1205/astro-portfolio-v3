@@ -1,0 +1,12 @@
+---
+export function getStaticPaths() {
+  return [{ params: { lang: 'ja' } }]
+}
+
+import Layout from '@/components/layouts/default.astro'
+import JourneySection from '@/components/journey/index.astro'
+---
+
+<Layout>
+  <JourneySection id="journey" class:list="py-12 md:py-24 lg:py-32" />
+</Layout>

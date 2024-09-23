@@ -1,7 +1,14 @@
 ---
 import { cn } from '@/lib/utils'
 import HobbyItem from './hobby-item.astro'
-import { hobbies } from './hobbies.astro'
+import { useHobbiesArray } from './hobbies.astro'
+import { getUI } from '@/utils/i18n.astro'
+
+const { lang } = Astro.params
+
+const {
+  sections: { hobbies, journey },
+} = getUI(lang)
 
 const { class: className, ...props } = Astro.props
 ---
@@ -15,13 +22,12 @@ const { class: className, ...props } = Astro.props
         <h2
           class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
         >
-          My Hobbies
+          {hobbies.title}
         </h2>
         <p
           class="max-w-[900px] animate-fade-up text-xl text-muted-foreground md:text-2xl/relaxed"
         >
-          Discover the diverse range of interests that fuel my passion and
-          creativity.
+          {hobbies.description}
         </p>
       </div>
       <div
@@ -29,7 +35,7 @@ const { class: className, ...props } = Astro.props
         class="fade-up-2 grid animate-fade-up grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
       >
         {
-          hobbies.map((hobby, index) => (
+          useHobbiesArray(lang).map((hobby, index) => (
             <HobbyItem
               icon={hobby.icon}
               label={hobby.label}
@@ -50,7 +56,7 @@ const { class: className, ...props } = Astro.props
           'animate-fade-in duration-700',
         ]}
       >
-        See My Journey
+        {journey.viewMore}
       </a>
     </div>
   </div>

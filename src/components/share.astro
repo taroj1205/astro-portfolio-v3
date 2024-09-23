@@ -1,14 +1,15 @@
 ---
-import GoogleWalletIcon from '@/assets/wallet/google-wallet.svg'
-import AppleWalletIcon from '@/assets/wallet/apple-wallet.svg'
-import { Image } from 'astro:assets'
+import { getUI } from '@/utils/i18n.astro'
+
+const { lang } = Astro.params
+const { popup } = getUI(lang)
 ---
 
 <div>
   <button
     id="share-button"
     class="fixed bottom-4 left-4 z-50 rounded-full bg-primary p-3 text-primary-foreground shadow-lg transition-all duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95 sm:bottom-8 sm:left-8"
-    aria-label="Share"
+    aria-label={popup.share}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -33,34 +34,6 @@ import { Image } from 'astro:assets'
     class="fixed bottom-16 left-4 z-50 rounded-lg bg-background p-4 shadow-lg transition-all duration-300 ease-in-out sm:bottom-20 sm:left-8"
   >
     <div class="flex flex-col space-y-2">
-      <a
-        class="flex items-center space-x-2 rounded-md p-2 hover:bg-accent"
-        id="google-wallet"
-        href="https://pay.google.com/gp/v/save/eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ3YWxsZXQtd2ViLWNsaWVudEBuZXVyb3RhZ3MtaW5mcmExLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiZ29vZ2xlIiwib3JpZ2lucyI6WyJ3d3cuZXhhbXBsZS5jb20iXSwidHlwIjoic2F2ZXRvd2FsbGV0IiwicGF5bG9hZCI6eyJnZW5lcmljQ2xhc3NlcyI6W3siZW5hYmxlU21hcnRUYXAiOm51bGwsImlkIjoiMzM4ODAwMDAwMDAyMjI5ODAwMi5xcmNoaW1wX25ldzEiLCJtdWx0aXBsZURldmljZXNBbmRIb2xkZXJzQWxsb3dlZFN0YXR1cyI6bnVsbCwicmVkZW1wdGlvbklzc3VlcnMiOm51bGwsInZpZXdVbmxvY2tSZXF1aXJlbWVudCI6bnVsbH1dLCJnZW5lcmljT2JqZWN0cyI6W3siY2xhc3NJZCI6IjMzODgwMDAwMDAwMjIyOTgwMDIucXJjaGltcF9uZXcxIiwiZ2VuZXJpY1R5cGUiOm51bGwsImhhc1VzZXJzIjpudWxsLCJoZXhCYWNrZ3JvdW5kQ29sb3IiOiIjMzMzMzMzIiwiaWQiOiIzMzg4MDAwMDAwMDIyMjk4MDAyLjBvaSIsInNtYXJ0VGFwUmVkZW1wdGlvblZhbHVlIjpudWxsLCJzdGF0ZSI6IkFDVElWRSIsImJhcmNvZGUiOnsiYWx0ZXJuYXRlVGV4dCI6bnVsbCwia2luZCI6bnVsbCwicmVuZGVyRW5jb2RpbmciOm51bGwsInR5cGUiOiJRUl9DT0RFIiwidmFsdWUiOiJodHRwczovL3d3dy5xcmNvZGVjaGltcC5jb20vcGFnZS90YXJvajEyMDUifSwiaGVhZGVyIjp7ImtpbmQiOm51bGwsImRlZmF1bHRWYWx1ZSI6eyJraW5kIjpudWxsLCJsYW5ndWFnZSI6ImVuLVVTIiwidmFsdWUiOiJTaGludGFybyBKb2thZ2kifX0sInN1YmhlYWRlciI6eyJraW5kIjpudWxsLCJkZWZhdWx0VmFsdWUiOnsia2luZCI6bnVsbCwibGFuZ3VhZ2UiOiJlbi1VUyIsInZhbHVlIjoiRGV2ZWxvcGVyIn19LCJjYXJkVGl0bGUiOnsia2luZCI6bnVsbCwiZGVmYXVsdFZhbHVlIjp7ImtpbmQiOm51bGwsImxhbmd1YWdlIjoiZW4tVVMiLCJ2YWx1ZSI6IlN0dWRlbnQgYXQgVW5pdmVyc2l0eSBvZiBBdWNrbGFuZCJ9fSwidGV4dE1vZHVsZXNEYXRhIjpbeyJib2R5IjoidGFyb2oxMjA1QGdtYWlsLmNvbSIsImhlYWRlciI6IkVNQUlMIiwiaWQiOiJlbWFpbCJ9LHsiYm9keSI6Iis2NDIxMTI0NjExMSIsImhlYWRlciI6IlBIT05FIiwiaWQiOiJwaG9uZSJ9XX1dfX0.R4Q6ft3aJeQ8fsWGtDoy-e-lsuSUglz0OQE1HE7JmHl3Y_e713SFGaLaTwwduN875a2Fe9N9y47kmDgfgWT5-6rijRLRpwCSp2LRauCEPWG6NAu245xPdmJZ3XeRQHH6HFP4uhn5teSfYgdjHkVru_HYitZYm0P1OOt4D_-TwkxfRFU1BXXJ6DyAcGiGbPKhfvrbgOnzGCFoVifzjgCtSxFdQ2yXoTV8QmoFYw4JAC2IJV11KBnpJnrtxzecMCrCsNmoMuEeUOuAv9sHQuMcH6MT--aPGoI3p77sHma5dbfRd4Ai3KHHKqFpVUAuSw7PzKaqe5Eh7p40STicnWmKHA"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={GoogleWalletIcon}
-          height={40}
-          alt="Google Wallet"
-          class="h-10"
-        />
-      </a>
-      <a
-        class="flex items-center space-x-2 rounded-md p-2 hover:bg-accent"
-        id="apple-wallet"
-        href="/pass.pkpass"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={AppleWalletIcon}
-          height={40}
-          alt="Apple Wallet"
-          class="h-10"
-        />
-      </a>
       <button
         class="flex items-center space-x-2 rounded-md p-2 hover:bg-accent"
         id="copy-link"
@@ -81,7 +54,32 @@ import { Image } from 'astro:assets'
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
           ></path>
         </svg>
-        <span>Copy Link</span>
+        <span>{popup.copy}</span>
+      </button>
+
+      <button
+        id="native-share-button"
+        class="flex items-center space-x-2 rounded-md p-2 hover:bg-accent"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-6 w-6"
+        >
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+        <span>{popup.share}</span>
       </button>
     </div>
   </dialog>
@@ -97,6 +95,7 @@ import { Image } from 'astro:assets'
   const copyLinkButton = document.getElementById(
     'copy-link'
   ) as HTMLButtonElement
+  const nativeShareButton = document.getElementById('native-share-button')
 
   function toggleShareOptions() {
     if (shareDialog.open) {
@@ -144,42 +143,15 @@ import { Image } from 'astro:assets'
     })
   })
 
-  if (navigator.share) {
-    const nativeShareButton = document.createElement('button')
-    nativeShareButton.className =
-      'flex items-center space-x-2 rounded-md p-2 hover:bg-accent'
-    nativeShareButton.innerHTML = `
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="h-6 w-6"
-      >
-        <circle cx="18" cy="5" r="3"></circle>
-        <circle cx="6" cy="12" r="3"></circle>
-        <circle cx="18" cy="19" r="3"></circle>
-        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-      </svg>
-      <span>Share</span>
-    `
+  if (nativeShareButton) {
     nativeShareButton.addEventListener('click', () => {
       navigator
         .share({
           title: document.title,
           url: window.location.href,
         })
-        .then(() => {
-          console.log('Thanks for sharing!')
-        })
+        .then(() => console.log('Thanks for sharing!'))
         .catch(console.error)
     })
-    shareDialog.querySelector('div')?.appendChild(nativeShareButton)
   }
 </script>

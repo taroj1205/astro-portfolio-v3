@@ -14,107 +14,104 @@ import TerminalIcon from '@/icons/terminal-icon.astro'
 import TennisIcon from '@/icons/tennis-icon.astro'
 import VolleyballIcon from '@/icons/volleyball-icon.astro'
 import YoYoIcon from '@/icons/yoyo-icon.astro'
+import { getUI } from '@/utils/i18n.astro'
 
-export const hobbies = [
-  {
-    icon: SoccerIcon,
-    label: 'Football (Soccer)',
-    description: 'The beautiful game that unites the world.',
+export const useHobbiesArray = (lang?: string) => {
+  const { hobbies } = getUI(lang)
 
-    order: 1,
-  },
-  {
-    icon: TerminalIcon,
-    label: 'Programming',
-    description: 'Crafting digital solutions and bringing ideas to life.',
-
-    order: 2,
-  },
-  {
-    icon: KendamaIcon,
-    label: 'Kendama (けん玉)',
-    description:
-      'A traditional Japanese skill toy that challenges hand-eye coordination.',
-    mediaUrl: 'https://www.youtube.com/embed/9Y-NWFB--f8',
-    drawer: true,
-    order: 3,
-  },
-  {
-    icon: JugglingIcon,
-    label: 'Juggling',
-    description: 'The art of keeping multiple objects in constant motion.',
-    mediaUrl: 'https://www.youtube.com/embed/TaWXgxbzoOI',
-    drawer: true,
-    order: 4,
-  },
-  {
-    icon: TableTennisIcon,
-    label: 'Table Tennis',
-    description: 'A fast-paced game of skill, strategy, and quick reflexes.',
-
-    order: 5,
-  },
-  {
-    icon: ShorinjiKempoIcon,
-    label: 'Shorinji Kempo',
-    description:
-      'A Japanese martial art focusing on self-defense and personal development.',
-
-    order: 6,
-  },
-  {
-    icon: TennisIcon,
-    label: 'Tennis',
-    description:
-      'A classic sport combining athleticism, strategy, and finesse.',
-  },
-  {
-    icon: BasketballIcon,
-    label: 'Basketball',
-    description:
-      'A dynamic team sport that requires agility, coordination, and teamwork.',
-  },
-  {
-    icon: VolleyballIcon,
-    label: 'Volleyball',
-    description:
-      'A high-energy sport that emphasizes teamwork and quick reactions.',
-  },
-  {
-    icon: BaseballIcon,
-    label: 'Baseball',
-    description: "America's pastime, combining strategy, skill, and tradition.",
-  },
-  {
-    icon: SoftballIcon,
-    label: 'Softball',
-    description: 'A variant of baseball with a larger ball and smaller field.',
-  },
-  {
-    icon: RunningIcon,
-    label: 'Running',
-    description:
-      'A fundamental form of exercise that promotes health and well-being.',
-  },
-  {
-    icon: BadmintonIcon,
-    label: 'Badminton',
-    description: 'A fast and graceful racquet sport played with a shuttlecock.',
-  },
-  {
-    icon: YoYoIcon,
-    label: 'Yo-Yo',
-    description: 'A skill toy that has been entertaining people for centuries.',
-  },
-  {
-    icon: PickleballIcon,
-    label: 'Pickleball',
-    description:
-      'A paddle sport that combines elements of tennis, badminton, and table tennis.',
-  },
-]
-
-export type HobbiesProps = typeof hobbies
-
-export type HobbyProps = (typeof hobbies)[number]
+  return [
+    {
+      icon: SoccerIcon,
+      label: hobbies.soccer.title,
+      description: hobbies.soccer.description,
+      order: 1,
+    },
+    {
+      icon: TerminalIcon,
+      label: hobbies.programming.title,
+      description: hobbies.programming.description,
+      order: 2,
+    },
+    {
+      icon: KendamaIcon,
+      label: hobbies.kendama.title,
+      description: hobbies.kendama.description,
+      mediaUrl: hobbies.kendama.mediaUrl,
+      order: 3,
+    },
+    {
+      icon: JugglingIcon,
+      label: hobbies.juggling.title,
+      description: hobbies.juggling.description,
+      mediaUrl: hobbies.juggling.mediaUrl,
+      order: 4,
+    },
+    {
+      icon: TableTennisIcon,
+      label: hobbies.tableTennis.title,
+      description: hobbies.tableTennis.description,
+      order: 5,
+    },
+    {
+      icon: ShorinjiKempoIcon,
+      label: hobbies.shorinjiKempo.title,
+      description: hobbies.shorinjiKempo.description,
+      order: 6,
+    },
+    {
+      icon: TennisIcon,
+      label: hobbies.tennis.title,
+      description: hobbies.tennis.description,
+      order: 7,
+    },
+    {
+      icon: BasketballIcon,
+      label: hobbies.basketball.title,
+      description: hobbies.basketball.description,
+      order: 8,
+    },
+    {
+      icon: VolleyballIcon,
+      label: hobbies.volleyball.title,
+      description: hobbies.volleyball.description,
+      order: 9,
+    },
+    {
+      icon: BaseballIcon,
+      label: hobbies.baseball.title,
+      description: hobbies.baseball.description,
+      order: 10,
+    },
+    {
+      icon: SoftballIcon,
+      label: hobbies.softball.title,
+      description: hobbies.softball.description,
+      order: 11,
+    },
+    {
+      icon: RunningIcon,
+      label: hobbies.running.title,
+      description: hobbies.running.description,
+      order: 12,
+    },
+    {
+      icon: BadmintonIcon,
+      label: hobbies.badminton.title,
+      description: hobbies.badminton.description,
+      order: 13,
+    },
+    {
+      icon: YoYoIcon,
+      label: hobbies.yoyo.title,
+      description: hobbies.yoyo.description,
+      order: 14,
+    },
+    {
+      icon: PickleballIcon,
+      label: hobbies.pickleball.title,
+      description: hobbies.pickleball.description,
+      order: 15,
+    },
+  ]
+}
 ---
