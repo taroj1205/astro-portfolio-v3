@@ -4,9 +4,9 @@ import { Globe } from 'lucide-astro'
 
 const { lang } = Astro.params
 const currentPath = Astro.url.pathname
+
 const isJapanese = lang === 'ja'
 
-const targetLang = isJapanese ? 'en' : 'ja'
 const targetPath = isJapanese
   ? currentPath.replace('/ja', '')
   : getPath(currentPath, 'ja')
