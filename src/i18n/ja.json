@@ -15,7 +15,8 @@
     "journey": {
       "title": "世界を巡る旅",
       "description": "私の人生の中で訪れたさまざまな国と重要な瞬間を探索してください。",
-      "viewMore": "世界を巡る旅を見る"
+      "viewMore": "世界を巡る旅を見る",
+      "goBack": "戻る"
     },
     "hero": {
       "title": "上鍵心太朗",

@@ -1,7 +1,7 @@
 ---
 import { CONSTANT } from '@/constant'
-import UI_EN from '@/i18n/ui.en.json'
-import UI_JA from '@/i18n/ui.ja.json'
+import UI_EN from '@/i18n/en.json'
+import UI_JA from '@/i18n/ja.json'
 
 export type Locale = (typeof locales)[number]
 
@@ -26,12 +26,4 @@ export const getUI = (locale?: Locale | string) => {
     : CONSTANT.I18N.DEFAULT_LOCALE
   return ui[validLocale as Locale]
 }
-
-// type Translations = typeof UI_EN
-
-// type NestedKeyOf<ObjectType extends object> = {
-//   [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
-//     ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
-//     : `${Key}`
-// }[keyof ObjectType & (string | number)]
 ---

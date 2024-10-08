@@ -15,7 +15,8 @@
     "journey": {
       "title": "A Global Odyssey",
       "description": "From the bustling streets of Tokyo to the serene landscapes of New Zealand, my journey has been one of resilience, exploration, and growth. Each chapter, marked by both triumphs and challenges, reflects my dedication to learning, adapting, and making an impact across diverse cultures and communities. This timeline showcases the pivotal moments that have shaped my life, guiding me toward a future filled with potential.",
-      "viewMore": "See My Journey"
+      "viewMore": "See My Journey",
+      "goBack": "Go Back"
     },
     "hero": {
       "title": "Shintaro Jokagi",
