@@ -65,7 +65,7 @@ const htmlDescriptions = journey.events.map((event) =>
                             <Image
                               src={image}
                               alt={event.title}
-                              class="mt-4 max-h-[300px] w-fit rounded-lg object-contain shadow-md"
+                              class="mt-4 max-h-[300px] w-fit rounded-lg object-contain"
                               loading="lazy"
                               {...generateSizesAndWidths(
                                 image.width,
@@ -97,7 +97,7 @@ const htmlDescriptions = journey.events.map((event) =>
         id="go-home"
         class="inline-flex h-9 w-96 max-w-[90%] items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
       >
-        Go Back
+        {sections.journey.goBack}
       </a>
     </div>
   </div>
