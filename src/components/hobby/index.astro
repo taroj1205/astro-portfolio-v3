@@ -48,7 +48,7 @@ const { class: className, ...props } = Astro.props
       </div>
 
       <a
-        href="/journey"
+        href={lang == 'ja' ? '/ja/journey' : '/journey'}
         id="go-journey"
         class:list={[
           'inline-flex h-9 w-96 max-w-[90%] items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
