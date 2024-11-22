@@ -6,9 +6,10 @@ const { icon: Icon, label, description, mediaUrl, index } = Astro.props
 
 <div
   class={cn(
-    'hobby-item group flex cursor-pointer flex-col items-center gap-3',
+    'hobby-item group flex flex-col items-center gap-3',
     'animate-fade-up',
-    `delay-[${index * 100}ms]`
+    `delay-[${index * 100}ms]`,
+    mediaUrl && 'cursor-pointer'
   )}
   data-label={label}
   data-description={description}

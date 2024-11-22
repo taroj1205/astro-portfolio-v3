@@ -23,7 +23,7 @@
     },
     "projects": {
       "title": "私の作品",
-      "description": "大学で取り組んできたプロジェクトの一部をご覧ください。",
+      "description": "取り組んできたプロジェクトの一部をご覧ください。",
       "featured": "注目のプロジェクト",
       "viewProject": "プロジェクトを見る"
     },
@@ -144,6 +144,10 @@
       "title": "Note 記事リスト",
       "description": "これは弟のために作ったNoteからのRSS記事リストです。"
     },
+    "tauriClipboardManager": {
+      "title": "クリップボードを管理するアプリ",
+      "description": "Tauriで作成された画像も検索できる革新的なクリップボードマネージャーです。"
+    },
     "saveTwitterLinks": {
       "title": "Twitter リンク保存",
       "description": "閲覧したTwitterリンクを保存するためのChrome拡張機能です。"
@@ -184,7 +188,7 @@
       "contract": "契約",
       "dates": "2024年7月 - 現在",
       "location": "リモート",
-      "description": "クラスモールキッズ向けにMinecraft Educationを使ったプログラミング教育をZoomでリモート指導。"
+      "description": "小学校低学年や年長を対象としたMinecraft Educationを使ったプログラミング教育をZoomでリモート指導。"
     },
     "openSourceContributor": {
       "title": "オープンソース貢献者",
@@ -200,7 +204,7 @@
       "partTime": "パートタイム",
       "dates": "2024年1月 - 2024年2月",
       "location": "ニュージーランド、オークランド、ノースショア",
-      "description": "国際学生のためのティーチャーエイドとして勤務。"
+      "description": "日本から来た留学生のための先生アシスタントとして勤務。"
     }
   },
   "journey": {
