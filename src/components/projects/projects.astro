@@ -1,13 +1,10 @@
 ---
-import appPyImage from '@/assets/projects/app_py.webp'
 import chatImage from '@/assets/projects/chat.webp'
 import connect4Image from '@/assets/projects/connect-4.webp'
-import hideTwitterBotsImage from '@/assets/projects/hide-twitter-bots.webp'
 import noteRssImage from '@/assets/projects/note-rss.webp'
 import reversiImage from '@/assets/projects/reversi.webp'
-import saveTwitterLinksImage from '@/assets/projects/save-twitter-links.webp'
 import typingGameImage from '@/assets/projects/typing-game.webp'
-import unityTypingGameImage from '@/assets/projects/unity-typing.webp'
+import clipboardManagerImage from '@/assets/projects/tauri-clipboard-manager.webp'
 import { getUI } from '@/utils/i18n.astro'
 
 export const useProjectsArray = (lang?: string) => {
@@ -23,22 +20,13 @@ export const useProjectsArray = (lang?: string) => {
       githubLink: 'https://github.com/taroj1205/nextjs-note-rss-minytheminer',
     },
     {
-      title: projects.saveTwitterLinks.title,
-      description: projects.saveTwitterLinks.description,
-      thumbnail: saveTwitterLinksImage,
-      lang: ['JavaScript', 'TypeScript'],
-      framework: ['Chrome'],
-      link: 'https://github.com/taroj1205/chrome-twitter-link/releases/latest',
-      githubLink: 'https://github.com/taroj1205/chrome-twitter-link',
-    },
-    {
-      title: projects.hideTwitterBots.title,
-      description: projects.hideTwitterBots.description,
-      thumbnail: hideTwitterBotsImage,
-      lang: ['JavaScript', 'TypeScript'],
-      framework: ['Chrome'],
-      link: 'https://github.com/taroj1205/chrome-twitter-bots/releases/latest',
-      githubLink: 'https://github.com/taroj1205/chrome-twitter-bots',
+      title: projects.tauriClipboardManager.title,
+      description: projects.tauriClipboardManager.description,
+      thumbnail: clipboardManagerImage,
+      lang: ['Rust', 'TypeScript'],
+      framework: ['Tauri', 'Solid.js'],
+      link: 'https://github.com/taroj1205/tauri-clipboard-manager',
+      githubLink: 'https://github.com/taroj1205/tauri-clipboard-manager',
     },
     {
       title: projects.typingGame.title,
@@ -57,25 +45,6 @@ export const useProjectsArray = (lang?: string) => {
       framework: ['Next.js'],
       link: 'https://connect4-taroj.vercel.app/',
       githubLink: 'https://github.com/taroj1205/nextjs-connect4',
-    },
-    {
-      title: projects.typingGameUnity.title,
-      description: projects.typingGameUnity.description,
-      thumbnail: unityTypingGameImage,
-      lang: ['C#'],
-      framework: ['Unity'],
-      link: 'https://github.com/taroj1205/Typing-Game',
-      githubLink: 'https://github.com/taroj1205/Typing-Game',
-    },
-    {
-      title: projects.typingGameFlask.title,
-      description: projects.typingGameFlask.description,
-      thumbnail: appPyImage,
-      lang: ['JavaScript'],
-      framework: ['Flask', 'SQLite3'],
-      link: 'https://taroj1205.github.io/typing/',
-      githubLink:
-        'https://github.com/taroj1205/taroj1205.github.io/tree/main/typing',
     },
     {
       title: projects.reversi.title,

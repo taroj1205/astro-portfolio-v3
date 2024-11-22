@@ -23,7 +23,7 @@
     },
     "projects": {
       "title": "My Work",
-      "description": "Check out some of the projects I've worked on during my time at the university.",
+      "description": "Check out some of the projects I've worked!",
       "featured": "Featured Projects",
       "viewProject": "View Project"
     },
@@ -143,6 +143,10 @@
     "noteRss": {
       "title": "Note Article List",
       "description": "This is an RSS article list from Note for my younger brother."
+    },
+    "tauriClipboardManager": {
+      "title": "Tauri Clipboard Manager",
+      "description": "A revolutionary clipboard manager built with Tauri that can search images."
     },
     "saveTwitterLinks": {
       "title": "Save Twitter Links",
