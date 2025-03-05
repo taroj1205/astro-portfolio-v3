@@ -2,28 +2,28 @@
   "sections": {
     "hobbies": {
       "title": "My Hobbies",
-      "description": "Discover the diverse range of interests that fuel my passion and creativity."
+      "description": "I have a lot of hobbies that I enjoy doing in my free time."
     },
     "skills": {
       "title": "Technical Expertise",
-      "description": "Discover the diverse range of skills I've mastered to bring innovative ideas to life."
+      "description": "These are the libraries and frameworks I've worked with."
     },
     "experiences": {
       "title": "Experiences",
-      "description": "Highlight my professional experiences, including teaching, open source contributions, and internships."
+      "description": "I am part of the Yamada UI maintainer team, and I have been teaching programming."
     },
     "journey": {
       "title": "A Global Odyssey",
-      "description": "From the bustling streets of Tokyo to the serene landscapes of New Zealand, my journey has been one of resilience, exploration, and growth. Each chapter, marked by both triumphs and challenges, reflects my dedication to learning, adapting, and making an impact across diverse cultures and communities. This timeline showcases the pivotal moments that have shaped my life, guiding me toward a future filled with potential.",
+      "description": "I've lived in Japan, The Philippines, and New Zealand.",
       "viewMore": "See My Journey"
     },
     "hero": {
       "title": "Shintaro Jokagi",
-      "description": "Passionate university student, aspiring software engineer, and open-source contributor."
+      "description": "A university student, who enjoys proramming, and open-source contributor."
     },
     "projects": {
       "title": "My Work",
-      "description": "Check out some of the projects I've worked!",
+      "description": "Check out some of the projects I've worked on!",
       "featured": "Featured Projects",
       "viewProject": "View Project"
     },
@@ -49,11 +49,11 @@
   "hobbies": {
     "soccer": {
       "title": "Football (Soccer)",
-      "description": "The beautiful game that unites the world."
+      "description": "This is the first sport I played as a child, and it's still my favorite."
     },
     "programming": {
       "title": "Programming",
-      "description": "Crafting digital solutions and bringing ideas to life."
+      "description": "At home, I code in my free time. I mostly work on websites, but recently gotten into dekstop apps."
     },
     "kendama": {
       "title": "Kendama (けん玉)",
@@ -62,12 +62,12 @@
     },
     "juggling": {
       "title": "Juggling",
-      "description": "The art of keeping multiple objects in constant motion.",
+      "description": "I started juggling because it was related to Kendama.",
       "mediaUrl": "https://www.youtube.com/embed/TaWXgxbzoOI"
     },
     "tableTennis": {
       "title": "Table Tennis",
-      "description": "A fast-paced game of skill, strategy, and quick reflexes."
+      "description": "I started playing table tennis when I came to New Zealand."
     },
     "shorinjiKempo": {
       "title": "Shorinji Kempo",
@@ -75,43 +75,23 @@
     },
     "tennis": {
       "title": "Tennis",
-      "description": "A classic sport combining athleticism, strategy, and finesse."
+      "description": "I enjoyed playing it because it was similar to table tennis, and it was easy for me to get into it."
     },
     "basketball": {
       "title": "Basketball",
-      "description": "A dynamic team sport that requires agility, coordination, and teamwork."
-    },
-    "volleyball": {
-      "title": "Volleyball",
-      "description": "A high-energy sport that emphasizes teamwork and quick reactions."
-    },
-    "baseball": {
-      "title": "Baseball",
-      "description": "America's pastime, combining strategy, skill, and tradition."
+      "description": "I played this with my friends in my intermediate school."
     },
     "softball": {
       "title": "Softball",
-      "description": "A variant of baseball with a larger ball and smaller field."
+      "description": "I've played in one casual competition, and enjoyed it."
     },
     "running": {
       "title": "Running",
-      "description": "A fundamental form of exercise that promotes health and well-being."
-    },
-    "penSpinning": {
-      "title": "Pen Spinning",
-      "description": "The art of spinning a pen with your fingers, combining dexterity and creativity."
+      "description": "Furthest I've ran was 10km."
     },
     "badminton": {
       "title": "Badminton",
-      "description": "A fast and graceful racquet sport played with a shuttlecock."
-    },
-    "yoyo": {
-      "title": "Yo-Yo",
-      "description": "A skill toy that has been entertaining people for centuries."
-    },
-    "pickleball": {
-      "title": "Pickleball",
-      "description": "A paddle sport that combines elements of tennis, badminton, and table tennis."
+      "description": "I played casual badminton at high school, and I really enjoyed it. It's also similar to table tennis."
     }
   },
   "skills": {
@@ -178,7 +158,7 @@
     },
     "chatApp": {
       "title": "Chat App",
-      "description": "A feature-rich chat app made with Next.js and Supabase."
+      "description": "This is the first app I made with Next.js, uses Supabase."
     }
   },
   "experiences": {

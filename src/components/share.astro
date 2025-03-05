@@ -31,7 +31,7 @@ const { popup } = getUI(lang)
 
   <dialog
     id="share-dialog"
-    class="fixed bottom-16 left-4 z-50 rounded-lg bg-background p-4 shadow-lg transition-all duration-300 ease-in-out sm:bottom-20 sm:left-8"
+    class="fixed bottom-16 left-4 mx-0 mb-4 origin-bottom-left scale-0 rounded-lg bg-background p-4 opacity-0 shadow-lg transition-all duration-300 ease-in-out backdrop:backdrop-blur-0 backdrop:transition-all sm:bottom-20 sm:left-8"
   >
     <div class="flex flex-col space-y-2">
       <button
@@ -87,13 +87,13 @@ const { popup } = getUI(lang)
 
 <script>
   const shareButton = document.getElementById(
-    'share-button'
+    'share-button',
   ) as HTMLButtonElement
   const shareDialog = document.getElementById(
-    'share-dialog'
+    'share-dialog',
   ) as HTMLDialogElement
   const copyLinkButton = document.getElementById(
-    'copy-link'
+    'copy-link',
   ) as HTMLButtonElement
   const nativeShareButton = document.getElementById('native-share-button')
 
@@ -107,16 +107,24 @@ const { popup } = getUI(lang)
 
   function openDialog() {
     shareDialog.showModal()
-    shareDialog.classList.remove('opacity-0', 'scale-95')
-    shareDialog.classList.add('opacity-100', 'scale-100')
+    shareDialog.classList.replace('opacity-0', 'opacity-100')
+    shareDialog.classList.replace(
+      'backdrop:backdrop-blur-0',
+      'backdrop:backdrop-blur-sm',
+    )
+    shareDialog.classList.replace('scale-0', 'scale-100')
   }
 
   function closeDialog() {
-    shareDialog.classList.remove('opacity-100', 'scale-100')
-    shareDialog.classList.add('opacity-0', 'scale-95')
+    shareDialog.classList.replace('opacity-100', 'opacity-0')
+    shareDialog.classList.replace(
+      'backdrop:backdrop-blur-sm',
+      'backdrop:backdrop-blur-0',
+    )
+    shareDialog.classList.replace('scale-100', 'scale-0')
     setTimeout(() => {
       shareDialog.close()
-    }, 300)
+    }, 100)
   }
 
   shareButton.addEventListener('click', toggleShareOptions)
@@ -139,6 +147,7 @@ const { popup } = getUI(lang)
       copyLinkButton.textContent = 'Copied!'
       setTimeout(() => {
         copyLinkButton.textContent = originalText
+        closeDialog()
       }, 2000)
     })
   })
@@ -150,7 +159,7 @@ const { popup } = getUI(lang)
           title: document.title,
           url: window.location.href,
         })
-        .then(() => console.log('Thanks for sharing!'))
+        .then(() => closeDialog())
         .catch(console.error)
     })
   }

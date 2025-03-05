@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --port 3000",
-    "start": "astro preview",
+    "start": "astro preview --port 3000",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.6",
+    "@astrojs/tailwind": "^6.0.0",
+    "astro": "^5.4.2",
     "astro-icon": "^1.1.1",
     "clsx": "^2.1.1",
     "lucide-astro": "^0.445.0",

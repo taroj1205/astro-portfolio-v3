@@ -13,7 +13,7 @@ export const getPath = (path: string, locale?: string) => {
 export const locales = CONSTANT.I18N.LOCALES.map(({ value }) => value)
 
 export const otherLocales = CONSTANT.I18N.LOCALES.map(
-  ({ value }) => value
+  ({ value }) => value,
 ).filter((locale) => locale !== CONSTANT.I18N.DEFAULT_LOCALE)
 
 export type UI = typeof UI_EN

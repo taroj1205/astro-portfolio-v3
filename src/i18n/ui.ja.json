@@ -2,24 +2,24 @@
   "sections": {
     "hobbies": {
       "title": "趣味",
-      "description": "私の情熱と創造性を支える多彩な趣味を紹介します。"
+      "description": "自由な時間にいろいろな趣味を楽しんでいます。"
     },
     "skills": {
       "title": "技術的専門知識",
-      "description": "革新的なアイデアを実現するために習得した多様なスキルを紹介します。"
+      "description": "使用してきたライブラリやフレームワークです。"
     },
     "experiences": {
       "title": "経験",
-      "description": "指導、オープンソースへの貢献、インターンシップなど、私のプロフェッショナルな経験を紹介します。"
+      "description": "Yamada UIのメンテナーチームの一員、またプログラミング教育に携わっています。"
     },
     "journey": {
       "title": "世界を巡る旅",
-      "description": "私の人生の中で訪れたさまざまな国と重要な瞬間を探索してください。",
-      "viewMore": "世界を巡る旅を見る"
+      "description": "日本、フィリピンとニュージーランドに住んだことがあります。",
+      "viewMore": "詳しく見る"
     },
     "hero": {
       "title": "上鍵心太朗",
-      "description": "情熱的な大学生、将来有望なソフトウェアエンジニア、オープンソースの貢献者。"
+      "description": "開発を楽しむオークランド大学生、オープンソースの貢献者。"
     },
     "projects": {
       "title": "私の作品",
@@ -49,25 +49,25 @@
   "hobbies": {
     "soccer": {
       "title": "サッカー",
-      "description": "世界を一つにする美しいスポーツ。"
+      "description": "子供時代に最初に始めたスポーツで、今でも一番好きなスポーツです。"
     },
     "programming": {
       "title": "プログラミング",
-      "description": "デジタルソリューションを作り、アイデアを形にする技術。"
+      "description": "家で空いた時間にコーディングをしています。主にウェブサイトを作っていますが、最近はデスクトップアプリも始めました。"
     },
     "kendama": {
       "title": "けん玉",
-      "description": "手と目の協調性を試す日本の伝統的なスキルトイ。",
+      "description": "小学生のころからやっているサッカーの次に好きなことです。",
       "mediaUrl": "https://www.youtube.com/embed/9Y-NWFB--f8"
     },
     "juggling": {
       "title": "ジャグリング",
-      "description": "複数の物体を常に動かし続けるアート。",
+      "description": "けん玉のジャグ剣という技をきっかけに始めました。",
       "mediaUrl": "https://www.youtube.com/embed/TaWXgxbzoOI"
     },
     "tableTennis": {
       "title": "卓球",
-      "description": "スピード、戦略、反射神経が求められるスポーツ。"
+      "description": "ニュージーランドへ来てから始めました。"
     },
     "shorinjiKempo": {
       "title": "少林寺拳法",
@@ -75,43 +75,23 @@
     },
     "tennis": {
       "title": "テニス",
-      "description": "運動能力、戦略、繊細さが求められるクラシックなスポーツ。"
+      "description": "卓球と似ているのですぐに始められました。"
     },
     "basketball": {
       "title": "バスケットボール",
-      "description": "機敏さ、協調性、チームワークが必要なダイナミックなスポーツ。"
-    },
-    "volleyball": {
-      "title": "バレーボール",
-      "description": "チームワークと迅速な反応が重要なエネルギッシュなスポーツ。"
-    },
-    "baseball": {
-      "title": "野球",
-      "description": "戦略、技術、伝統が組み合わさったアメリカの国技。"
+      "description": "友達に誘われて初めてニュージーランドへ来た時に行った中学校で昼休みにやっていました。"
     },
     "softball": {
       "title": "ソフトボール",
-      "description": "野球のバリアントで、大きなボールと小さなフィールドで行われます。"
+      "description": "知り合いに誘われてやってみて練習しました。"
     },
     "running": {
       "title": "ランニング",
       "description": "健康とウェルビーイングを促進する基本的な運動形態。"
     },
-    "penSpinning": {
-      "title": "ペン回し",
-      "description": "指の器用さと創造性を組み合わせたペン回しのアート。"
-    },
     "badminton": {
       "title": "バドミントン",
-      "description": "シャトルを使った優雅で速いペースのラケットスポーツ。"
-    },
-    "yoyo": {
-      "title": "ヨーヨー",
-      "description": "何世紀にもわたって人々を楽しませてきたスキルトイ。"
-    },
-    "pickleball": {
-      "title": "ピックルボール",
-      "description": "テニス、バドミントン、卓球の要素を組み合わせたパドルスポーツ。"
+      "description": "高校でバドミントンへ誘われて始めました。"
     }
   },
   "skills": {
@@ -178,7 +158,7 @@
     },
     "chatApp": {
       "title": "チャットアプリ",
-      "description": "Next.jsとSupabaseで作成された多機能チャットアプリです。"
+      "description": "初めてNext.jsのようなJSフレームワークで作ったアプリです。"
     }
   },
   "experiences": {

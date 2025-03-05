@@ -89,8 +89,8 @@ const navItems = [
     navItems.forEach((item) =>
       item.setAttribute(
         'data-active',
-        item.getAttribute('data-section') === activeSection ? 'true' : 'false'
-      )
+        item.getAttribute('data-section') === activeSection ? 'true' : 'false',
+      ),
     )
   }
 
