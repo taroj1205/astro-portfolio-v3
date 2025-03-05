@@ -5,6 +5,7 @@ import { generateSizesAndWidths } from '@/utils/image'
 import { getUI } from '@/utils/i18n.astro'
 import { marked } from 'marked'
 import { JOURNEYIMAGES } from './journey.astro'
+import style from './journey.module.css'
 
 const { lang } = Astro.params
 
@@ -12,89 +13,61 @@ const { class: className, ...props } = Astro.props
 const { journey, sections } = getUI(lang)
 ---
 
-<section class={cn('w-full', className)} {...props}>
-  <div id="journey-section" class="container px-4 md:px-6">
-    <div class="flex flex-col items-center justify-center gap-4 text-center">
-      <h2
-        class="animate-fade-up text-3xl font-bold tracking-tighter transition-transform sm:text-4xl md:text-5xl"
-      >
-        {sections.journey.title}
-      </h2>
-      <p
-        class="max-w-[900px] animate-fade-up text-muted-foreground transition-transform duration-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-      >
-        {sections.journey.description}
-      </p>
-      <div id="journey-grid" class="relative mt-12 w-full max-w-4xl">
-        <div
-          class="absolute bottom-0 left-4 top-0 hidden w-1 -translate-x-1/2 transform animate-fade-up bg-gradient-to-b from-primary to-primary-foreground transition-opacity duration-500 md:left-1/2 md:block md:translate-x-0"
-        >
-        </div>
-
-        {
-          journey.events
-            .slice()
-            .sort((a, b) => b.date.localeCompare(a.date))
-            .map((event, index) => (
-              <div
-                class={cn(
-                  `duration-[${index} * 200ms] mb-8 flex animate-fade-up flex-col items-center transition-opacity duration-500 md:mb-16 md:flex-row md:even:flex-row-reverse`,
-                )}
-              >
-                <div class="group mb-4 w-full transform bg-card text-left shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg md:mb-0 md:w-1/2 md:pr-8 md:even:pl-8 md:even:pr-0 md:even:text-right">
-                  <div class="rounded-lg p-4">
-                    <span class="inline-block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-                      {event.timestamp}
-                    </span>
-                    <h3 class="mt-3 text-xl font-bold">{event.title}</h3>
-                    <div
-                      class="prose mt-1 text-muted-foreground"
-                      set:html={marked(event.description)}
-                    />
-                    {event.image
-                      ? (() => {
-                          const image =
-                            JOURNEYIMAGES[
-                              event.image as keyof typeof JOURNEYIMAGES
-                            ]
-                          return (
-                            <Image
-                              src={image}
-                              alt={event.title}
-                              class="mt-4 max-h-[300px] rounded-lg object-contain"
-                              loading="lazy"
-                              {...generateSizesAndWidths(
-                                image.width,
-                                image.height,
-                              )}
-                            />
-                          )
-                        })()
-                      : null}
-                  </div>
-                </div>
-
-                <div class="relative hidden h-8 w-8 place-items-center md:mx-4 md:grid">
-                  <div
-                    class={cn(
-                      'absolute z-10 h-6 w-6 -translate-x-1/2 transform rounded-full border-4 border-primary bg-background transition-transform duration-500 md:translate-x-0',
-                      index % 2 === 0 && 'md:translate-x-1',
-                    )}
-                  />
-                </div>
-
-                <div class="flex w-full items-center pl-8 md:w-1/2 md:pl-0" />
-              </div>
-            ))
-        }
-      </div>
-      <a
-        href={lang === 'ja' ? '/ja' : '/'}
-        id="go-home"
-        class="inline-flex h-9 w-96 max-w-[90%] items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-      >
-        Go Back
-      </a>
+<section class={className} {...props}>
+  <div class={style.journey__container}>
+    <div class={style.journey__header}>
+      <h2 class={style.journey__title}>{sections.journey.title}</h2>
+      <p class={style.journey__description}>{sections.journey.description}</p>
     </div>
+    <div class={style.journey__grid}>
+      <div class={style.journey__timeline}></div>
+      {
+        journey.events
+          .slice()
+          .sort((a, b) => b.date.localeCompare(a.date))
+          .map((event, index) => (
+            <div
+              class={cn(style.journey__event, {
+                [style['journey__event--even']]: index % 2 === 1,
+              })}
+              style={`--animation-delay: ${index};`}
+            >
+              <div class={style.journey__event_content}>
+                <div class={style.journey__event_inner}>
+                  <span class={style.journey__event_timestamp}>
+                    {event.timestamp}
+                  </span>
+                  <h3 class={style.journey__event_title}>{event.title}</h3>
+                  <div
+                    class={style.journey__event_description}
+                    set:html={marked(event.description)}
+                  />
+                  {event.image &&
+                    (() => {
+                      const image =
+                        JOURNEYIMAGES[event.image as keyof typeof JOURNEYIMAGES]
+                      return (
+                        <Image
+                          src={image}
+                          alt={event.title}
+                          class={style.journey__event_image}
+                          loading="lazy"
+                          {...generateSizesAndWidths(image.width, image.height)}
+                        />
+                      )
+                    })()}
+                </div>
+              </div>
+              <div class={style.journey__event_dot}>
+                <div class={style.journey__event_dot_inner} />
+              </div>
+              <div class={style.journey__event_spacer} />
+            </div>
+          ))
+      }
+    </div>
+    <a href={lang === 'ja' ? '/ja' : '/'} class={style.journey__back_button}>
+      Go Back
+    </a>
   </div>
 </section>

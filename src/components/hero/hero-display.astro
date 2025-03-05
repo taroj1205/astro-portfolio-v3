@@ -1,5 +1,5 @@
 ---
-import { cn } from '@/lib/utils'
+import styles from './hero.module.css'
 import AnimatedLinks from './animated-links.astro'
 import { getUI } from '@/utils/i18n.astro'
 
@@ -12,21 +12,10 @@ const {
 const { class: className, animation = true, ...props } = Astro.props
 ---
 
-<div
-  class={cn('flex flex-col items-center gap-6 text-center', className)}
-  {...props}
->
-  <div class="flex flex-col gap-4">
-    <h1
-      class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none"
-    >
-      {hero.title}
-    </h1>
-    <p
-      class="mx-auto animate-fade-up text-muted-foreground duration-700 md:text-xl"
-    >
-      {hero.description}
-    </p>
+<div class={styles.hero__display} {...props}>
+  <div class={styles.hero__content}>
+    <h1 class={styles.hero__title}>{hero.title}</h1>
+    <p class={styles.hero__description}>{hero.description}</p>
   </div>
   <AnimatedLinks />
 </div>

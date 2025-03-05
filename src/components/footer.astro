@@ -1,5 +1,6 @@
 ---
 import { getUI } from '@/utils/i18n.astro'
+import styles from './footer.module.css'
 
 const currentYear = new Date().getFullYear()
 
@@ -10,8 +11,8 @@ const {
 } = getUI(lang)
 ---
 
-<footer class="px-4 py-6 text-center lg:px-6">
-  <p class="text-muted-foreground">
+<footer class={styles.footer}>
+  <p class={styles.footer__text}>
     {footer.copyright.replace('{year}', currentYear.toString())}
   </p>
 </footer>

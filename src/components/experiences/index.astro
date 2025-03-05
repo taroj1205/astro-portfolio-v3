@@ -1,6 +1,7 @@
 ---
 import { getUI } from '@/utils/i18n.astro'
 import { Briefcase, Code, GraduationCap } from 'lucide-astro'
+import styles from './experiences.module.css'
 
 const { lang } = Astro.params
 
@@ -39,23 +40,17 @@ const experiencesArray = [
 const { class: className, ...props } = Astro.props
 ---
 
-<section class={className} {...props}>
-  <div
-    class="container mx-auto flex flex-col items-center justify-center gap-4 px-4"
-  >
-    <div class="space-y-4 text-center">
-      <h2
-        class="animate-fade-up text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
-      >
+<section class={`${styles.experiences} ${className}`} {...props}>
+  <div class={styles.experiences__container}>
+    <div class={styles.experiences__header}>
+      <h2 class={styles.experiences__title}>
         {sections.experiences.title}
       </h2>
-      <p
-        class="max-w-[800px] animate-fade-up text-xl text-muted-foreground duration-700 md:text-2xl/relaxed"
-      >
+      <p class={styles.experiences__description}>
         {sections.experiences.description}
       </p>
     </div>
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class={styles.experiences__grid}>
       {
         experiencesArray.map(
           ({
@@ -67,15 +62,17 @@ const { class: className, ...props } = Astro.props
             description,
             icon: Icon,
           }) => (
-            <div class="overflow-hidden rounded-lg border border-primary/10 bg-white shadow-md transition-all duration-300 hover:shadow-lg">
-              <div class="p-6">
-                <div class="mb-2 flex items-center justify-between">
-                  <h3 class="text-xl font-semibold">{title}</h3>
-                  {Icon && <Icon class="h-5 w-5" />}
+            <div class={styles.experiences__card}>
+              <div class={styles['experiences__card-content']}>
+                <div class={styles['experiences__card-header']}>
+                  <h3 class={styles['experiences__card-title']}>{title}</h3>
+                  {Icon && <Icon class={styles['experiences__card-icon']} />}
                 </div>
-                <p class="mb-2 text-gray-600">{company}</p>
-                <div class="mb-2 flex flex-wrap gap-2">
-                  <span class="inline-flex w-fit items-center whitespace-nowrap rounded-full border border-transparent bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground transition-colors hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                <p class={styles['experiences__card-company']}>{company}</p>
+                <div class={styles['experiences__card-tags']}>
+                  <span
+                    class={`${styles['experiences__card-tag']} ${styles['experiences__card-tag--primary']}`}
+                  >
                     {type}
                   </span>
                   <span class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
@@ -86,7 +83,7 @@ const { class: className, ...props } = Astro.props
                 <p class="text-sm">{description}</p>
               </div>
             </div>
-          ),
+          )
         )
       }
     </div>

@@ -30,6 +30,7 @@
     "@playform/compress": "^0.1.1",
     "@tailwindcss/typography": "^0.5.15",
     "astro-compress": "^2.3.1",
+    "lightningcss": "^1.29.1",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.6",

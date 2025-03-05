@@ -6,13 +6,14 @@ import ScrollUp from '@/components/scroll-up.astro'
 import { metadata } from '@/utils/metadata'
 import Share from '../share.astro'
 import LangToggle from '../lang-toggle.astro'
+import styles from './layout.module.css'
 
 const { link } = Astro.props
 
 const { lang } = Astro.params
 ---
 
-<html lang={lang === 'ja' ? 'ja' : 'en'} class="scroll-smooth">
+<html lang={lang === 'ja' ? 'ja' : 'en'} class={styles.html}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -28,10 +29,10 @@ const { lang } = Astro.params
     <meta name="twitter:description" content={metadata.description} />
     <meta name="twitter:image" content={metadata.openGraph.image} />
   </head>
-  <body class="bg-background antialiased">
-    <div class="relative flex min-h-[100dvh] flex-col gap-4">
+  <body class={styles.body}>
+    <div class={styles.layout}>
       {link !== '404' && <Header />}
-      <main class="z-10 flex flex-1 flex-col justify-center">
+      <main class={styles.main}>
         <slot />
       </main>
       <Share />

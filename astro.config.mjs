@@ -38,5 +38,8 @@ export default defineConfig({
       minify: 'terser',
       cssCodeSplit: true,
     },
+    css: {
+      transformer: 'lightningcss',
+    },
   },
 })

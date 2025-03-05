@@ -1,0 +1,33 @@
+.lang-toggle {
+  position: fixed;
+  bottom: 1rem;
+  left: 4.5rem;
+  z-index: 50;
+  border-radius: 9999px;
+  background-color: hsl(var(--primary));
+  padding: 0.75rem;
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.lang-toggle:hover {
+  transform: scale(1.1);
+}
+
+.lang-toggle:focus {
+  outline: none;
+  ring: 2px solid hsl(var(--primary));
+  ring-offset: 2px;
+}
+
+.lang-toggle:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 640px) {
+  .lang-toggle {
+    bottom: 2rem;
+    left: 5.5rem;
+  }
+}
