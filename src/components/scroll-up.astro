@@ -1,13 +1,15 @@
 ---
 import ArrowUpIcon from './icons/arrow-up-icon.astro'
+import styles from './scroll-up.module.css'
 ---
 
 <button
   id="scroll-up"
-  class="fixed bottom-4 right-4 z-50 hidden scale-75 rounded-full bg-primary p-3 text-primary-foreground opacity-0 shadow-lg transition-all duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95 data-[bottom=true]:bottom-16 sm:bottom-8 sm:right-8"
+  class={styles['scroll-up']}
   aria-label="Scroll to top"
+  data-visible="false"
 >
-  <ArrowUpIcon class="h-6 w-6" />
+  <ArrowUpIcon class={styles.scroll_up__icon} />
 </button>
 
 <script>
@@ -21,26 +23,14 @@ import ArrowUpIcon from './icons/arrow-up-icon.astro'
     const isMobile = window.innerWidth <= 500
 
     if (scrollY > 300 && scrollTopButton) {
-      if (scrollTopButton.classList.contains('hidden')) {
-        scrollTopButton.classList.remove('hidden')
-        setTimeout(() => {
-          scrollTopButton.classList.remove('opacity-0', 'scale-75')
-          scrollTopButton.classList.add('opacity-100', 'scale-100')
-        }, 50)
-      }
+      scrollTopButton.setAttribute('data-visible', 'true')
       if (atBottom && isMobile) {
         scrollTopButton.setAttribute('data-bottom', 'true')
       } else {
         scrollTopButton.setAttribute('data-bottom', 'false')
       }
-    } else {
-      if (scrollTopButton && !scrollTopButton.classList.contains('hidden')) {
-        scrollTopButton.classList.remove('opacity-100', 'scale-100')
-        scrollTopButton.classList.add('opacity-0', 'scale-75')
-        setTimeout(() => {
-          scrollTopButton.classList.add('hidden')
-        }, 300)
-      }
+    } else if (scrollTopButton) {
+      scrollTopButton.setAttribute('data-visible', 'false')
     }
   }
 

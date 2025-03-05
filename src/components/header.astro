@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import pfpImage from '@/assets/carousel/pfp.webp'
 import { getUI } from '@/utils/i18n.astro'
+import styles from './header.module.css'
 
 const { lang } = Astro.params
 
@@ -24,40 +25,28 @@ const navItems = [
 ]
 ---
 
-<header
-  id="header"
-  class="sticky top-0 z-20 flex h-fit w-full items-center justify-center bg-white/80 px-2 py-3 shadow-md backdrop-blur-md sm:h-16 md:px-6 lg:px-8"
->
-  <div
-    class="grid w-full max-w-5xl grid-cols-1 place-items-center md:grid-cols-[1fr_auto_1fr]"
-  >
-    <a
-      href="/"
-      class="z-0 hidden items-center justify-center transition-transform hover:scale-110 md:flex"
-    >
+<header id="header" class={styles.header}>
+  <div class={styles.header__container}>
+    <a href="/" class={styles.header__logo}>
       <Image
         src={pfpImage}
         alt="Shintaro Jokagi"
-        class="h-10 w-10 rounded-full object-cover ring-2 ring-primary ring-offset-2 ring-offset-white"
         loading="eager"
         width={40}
         height={40}
       />
     </a>
-    <nav
-      id="main-nav"
-      class="relative flex flex-wrap items-center justify-center gap-2 sm:flex-nowrap sm:gap-6"
-    >
+    <nav id="main-nav" class={styles.header__nav}>
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="group relative px-2 py-1 text-sm font-medium text-gray-700 hover:text-primary data-[active=true]:font-semibold data-[active=true]:text-primary"
+            class={styles.header__nav_link}
             data-section={item.section}
             data-active="false"
           >
             {item.label}
-            <span class="absolute inset-x-0 -bottom-0.5 h-0.5 origin-right scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:origin-left group-hover:scale-x-100 group-data-[journey=true]:origin-left group-data-[active=true]:scale-x-100" />
+            <span class={styles.header__nav_link_indicator} />
           </a>
         ))
       }
@@ -89,8 +78,8 @@ const navItems = [
     navItems.forEach((item) =>
       item.setAttribute(
         'data-active',
-        item.getAttribute('data-section') === activeSection ? 'true' : 'false',
-      ),
+        item.getAttribute('data-section') === activeSection ? 'true' : 'false'
+      )
     )
   }
 
